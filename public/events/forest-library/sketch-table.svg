@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Sketch table</title>
+  <desc id="desc">Illustration of an art table with paper and pencils.</desc>
+  <rect width="800" height="600" fill="#fffaf0"/>
+  <rect x="108" y="116" width="584" height="376" rx="32" fill="#e9b06c"/>
+  <rect x="188" y="164" width="424" height="248" rx="20" fill="#fff"/>
+  <rect x="244" y="214" width="132" height="10" rx="5" fill="#1f2937"/>
+  <rect x="244" y="250" width="228" height="10" rx="5" fill="#1f2937"/>
+  <rect x="244" y="286" width="186" height="10" rx="5" fill="#1f2937"/>
+  <path d="M528 212l78-64 20 20-66 78z" fill="#ef4444"/>
+  <path d="M470 336l100-86 18 18-86 100z" fill="#3b82f6"/>
+  <circle cx="548" cy="362" r="42" fill="#fde68a"/>
+</svg>

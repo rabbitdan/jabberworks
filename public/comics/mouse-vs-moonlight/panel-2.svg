@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#ede9fe"/>
+  <rect x="50" y="50" width="1100" height="800" rx="36" fill="#f5f3ff" stroke="#1f2937" stroke-width="10"/>
+  <text x="110" y="150" fill="#6d28d9" font-size="52" font-family="Georgia, serif">Panel 2: Colour Match</text>
+  <text x="110" y="220" fill="#1f2937" font-size="30" font-family="Arial, sans-serif">The mouse squints at the moon, trying to mix exactly the right silver.</text>
+  <circle cx="860" cy="350" r="140" fill="#fef08a"/>
+  <rect x="220" y="420" width="260" height="180" rx="28" fill="#a78bfa"/>
+  <circle cx="310" cy="360" r="82" fill="#475569"/>
+</svg>

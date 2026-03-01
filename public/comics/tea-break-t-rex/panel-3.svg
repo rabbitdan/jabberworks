@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#fee2e2"/>
+  <rect x="50" y="50" width="1100" height="800" rx="36" fill="#fff1f2" stroke="#1f2937" stroke-width="10"/>
+  <text x="110" y="150" fill="#be123c" font-size="52" font-family="Georgia, serif">Panel 3: Cake Wobble</text>
+  <text x="110" y="220" fill="#1f2937" font-size="30" font-family="Arial, sans-serif">A plate of cakes tilts dangerously toward disaster.</text>
+  <path d="M240 660c0-170 120-290 278-290 122 0 210 70 250 183" fill="none" stroke="#16a34a" stroke-width="90" stroke-linecap="round"/>
+  <rect x="720" y="520" width="230" height="26" rx="13" fill="#1f2937" transform="rotate(-16 720 520)"/>
+  <circle cx="860" cy="470" r="38" fill="#fb7185"/>
+  <circle cx="930" cy="430" r="38" fill="#f59e0b"/>
+</svg>

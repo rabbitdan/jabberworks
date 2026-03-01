@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#dbeafe"/>
+  <rect x="50" y="50" width="1100" height="800" rx="36" fill="#eff6ff" stroke="#1f2937" stroke-width="10"/>
+  <text x="110" y="150" fill="#1d4ed8" font-size="52" font-family="Georgia, serif">Panel 1: Supplies</text>
+  <text x="110" y="220" fill="#1f2937" font-size="30" font-family="Arial, sans-serif">A mouse drags brushes and paint into a quiet moonlit field.</text>
+  <circle cx="915" cy="180" r="80" fill="#fde68a"/>
+  <rect x="180" y="500" width="840" height="150" rx="40" fill="#1e293b"/>
+  <circle cx="330" cy="460" r="90" fill="#475569"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Forest library story circle</title>
+  <desc id="desc">Illustration of a storytime circle in a library.</desc>
+  <rect width="800" height="600" fill="#fff6e5"/>
+  <rect x="62" y="88" width="676" height="362" rx="30" fill="#f7df9d"/>
+  <rect x="108" y="132" width="108" height="238" rx="16" fill="#c97b34"/>
+  <rect x="242" y="132" width="108" height="238" rx="16" fill="#de9850"/>
+  <rect x="376" y="132" width="108" height="238" rx="16" fill="#c97b34"/>
+  <rect x="510" y="132" width="108" height="238" rx="16" fill="#de9850"/>
+  <circle cx="398" cy="468" r="92" fill="#f5b971"/>
+  <circle cx="318" cy="476" r="54" fill="#84b27b"/>
+  <circle cx="482" cy="476" r="54" fill="#84b27b"/>
+  <circle cx="400" cy="420" r="34" fill="#ffffff"/>
+  <path d="M360 522c24-32 57-48 100-48s76 16 100 48" fill="none" stroke="#7a4a1f" stroke-width="14" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#fffbeb"/>
+  <rect x="50" y="50" width="1100" height="800" rx="36" fill="#fff" stroke="#1f2937" stroke-width="10"/>
+  <text x="110" y="150" fill="#92400e" font-size="52" font-family="Georgia, serif">Panel 2: Footprints</text>
+  <text x="110" y="220" fill="#1f2937" font-size="30" font-family="Arial, sans-serif">A detective spots tiny tracks leading away from the picnic blanket.</text>
+  <path d="M180 620c100-40 160-120 250-130 110-12 164 90 270 72 74-12 115-82 194-126" fill="none" stroke="#0f766e" stroke-width="26" stroke-linecap="round"/>
+  <g fill="#78350f">
+    <circle cx="270" cy="440" r="22"/><circle cx="308" cy="400" r="16"/><circle cx="334" cy="420" r="14"/><circle cx="296" cy="456" r="14"/>
+    <circle cx="550" cy="520" r="22"/><circle cx="588" cy="480" r="16"/><circle cx="614" cy="500" r="14"/><circle cx="576" cy="536" r="14"/>
+    <circle cx="840" cy="450" r="22"/><circle cx="878" cy="410" r="16"/><circle cx="904" cy="430" r="14"/><circle cx="866" cy="466" r="14"/>
+  </g>
+</svg>
