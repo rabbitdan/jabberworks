@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed, ref } from "vue"
 import { events } from "~~/data/events"
-import { todayIso } from "~~/utils/eventDate.ts"
 
 type TimeFilter = "upcoming" | "past" | "all"
+
+function todayIso(): string {
+  return new Date().toISOString().slice(0, 10)
+}
 
 useSeoMeta({
   title: "Sarah — Events",

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, toRefs } from "vue"
 import type { Event } from "~~/types/content"
-import { formatEventDate } from "~~/utils/eventDate.ts"
 
 const props = defineProps<{
   event: Event
@@ -11,6 +10,22 @@ const { event } = toRefs(props)
 
 const eventHref = computed(() => `/events/${event.value.slug}`)
 const eventImages = computed(() => event.value.images ?? [])
+
+function formatEventDate(isoDate: string, locale = "en-GB", timeZone = "Europe/London"): string {
+  const date = new Date(`${isoDate}T00:00:00`)
+  const dayMonthFormatter = new Intl.DateTimeFormat(locale, {
+    day: "numeric",
+    month: "short",
+    timeZone
+  })
+  const weekdayFormatter = new Intl.DateTimeFormat(locale, {
+    weekday: "short",
+    timeZone
+  })
+
+  return `${dayMonthFormatter.format(date)} (${weekdayFormatter.format(date)})`
+}
+
 const galleryColumnsClass = computed(() => {
   if (eventImages.value.length <= 1) {
     return "grid-cols-1"
