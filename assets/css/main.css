@@ -4,7 +4,7 @@
 
 @layer base {
     body {
-        @apply font-body;
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
     }
 
     h1,
@@ -13,7 +13,7 @@
     h4,
     h5,
     h6 {
-        @apply font-heading;
+        font-family: Rockwell, "Rockwell Nova", "Roboto Slab", "DejaVu Serif", serif;
         font-weight: 300;
     }
 }
