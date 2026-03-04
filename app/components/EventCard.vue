@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, toRefs } from "vue"
 import type { Event } from "~~/types/content"
-import { formatEventDate } from "~~/utils/eventDate"
+import { formatEventDate } from "~~/utils/eventDate.ts"
 
 const props = defineProps<{
   event: Event

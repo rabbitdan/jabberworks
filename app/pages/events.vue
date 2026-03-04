@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue"
 import { events } from "~~/data/events"
-import { todayIso } from "~~/utils/eventDate"
+import { todayIso } from "~~/utils/eventDate.ts"
 
 type TimeFilter = "upcoming" | "past" | "all"
 
