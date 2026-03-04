@@ -11,37 +11,35 @@ const sectionBooks = computed(() =>
 )
 
 useSeoMeta({
-  title: "Sarah — Books",
+  title: "Sarah McIntyre - Artist and Illustrator",
   description: "Explore Sarah’s illustrated books and download activity sheets."
 })
 </script>
 
 <template>
-  <main class="mx-auto max-w-5xl p-6">
-    <!-- Hero -->
-    <header class="py-10 md:py-14">
-      <p class="text-sm uppercase tracking-wide opacity-70">Illustrated books</p>
-      <h1 class="mt-3 text-4xl font-semibold leading-tight md:text-5xl">
-        Sarah’s books and activity downloads
-      </h1>
-      <p class="mt-4 max-w-2xl text-base opacity-85">
-        A short intro about Sarah and what visitors can do here: discover book series,
-        watch read-aloud videos, and download activity sheets.
-      </p>
-
-      <!-- Optional hero CTA(s) -->
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a class="rounded-xl border px-4 py-2 hover:bg-black/5" href="#series-1">
-          Start with Otter Tales
-        </a>
-        <a class="rounded-xl border px-4 py-2 hover:bg-black/5" href="#earlier-books">
-          Browse earlier books
-        </a>
+    <div class="container">
+      <!-- Hero -->
+      <div class="hero block md:flex items-center justify-between gap-10 mt-10">
+        <div class="hero__image relative">
+          <img
+              src="/artist-mouse.jpg"
+              alt="Artist mouse"
+              class="rounded-lg object-cover"
+          />
+        </div>
+        <div class="hero__text relative">
+          <h1 class="mt-3 text-4xl leading-tight md:text-5xl">
+            Artist and Author
+          </h1>
+          <p class="mt-4 max-w-2xl text-base opacity-85">
+            I've loved to draw and make stories since I was a kid, and I've been practicing constantly at it since then. I like to think thousands of hours of practice has made me a lot better, but sometimes I learn the funniest and best things watching how children draw my own characters!
+          </p>
+        </div>
       </div>
-    </header>
+    </div>
 
     <!-- Series blocks -->
-    <div class="space-y-12">
+    <div class="container">
       <SeriesSectionBlock
           v-for="item in sectionBooks"
           :key="item.section.id"
@@ -49,5 +47,4 @@ useSeoMeta({
           :featured-books="item.books"
       />
     </div>
-  </main>
 </template>

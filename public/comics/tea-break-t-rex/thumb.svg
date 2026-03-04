@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#dcfce7"/>
-  <rect x="40" y="40" width="720" height="520" rx="28" fill="#f0fdf4" stroke="#1f2937" stroke-width="8"/>
-  <path d="M180 420c0-160 110-250 246-250 95 0 171 54 209 145 57 0 111 39 111 110 0 69-47 109-138 109H286c-70 0-106-42-106-114Z" fill="#16a34a"/>
-  <rect x="520" y="340" width="120" height="76" rx="24" fill="#fef3c7"/>
-  <text x="76" y="108" fill="#166534" font-size="38" font-family="Georgia, serif">Tea Break T-Rex</text>
-  <text x="78" y="500" fill="#1f2937" font-size="32" font-family="Arial, sans-serif">Polite dinosaur. Impractical crockery.</text>
-</svg>

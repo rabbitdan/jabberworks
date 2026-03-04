@@ -4,6 +4,7 @@ import type {
   EditorialFeatureImageSection,
   EditorialPage,
   EditorialTextImageSection,
+  EditorialTwoColumnSection,
 } from "~~/types/content"
 
 const props = defineProps<{
@@ -64,6 +65,10 @@ function isFeatureImageSection(section: EditorialPage["sections"][number]): sect
 
 function isCalloutSection(section: EditorialPage["sections"][number]): section is EditorialCalloutSection {
   return section._type === "callout"
+}
+
+function isTwoColumnSection(section: EditorialPage["sections"][number]): section is EditorialTwoColumnSection {
+  return section._type === "twoColumn"
 }
 </script>
 
@@ -167,6 +172,39 @@ function isCalloutSection(section: EditorialPage["sections"][number]): section i
           <p class="mt-4 max-w-3xl text-base leading-7 text-black/75">
             {{ section.text }}
           </p>
+        </section>
+
+        <section
+          v-else-if="isTwoColumnSection(section)"
+          class="rounded-[2rem] border border-black/10 bg-white p-8 md:p-10"
+        >
+          <p v-if="section.eyebrow" class="text-sm uppercase tracking-[0.24em] text-black/55">
+            {{ section.eyebrow }}
+          </p>
+
+          <div class="mt-4 grid gap-8 md:grid-cols-2 md:gap-10">
+            <div>
+              <h2 class="text-2xl font-semibold leading-tight">
+                {{ section.left.title }}
+              </h2>
+              <div class="mt-4 space-y-4 text-base leading-7 text-black/80">
+                <p v-for="paragraph in section.left.paragraphs" :key="paragraph">
+                  {{ paragraph }}
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-semibold leading-tight">
+                {{ section.right.title }}
+              </h2>
+              <div class="mt-4 space-y-4 text-base leading-7 text-black/80">
+                <p v-for="paragraph in section.right.paragraphs" :key="paragraph">
+                  {{ paragraph }}
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
       </template>
     </div>

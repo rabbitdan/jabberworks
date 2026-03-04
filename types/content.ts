@@ -17,10 +17,16 @@ export type YouTube = {
     title?: string
 }
 
+export type BookPageLink = {
+    url: string
+    external?: boolean
+}
+
 export type Book = {
     _type: "book"
     slug: string
     title: string
+    pageLink?: BookPageLink
     cover: {
         src: string
         alt?: string
@@ -37,6 +43,10 @@ export type BookSeriesSection = {
     id: string // stable key for v-for
     title: string
     blurb?: string
+    cover: {
+        src: string
+        alt?: string
+    }
     thumbnailCharacter: {
         src: string
         alt?: string
@@ -91,10 +101,25 @@ export type EditorialCalloutSection = {
     text: string
 }
 
+export type EditorialTwoColumnSection = {
+    _type: "twoColumn"
+    id: string
+    eyebrow?: string
+    left: {
+        title: string
+        paragraphs: string[]
+    }
+    right: {
+        title: string
+        paragraphs: string[]
+    }
+}
+
 export type EditorialPageSection =
     | EditorialTextImageSection
     | EditorialFeatureImageSection
     | EditorialCalloutSection
+    | EditorialTwoColumnSection
 
 export type EditorialPage = {
     hero: EditorialHero
@@ -128,8 +153,8 @@ export type Event = {
     _type: "event"
     slug: string
     title: string
-    url: string
-    date: string
+    dateStart: string
     blurb: string
-    images: [EventImage, ...EventImage[]]
+    tags?: string[]
+    images?: EventImage[]
 }

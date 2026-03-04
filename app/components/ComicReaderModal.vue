@@ -27,38 +27,8 @@ const loadSplide = async () => {
     return null
   }
 
-  const existing = (window as Window & { Splide?: SplideConstructor }).Splide
-  if (existing) {
-    return existing
-  }
-
-  await new Promise<void>((resolve, reject) => {
-    const onReady = () => {
-      const ctor = (window as Window & { Splide?: SplideConstructor }).Splide
-      if (ctor) {
-        resolve()
-      } else {
-        reject(new Error("Splide did not load"))
-      }
-    }
-
-    const current = document.querySelector<HTMLScriptElement>('script[data-splide-cdn="true"]')
-    if (current) {
-      current.addEventListener("load", onReady, { once: true })
-      current.addEventListener("error", () => reject(new Error("Splide failed to load")), { once: true })
-      return
-    }
-
-    const script = document.createElement("script")
-    script.src = "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
-    script.async = true
-    script.dataset.splideCdn = "true"
-    script.addEventListener("load", onReady, { once: true })
-    script.addEventListener("error", () => reject(new Error("Splide failed to load")), { once: true })
-    document.head.appendChild(script)
-  })
-
-  return (window as Window & { Splide?: SplideConstructor }).Splide || null
+  const module = await import("@splidejs/splide")
+  return module.Splide as SplideConstructor
 }
 
 const mountCarousel = async () => {
@@ -119,30 +89,37 @@ onBeforeUnmount(() => {
   <Teleport to="body">
     <div
       ref="rootRef"
-      class="comic-reader"
+      class="fixed inset-0 z-[60] grid place-items-center bg-slate-900/70 p-4 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       :aria-label="`${comic.title} comic reader`"
       @click.self="emit('close')"
     >
-      <div class="comic-reader__panel">
-        <div class="comic-reader__topbar">
+      <div
+        class="max-h-[94vh] w-full max-w-[1100px] overflow-auto p-4 shadow-[0_30px_80px_rgba(15,23,42,0.28)] md:max-h-[90vh] md:p-5 bg-white"
+      >
+        <div class="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-start">
           <div>
-            <p class="comic-reader__eyebrow">Comic reader</p>
-            <h2 class="comic-reader__title">{{ comic.title }}</h2>
+            <h2 class="mt-1 text-[clamp(1.5rem,2vw,2.2rem)] leading-tight text-slate-800">
+              {{ comic.title }}
+            </h2>
           </div>
 
-          <button type="button" class="comic-reader__close" @click="emit('close')">
+          <button
+            type="button"
+            class="w-full shrink-0 px-4 py-3 font-bold text-white md:w-auto"
+            @click="emit('close')"
+          >
             Close
           </button>
         </div>
 
-        <div class="splide comic-reader__carousel">
+        <div class="splide pb-12">
           <div class="splide__track">
             <ul class="splide__list">
               <li v-for="panel in comic.panels" :key="panel.src" class="splide__slide">
-                <figure class="comic-reader__frame">
-                  <img :src="panel.src" :alt="panel.alt" class="comic-reader__image">
+                <figure class="m-0 overflow-hidden flex justify-center items-center">
+                  <img :src="panel.src" :alt="panel.alt" class="block h-full w-auto">
                 </figure>
               </li>
             </ul>
@@ -154,82 +131,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.comic-reader {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(10px);
-}
-
-.comic-reader__panel {
-  width: min(1100px, 100%);
-  max-height: min(90vh, 900px);
-  overflow: auto;
-  padding: 1.25rem;
-  border-radius: 1.5rem;
-  background:
-    radial-gradient(circle at top left, rgba(255, 251, 235, 0.95), rgba(255, 255, 255, 0.98)),
-    #fff;
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.28);
-}
-
-.comic-reader__topbar {
-  display: flex;
-  gap: 1rem;
-  align-items: start;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.comic-reader__eyebrow {
-  margin: 0;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #b45309;
-}
-
-.comic-reader__title {
-  margin: 0.4rem 0 0;
-  font-size: clamp(1.5rem, 2vw, 2.2rem);
-  line-height: 1.1;
-  color: #1f2937;
-}
-
-.comic-reader__close {
-  flex-shrink: 0;
-  border: 0;
-  border-radius: 999px;
-  padding: 0.8rem 1rem;
-  background: #1f2937;
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.comic-reader__carousel {
-  padding-bottom: 3rem;
-}
-
-.comic-reader__frame {
-  margin: 0;
-  overflow: hidden;
-  border-radius: 1rem;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  background: #fffdf8;
-}
-
-.comic-reader__image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 :deep(.comic-reader__arrow) {
   width: 2.8rem;
   height: 2.8rem;
@@ -253,21 +154,7 @@ onBeforeUnmount(() => {
 }
 
 :deep(.comic-reader__page.is-active) {
-  background: #b45309;
+  background: #212121;
   transform: scale(1.1);
-}
-
-@media (max-width: 767px) {
-  .comic-reader__panel {
-    padding: 1rem;
-  }
-
-  .comic-reader__topbar {
-    flex-direction: column;
-  }
-
-  .comic-reader__close {
-    width: 100%;
-  }
 }
 </style>

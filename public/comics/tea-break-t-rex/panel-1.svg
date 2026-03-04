@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
-  <rect width="1200" height="900" fill="#dcfce7"/>
-  <rect x="50" y="50" width="1100" height="800" rx="36" fill="#f7fee7" stroke="#1f2937" stroke-width="10"/>
-  <text x="110" y="150" fill="#166534" font-size="52" font-family="Georgia, serif">Panel 1: Arrival</text>
-  <text x="110" y="220" fill="#1f2937" font-size="30" font-family="Arial, sans-serif">A T-Rex arrives early for tea, trying to look very refined.</text>
-  <path d="M250 670c0-220 150-350 324-350 124 0 222 74 272 202 76 0 154 47 154 144 0 98-63 144-194 144H430c-116 0-180-58-180-140Z" fill="#16a34a"/>
-  <rect x="770" y="600" width="160" height="70" rx="16" fill="#fef3c7"/>
-</svg>

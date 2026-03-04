@@ -48,7 +48,7 @@ useSeoMeta({
     </header>
 
     <section class="mt-10 sm:mt-12" aria-label="Frequently asked questions">
-      <FaqAccordion :items="faqItems" />
+      <FaqAccordion :items="faqItems" :single="true" />
     </section>
   </main>
 </template>

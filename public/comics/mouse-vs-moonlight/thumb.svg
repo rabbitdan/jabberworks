@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#e0e7ff"/>
-  <rect x="40" y="40" width="720" height="520" rx="28" fill="#eef2ff" stroke="#1f2937" stroke-width="8"/>
-  <circle cx="610" cy="165" r="82" fill="#fef08a"/>
-  <rect x="100" y="370" width="600" height="90" rx="22" fill="#1e293b"/>
-  <circle cx="210" cy="308" r="74" fill="#475569"/>
-  <text x="75" y="108" fill="#312e81" font-size="38" font-family="Georgia, serif">Mouse vs Moonlight</text>
-  <text x="78" y="500" fill="#1f2937" font-size="32" font-family="Arial, sans-serif">Painting the night before dawn wins.</text>
-</svg>

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
-  <rect width="1200" height="900" fill="#dbeafe"/>
-  <rect x="50" y="50" width="1100" height="800" rx="36" fill="#eff6ff" stroke="#1f2937" stroke-width="10"/>
-  <text x="110" y="150" fill="#1d4ed8" font-size="52" font-family="Georgia, serif">Panel 4: Backup</text>
-  <text x="110" y="220" fill="#1f2937" font-size="30" font-family="Arial, sans-serif">Friends arrive with a mug and cake stand sized for dinosaurs.</text>
-  <path d="M230 670c0-180 128-300 288-300 124 0 214 72 256 188" fill="none" stroke="#16a34a" stroke-width="90" stroke-linecap="round"/>
-  <rect x="680" y="420" width="220" height="200" rx="30" fill="#93c5fd" stroke="#1f2937" stroke-width="10"/>
-  <rect x="930" y="470" width="140" height="90" rx="24" fill="#fef3c7" stroke="#1f2937" stroke-width="8"/>
-</svg>

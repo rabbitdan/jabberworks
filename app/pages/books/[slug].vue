@@ -12,7 +12,10 @@ if (!book.value) {
 
 useSeoMeta({
   title: () => book.value?.title ?? "Book",
-  description: () => book.value?.blurb ?? ""
+  description: () => book.value?.blurb ?? "",
+  ogTitle: () => book.value?.title ?? "Book",
+  ogDescription: () => book.value?.blurb ?? "",
+  ogImage: () => book.value?.cover.src ?? ""
 })
 </script>
 

@@ -7,6 +7,9 @@ const isPreview = !!context && context !== "production"
 // Prefer env var in production. Fallback makes local dev sane.
 // Replace the fallback with your real domain when you have it.
 const siteUrl = process.env.NUXT_SITE_URL || "http://localhost:3000"
+const internalBookPageRoutes = books
+    .map(book => book.pageLink?.url || `/books/${book.slug}`)
+    .filter(url => url.startsWith("/"))
 
 export default defineNuxtConfig({
     compatibilityDate: "2024-04-03",
@@ -19,7 +22,11 @@ export default defineNuxtConfig({
         "@nuxt/image",
     ],
 
-    css: ["~~/assets/css/main.css"],
+    css: [
+        "~~/assets/css/main.css",
+        "@splidejs/splide/dist/css/splide.min.css"
+    ],
+
 
     site: {
         url: siteUrl,
@@ -27,7 +34,7 @@ export default defineNuxtConfig({
 
     nitro: {
         prerender: {
-            routes: ["/", "/comics", ...books.map((b) => `/books/${b.slug}`)],
+            routes: ["/", "/comics", ...internalBookPageRoutes],
         },
     },
 
@@ -40,6 +47,6 @@ export default defineNuxtConfig({
         },
 
     sitemap: {
-        urls: ["/comics", ...books.map((b) => `/books/${b.slug}`)],
+        urls: ["/comics", ...internalBookPageRoutes],
     },
 })
