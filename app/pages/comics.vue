@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { comics } from "~~/data/comics.generated"
+import { comics } from "~~/data/comics"
 import type { Comic } from "~~/types/content"
 
 const activeComic = ref<Comic | null>(null)
