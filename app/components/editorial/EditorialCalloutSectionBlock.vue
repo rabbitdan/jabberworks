@@ -6,9 +6,15 @@ defineProps<{
 }>()
 
 function isLinkedParagraph(
-  paragraph: EditorialCalloutSection["paragraphs"][number],
+  paragraph: NonNullable<EditorialCalloutSection["paragraphs"]>[number],
 ): paragraph is Extract<EditorialCalloutSection["paragraphs"][number], { spans: unknown[] }> {
   return typeof paragraph === "object" && paragraph !== null && Array.isArray(paragraph.spans)
+}
+
+function isTextObjectParagraph(
+  paragraph: NonNullable<EditorialCalloutSection["paragraphs"]>[number],
+): paragraph is Extract<EditorialCalloutSection["paragraphs"][number], { text: string }> {
+  return typeof paragraph === "object" && paragraph !== null && typeof paragraph.text === "string"
 }
 
 function isExternalHref(href: string) {
@@ -21,10 +27,10 @@ function isExternalHref(href: string) {
     <p v-if="section.eyebrow" class="text-sm uppercase">
       {{ section.eyebrow }}
     </p>
-    <h2 class="mt-3 max-w-2xl text-3xl">
+    <h2 v-if="section.title" class="mt-3 max-w-2xl text-3xl">
       {{ section.title }}
     </h2>
-    <div class="mt-4 max-w-3xl space-y-4 text-base leading-7">
+    <div v-if="section.paragraphs?.length" class="mt-4 max-w-3xl space-y-4 text-base leading-7">
       <p
         v-for="(paragraph, paragraphIndex) in section.paragraphs"
         :key="paragraphIndex"
@@ -44,6 +50,9 @@ function isExternalHref(href: string) {
               {{ span.text }}
             </template>
           </template>
+        </template>
+        <template v-else-if="isTextObjectParagraph(paragraph)">
+          {{ paragraph.text }}
         </template>
         <template v-else>
           {{ paragraph }}

@@ -117,8 +117,8 @@ export type EditorialCalloutSection = {
     _type: "callout"
     id: string
     eyebrow?: string
-    title: string
-    paragraphs: (
+    title?: string
+    paragraphs?: (
         | string
         | {
             spans: {
@@ -127,6 +127,10 @@ export type EditorialCalloutSection = {
                 external?: boolean
             }[]
         }
+        | {
+            text: string
+        }
+        | Record<string, unknown>
     )[]
 }
 
@@ -134,15 +138,21 @@ export type EditorialTwoColumnSection = {
     _type: "twoColumn"
     id: string
     eyebrow?: string
-    left: {
-        title: string
-        paragraphs: string[]
-    }
-    right: {
-        title: string
-        paragraphs: string[]
-    }
+    left: EditorialTwoColumnContent
+    right: EditorialTwoColumnContent
 }
+
+export type EditorialTwoColumnContent =
+    | {
+        title?: string
+        paragraphs: string[]
+        youtube?: never
+    }
+    | {
+        title?: string
+        youtube: YouTube
+        paragraphs?: never
+    }
 
 export type EditorialSplitStackSection = {
     _type: "splitStack"

@@ -73,6 +73,32 @@ const page: EditorialPage = {
           "Here are some extra links, if you’d like to keep scrolling!"
       ]
     },
+    {
+      _type: "twoColumn",
+      id: "about-draw-sea-monkey",
+      left: { paragraphs: ["Learn how to draw a Sea Monkey with Sarah in this four-video Booktrust series on how to lead a Comics Jam session in the classroom. And read further on how to use it in the classroom here on her blog."] },
+      right: { youtube: { url: "https://youtu.be/OlfKVjB-KLY", title: "Optional title" } },
+    },
+    {
+      _type: "twoColumn",
+      id: "about-draw-sea-monkey",
+      left: { youtube: { url: "https://youtu.be/KB_h2VpFFUI", title: "Optional title" } },
+      right: {paragraphs: ["Here’s her TEDx talk, How to grow by embracing our mistakes:"] },
+    },
+    {
+      _type: "textImage",
+      id: "about-pictures-mean-business",
+      paragraphs: [
+        "If you’re a fan of illustration, find out about the #PicturesMeanBusiness campaign Sarah launched in 2015, showing how everyone benefits when illustrators are properly credited for their work: picturesmeanbusiness.com The website was heroically designed and funded by Exeter-based illustrator Soni Speight!"
+      ],
+      image: {
+        src: "/about/pmb_guardian.jpg",
+        alt: "Pictures Mean Business article",
+      },
+      imageSide: "left",
+      imageWidth: "lg",
+      textWidth: "lg",
+    },
   ],
 }
 
