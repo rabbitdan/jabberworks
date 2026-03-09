@@ -855,7 +855,7 @@ export const books: Book[] =
     "_type": "book",
     "slug": "reeve-mcintyre-kevin-vs-unicorns",
     "pageLink": {
-      "url": "/books/reeve-mcintyre-kevin-unicorns"
+      "url": "/books/reeve-mcintyre-kevin-vs-unicorns"
     },
     "title": "Kevin vs the Unicorns",
     "cover": {
