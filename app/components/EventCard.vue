@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, toRefs } from "vue"
 import type { Event } from "~~/types/content"
+import { toParagraphs } from "~~/utils/paragraphs"
 
 const props = defineProps<{
   event: Event
@@ -10,6 +11,7 @@ const { event } = toRefs(props)
 
 const eventHref = computed(() => `/events/${event.value.slug}`)
 const eventImages = computed(() => event.value.images ?? [])
+const eventBlurbParagraphs = computed(() => toParagraphs(event.value.blurb))
 
 function formatEventDate(isoDate: string, locale = "en-GB", timeZone = "Europe/London"): string {
   const date = new Date(`${isoDate}T00:00:00`)
@@ -60,7 +62,9 @@ const galleryColumnsClass = computed(() => {
         </div>
       </dl>
 
-      <p class="mt-4 text-base leading-[1.7] text-slate-800/80">{{ event.blurb }}</p>
+      <div v-if="eventBlurbParagraphs.length" class="mt-4 space-y-3 text-base leading-[1.7] text-slate-800/80">
+        <p v-for="(paragraph, index) in eventBlurbParagraphs" :key="index">{{ paragraph }}</p>
+      </div>
     </div>
 
     <div

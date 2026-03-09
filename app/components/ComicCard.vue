@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { Comic } from "~~/types/content"
+import { toParagraphs } from "~~/utils/paragraphs"
 
-defineProps<{
+const props = defineProps<{
   comic: Comic
 }>()
+
+const blurbParagraphs = computed(() => toParagraphs(props.comic.blurb))
 
 defineEmits<{
   open: [comic: Comic]
@@ -24,7 +27,9 @@ defineEmits<{
     <div class="comic-card__body col-span-4">
       <p class="comic-card__eyebrow text-gray-500 uppercase text-sm">Comic {{ comic.panels.length }} pages</p>
       <h2 class="comic-card__title text-3xl my-2">{{ comic.title }}</h2>
-      <p class="comic-card__blurb">{{ comic.blurb }}</p>
+      <div v-if="blurbParagraphs.length" class="comic-card__blurb space-y-3">
+        <p v-for="(paragraph, index) in blurbParagraphs" :key="index">{{ paragraph }}</p>
+      </div>
 
       <button type="button" class="comic-card__link border p-3 mt-3" @click="$emit('open', comic)">
         {{ comic.ctaLabel || "Lorem ipsum" }}

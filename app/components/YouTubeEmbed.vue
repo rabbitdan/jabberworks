@@ -2,6 +2,7 @@
 const props = defineProps<{
   url: string
   title?: string
+  showHeading?: boolean
 }>()
 
 function getYouTubeId(url: string): string | null {
@@ -32,9 +33,9 @@ const embedSrc = computed(() => {
 </script>
 
 <template>
-  <section v-if="embedSrc" class="mt-8">
-    <h2 class="text-xl font-semibold">Video</h2>
-    <div class="mt-3 aspect-video w-full overflow-hidden rounded-2xl bg-black/5">
+  <section v-if="embedSrc" :class="props.showHeading === false ? '' : 'mt-8'">
+    <h2 v-if="props.showHeading !== false" class="text-xl font-semibold">Video</h2>
+    <div :class="props.showHeading === false ? 'aspect-video w-full overflow-hidden rounded-2xl bg-black/5' : 'mt-3 aspect-video w-full overflow-hidden rounded-2xl bg-black/5'">
       <iframe
           class="h-full w-full"
           :src="embedSrc"
@@ -47,8 +48,8 @@ const embedSrc = computed(() => {
     </div>
   </section>
 
-  <section v-else class="mt-8">
-    <h2 class="text-xl font-semibold">Video</h2>
+  <section v-else :class="props.showHeading === false ? '' : 'mt-8'">
+    <h2 v-if="props.showHeading !== false" class="text-xl font-semibold">Video</h2>
     <p class="mt-2 text-sm opacity-80">
       Video link is invalid or missing a YouTube id.
       <a class="underline" :href="url" target="_blank" rel="noreferrer">Open video</a>

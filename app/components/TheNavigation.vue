@@ -11,8 +11,8 @@ const links = [
 <template>
   <nav aria-label="Primary">
     <ul class="flex flex-wrap items-center justify-end">
-      <li v-for="link in links" :key="link.to" class="inline-block mr-6">
-        <NuxtLink :to="link.to" class="font-heading">
+      <li v-for="link in links" :key="link.to" class="inline-block">
+        <NuxtLink :to="link.to" class="flex items-center font-heading leading-none pt-2 pb-1 px-4 rounded-2xl hover:bg-jw_red hover:text-jw_blue">
           {{ link.label }}
         </NuxtLink>
       </li>

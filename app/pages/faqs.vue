@@ -6,9 +6,9 @@ const faqItems = [
       "Most of the books are designed for picture-book readers, early independent readers, and families reading aloud together. Specific age guidance can vary by title, so the book pages will usually give the clearest sense of tone and reading level.",
   },
   {
-    question: "Do you offer activity sheets or classroom resources?",
+    question: "Do you offer activity-sheets sheets or classroom resources?",
     answer:
-      "Yes. Selected books include printable activity sheets and related extras for families, libraries, and schools. Those resources are surfaced alongside the relevant book pages so they are easy to find.",
+      "Yes. Selected books include printable activity-sheets sheets and related extras for families, libraries, and schools. Those resources are surfaced alongside the relevant book pages so they are easy to find.",
   },
   {
     question: "Can Sarah visit schools, festivals, or bookshops?",

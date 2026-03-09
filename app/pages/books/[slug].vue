@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getBookBySlug } from "~~/lib/content"
+import { firstParagraph } from "~~/utils/paragraphs"
 
 const route = useRoute()
 const slug = String(route.params.slug)
@@ -12,9 +13,9 @@ if (!book.value) {
 
 useSeoMeta({
   title: () => book.value?.title ?? "Book",
-  description: () => book.value?.blurb ?? "",
+  description: () => firstParagraph(book.value?.description ?? book.value?.blurb),
   ogTitle: () => book.value?.title ?? "Book",
-  ogDescription: () => book.value?.blurb ?? "",
+  ogDescription: () => firstParagraph(book.value?.description ?? book.value?.blurb),
   ogImage: () => book.value?.cover.src ?? ""
 })
 </script>

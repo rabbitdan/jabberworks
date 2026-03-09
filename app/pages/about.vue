@@ -3,68 +3,75 @@ import type { EditorialPage } from "~~/types/content"
 
 const page: EditorialPage = {
   hero: {
-    eyebrow: "About Sarah",
-    title: "Stories, sketches, and wildlife observations gathered over a lifetime of making books.",
-    intro:
-      "This page is structured as reusable editorial sections so it can move cleanly into Sanity later. For now, the content is local, fast to edit, and flexible enough to support richer storytelling than a plain text page.",
+    title: "About",
+    intro: "Cras fringilla id arcu vel iaculis. Nunc nisl lacus, gravida vitae massa sed, viverra facilisis libero. Maecenas porta imperdiet ligula vitae imperdiet. Ut lacinia ultricies commodo. Donec felis nibh, fringilla vitae neque eu, tincidunt malesuada dui.",
   },
   sections: [
     {
-      _type: "textImage",
+      _type: "splitStack",
       id: "about-origin",
-      eyebrow: "Where it starts",
-      title: "A practice built from drawing, collecting details, and paying attention.",
+      title: "Artist and Author Sarah McIntyre...",
       paragraphs: [
-        "Sarah’s work begins with observation: quick sketches, fragments of overheard conversation, and visual details gathered from walks, museums, classrooms, and riverbanks.",
-        "That material is shaped into picture books and illustrated stories that feel rooted in real places, while still leaving room for humour, warmth, and a little mischief.",
+        "is easy to spot in her pointy glasses, hats and brightly-patterned dresses. Early in her career, she made comics and illustrated books for authors such as Giles Andreae, Alan MacDonald, Gillian Rogerson, Anne Cottringer and Claire Freedman. She then began writing and illustrating picture books herself, including the Grumpycorn books, There’s a Shark in the Bath, and Dinosaur Firefighters. She met author Philip Reeve at the Edinburgh Book Festival in 2010 and they published their first book together, Oliver and the Seawigs, and Sarah wore a six-foot-tall wig for the launch on the Golden Hinde ship:",
       ],
-      image: {
-        src: "/artist-mouse.jpg",
-        alt: "Illustrated mouse with an artist’s brush.",
+      primaryImage: {
+        src: "/about/authorphoto.jpg",
+        alt: "Sarah McIntyre wearing a hat, smiling beatifically",
       },
-      imageSide: "right",
-      imageWidth: "md",
-      textWidth: "md",
+      secondaryImage: {
+        src: "/about/seawigs_launch.jpg",
+        alt: "Sarah McIntyre heading artwork.",
+      },
     },
     {
-      _type: "callout",
-      id: "about-callout",
-      eyebrow: "For families and schools",
-      title: "The books are designed to be read aloud, revisited, and used as a starting point for making things.",
-      text:
-        "That is why the site is heading toward a more modular content model. The same page structure can support author biography, classroom resources, exhibitions, and future campaign pages without inventing a new template each time.",
+      _type: "textImage",
+      id: "about-looking-ahead",
+      paragraphs: [
+        "They so enjoyed working together that they created a second book, Cakes in Space, and surprised many festivals and schools with their shiny space suits:",
+      ],
+      image: {
+        src: "/about/cakesinspace-bonehill.jpg",
+        alt: "Sarah and Philip on Bonehill in Dartmoor wearing space uniforms.",
+      },
+      imageSide: "left",
+      imageWidth: "lg",
+      textWidth: "lg",
     },
     {
       _type: "featureImage",
       id: "about-feature",
       image: {
-        src: "/artist-mouse.jpg",
-        alt: "Illustrated mouse leaning over paper with a paintbrush.",
+        src: "/about/pugwalk.jpg",
+        alt: "Sarah and Philip launch Pugs of the Frozen North",
       },
-      overline: "In the studio",
-      title: "Images can carry the story too.",
-      text:
-        "This block is intended for the moments where one strong image should breathe, with supporting text and credit sitting on top rather than pushing the image into a standard content column.",
-      credit: "Photo credit: Studio archive",
+      title: "They so enjoyed working together that they created a second book, Cakes in Space, and surprised many festivals and schools with their shiny space suits:",
+      credit: "Photo credit: Dannie Price for Blast Photo",
       textPosition: "bottom-left",
       creditPosition: "top-right",
     },
     {
       _type: "textImage",
       id: "about-looking-ahead",
-      eyebrow: "Looking ahead",
-      title: "Built now for speed, structured later for CMS-driven pages.",
       paragraphs: [
-        "Each section already has a stable type and shape, so a Sanity page document can eventually return the same hero-and-sections pattern with minimal frontend rewrite.",
-        "When that happens, image widths, alignments, credits, and callouts can all become editor-controlled fields rather than bespoke Vue markup on individual pages.",
+        "They so enjoyed working together that they went on to create six more books, including four about Kevin the Roly-Poly Flying Pony. During Covid Lockdown, Sarah amused herself by painting pictures of her model ship collection, adding little mice as sailors. The original art and cards sold so well, and Sarah had so much fun with the little mice characters that she asked Philip if he’d help her turn them into a series of books, which have become ADVENTUREMICE. These books have their own website – Adventuremice.com – so explore it for lots of free resources, activities, drawing videos and Teacher Packs.",
+        "For all their Reeve & McIntyre books, Philip and Sarah work as co-authors: they both brainstorm the story ideas together, then Philip does most of the writing, but comes back to Sarah for more ideas. Then Philip helps Sarah with the rough-draft pencil versions of the illustrations before Sarah creates the final ink and watercolour artwork.",
       ],
       image: {
-        src: "/mcintyre_heading.png",
+        src: "/about/advmice-authorbookends.jpg",
         alt: "Sarah McIntyre header artwork.",
       },
       imageSide: "left",
       imageWidth: "lg",
       textWidth: "lg",
+    },
+    {
+      _type: "callout",
+      id: "about-callout",
+      paragraphs: [
+          "You can follow Sarah on Twitter/X, on YouTube, Facebook, on Instagram and on her blog. (There\’s also a joint Reeve & McIntyre Facebook page.)",
+          "Find out more in the FAQs section of the website.",
+          "Here are some extra links, if you’d like to keep scrolling!"
+      ]
     },
   ],
 }

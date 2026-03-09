@@ -103,6 +103,9 @@ export default defineNuxtConfig({
 
     hooks: {
         "build:before": async () => {
+            if (process.env.npm_lifecycle_event === "dev") {
+                return
+            }
             await generateComicsModule()
         },
     },

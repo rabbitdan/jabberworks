@@ -4,7 +4,9 @@ export type ActivitySheet = {
         alt?: string
     }
     pdfUrl: string
-    linkText: string
+    linkText?: string
+    title?: string
+    text?: string | string[]
 }
 
 export type BuyLink = {
@@ -15,6 +17,17 @@ export type BuyLink = {
 export type YouTube = {
     url: string // keep as full URL; later you can derive id if needed
     title?: string
+}
+
+export type BookVideo = {
+    url: string
+    heading: string
+    text?: string | string[]
+}
+
+export type BookMiscPanel = {
+    heading?: string
+    text: string | string[]
 }
 
 export type BookPageLink = {
@@ -31,10 +44,15 @@ export type Book = {
         src: string
         alt?: string
     }
-    blurb: string
+    backgroundTileUrl?: string
+    blurb: string | string[]
+    description?: string | string[]
     activitySheets?: ActivitySheet[]
+    activitySheetsLayout?: 2 | 4
     buyLinks?: BuyLink[]
     youtube?: YouTube
+    videos?: BookVideo[]
+    miscPanel?: BookMiscPanel
     seriesSlugs?: string[] // optional: helps build series pages without references
 }
 
@@ -42,10 +60,11 @@ export type BookSeriesSection = {
     _type: "bookSeriesSection"
     id: string // stable key for v-for
     title: string
-    blurb?: string
+    blurb?: string | string[]
     cover: {
         src: string
         alt?: string
+        url?: string
     }
     thumbnailCharacter: {
         src: string
@@ -61,6 +80,7 @@ export type BookSeriesSection = {
 export type EditorialImage = {
     src: string
     alt: string
+    photographerCredit?: string
 }
 
 export type EditorialHero = {
@@ -87,7 +107,7 @@ export type EditorialFeatureImageSection = {
     image: EditorialImage
     overline?: string
     title: string
-    text?: string
+    text?: string | string[]
     credit?: string
     textPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right"
     creditPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right"
@@ -98,7 +118,16 @@ export type EditorialCalloutSection = {
     id: string
     eyebrow?: string
     title: string
-    text: string
+    paragraphs: (
+        | string
+        | {
+            spans: {
+                text: string
+                href?: string
+                external?: boolean
+            }[]
+        }
+    )[]
 }
 
 export type EditorialTwoColumnSection = {
@@ -115,11 +144,22 @@ export type EditorialTwoColumnSection = {
     }
 }
 
+export type EditorialSplitStackSection = {
+    _type: "splitStack"
+    id: string
+    eyebrow?: string
+    title: string
+    paragraphs: string[]
+    primaryImage: EditorialImage
+    secondaryImage: EditorialImage
+}
+
 export type EditorialPageSection =
     | EditorialTextImageSection
     | EditorialFeatureImageSection
     | EditorialCalloutSection
     | EditorialTwoColumnSection
+    | EditorialSplitStackSection
 
 export type EditorialPage = {
     hero: EditorialHero
@@ -139,7 +179,7 @@ export type Comic = {
         src: string
         alt?: string
     }
-    blurb: string
+    blurb: string | string[]
     ctaLabel?: string
     panels: ComicPanel[]
 }
@@ -154,7 +194,7 @@ export type Event = {
     slug: string
     title: string
     dateStart: string
-    blurb: string
+    blurb: string | string[]
     tags?: string[]
     images?: EventImage[]
 }

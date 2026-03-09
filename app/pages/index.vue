@@ -12,7 +12,7 @@ const sectionBooks = computed(() =>
 
 useSeoMeta({
   title: "Sarah McIntyre - Artist and Illustrator",
-  description: "Explore Sarah’s illustrated books and download activity sheets."
+  description: "Explore Sarah’s illustrated books and download activity-sheets sheets."
 })
 </script>
 
@@ -41,10 +41,11 @@ useSeoMeta({
     <!-- Series blocks -->
     <div class="container">
       <SeriesSectionBlock
-          v-for="item in sectionBooks"
+          v-for="(item, index) in sectionBooks"
           :key="item.section.id"
           :section="item.section"
           :featured-books="item.books"
+          :loop-index="index"
       />
     </div>
 </template>

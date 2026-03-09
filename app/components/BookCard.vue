@@ -19,7 +19,7 @@ const external = computed(() => isExternalUrl(pageUrl.value) || props.book.pageL
       :rel="external ? 'noreferrer' : undefined"
   >
         <img
-            class="h-48 w-auto"
+            class="h-48 md:h-48 lg:h-32 xl:h-36 2xl:h-48 w-auto m-auto sm:m-0"
             :src="book.cover.src"
             :alt="book.cover.alt || book.title"
             loading="lazy"

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import type { Series, Book } from "~~/types/content"
+import { toParagraphs } from "~~/utils/paragraphs"
 
-defineProps<{
+const props = defineProps<{
   series: Series
   featuredBooks: Book[]
 }>()
+
+const blurbParagraphs = computed(() => toParagraphs(props.series.blurb))
 </script>
 
 <template>
@@ -21,9 +24,9 @@ defineProps<{
 
       <div class="min-w-0">
         <h1 class="text-3xl font-semibold leading-tight">{{ series.title }}</h1>
-        <p v-if="series.blurb" class="mt-3 opacity-85">
-          {{ series.blurb }}
-        </p>
+        <div v-if="blurbParagraphs.length" class="mt-3 space-y-3 opacity-85">
+          <p v-for="(paragraph, index) in blurbParagraphs" :key="index">{{ paragraph }}</p>
+        </div>
 
         <div v-if="series.cta" class="mt-5">
           <NuxtLink
