@@ -1,18 +1,22 @@
 import type { Comic } from "~~/types/content"
 
-export const comics: Comic[] = 
+export const comics: Comic[] =
 [
   {
     "_type": "comic",
     "slug": "airship",
     "title": "Airship",
     "thumbnail": {
-      "src": "/comics/airship/airship_cover.png",
+      "src": "/comics/airship/airship.gif",
       "alt": "Comic panel"
     },
     "blurb": "Airship is a Comics Jam I did with my friend David O’Connell. We choose the airship as our theme and took turns drawing one page at a time, with a one-hour time limit per page, aiming to finish at 24 pages. We never knew where the other person was going to take the story next, and it was loads of fun!",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/airship/airship_cover.png",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/airship/airship01.png",
         "alt": "Comic panel"
@@ -242,40 +246,19 @@ export const comics: Comic[] =
   },
   {
     "_type": "comic",
-    "slug": "birdsong",
-    "title": "Birdsong",
-    "thumbnail": {
-      "src": "/comics/birdsong/birdsong1.jpg",
-      "alt": "Comic panel"
-    },
-    "blurb": "Here are two comics I made for the Birdsong anthology, edited by Naniiebim & Will Kirkby.",
-    "ctaLabel": "Read comic",
-    "panels": [
-      {
-        "src": "/comics/birdsong/birdsong2.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/birdsong/birdsong3.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/birdsong/birdsong4.jpg",
-        "alt": "Comic panel"
-      }
-    ]
-  },
-  {
-    "_type": "comic",
     "slug": "china",
     "title": "China",
     "thumbnail": {
-      "src": "/comics/china/mcintyre_chinacomic_1.gif",
+      "src": "/comics/china/china_banner.jpg",
       "alt": "Comic panel"
     },
     "blurb": "I love making travel comics! Here’s a book-length comics journal I kept on a road trip around China with my family in 2011. The idea wasn’t to make a perfect comic (too many bumps in the road!), but to capture the wonder of being in a fascinating new place.",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/china/mcintyre_chinacomic_1.gif",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/china/mcintyre_chinacomic_2.gif",
         "alt": "Comic panel"
@@ -519,12 +502,16 @@ export const comics: Comic[] =
     "slug": "cyrano",
     "title": "Cyrano",
     "thumbnail": {
-      "src": "/comics/cyrano/cyrano1.jpg",
+      "src": "/comics/cyrano/cyrano_banner.gif",
       "alt": "Comic panel"
     },
     "blurb": "Cyrano de Bergerac with Gérard Depardieu and Anne Brochet is my all-time favourite film, so I made a fan comic, focusing on one of the more minor characters.",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/cyrano/cyrano2.jpg",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/cyrano/cyrano2.jpg",
         "alt": "Comic panel"
@@ -552,12 +539,16 @@ export const comics: Comic[] =
     "slug": "dartmoor",
     "title": "Dartmoor",
     "thumbnail": {
-      "src": "/comics/dartmoor/dartmoor_journal01.jpg",
+      "src": "/comics/dartmoor/dartmoor_banner.gif",
       "alt": "Comic panel"
     },
     "blurb": "A Dartmoor travel comic with sketches.",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/dartmoor/dartmoor_journal01.jpg",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/dartmoor/dartmoor_journal02.jpg",
         "alt": "Comic panel"
@@ -621,12 +612,16 @@ export const comics: Comic[] =
     "slug": "ginisam",
     "title": "Ginisam",
     "thumbnail": {
-      "src": "/comics/ginisam/ginisam_01.jpg",
+      "src": "/comics/ginisam/ginisam_banner.gif",
       "alt": "Comic panel"
     },
     "blurb": "",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/ginisam/ginisam_01.gif",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/ginisam/ginisam_02.jpg",
         "alt": "Comic panel"
@@ -662,12 +657,16 @@ export const comics: Comic[] =
     "slug": "hourlycomic",
     "title": "Hourlycomic",
     "thumbnail": {
-      "src": "/comics/hourlycomic/mcintyre_hc01.gif",
+      "src": "/comics/hourlycomic/scribble_banner.jpg",
       "alt": "Comic panel"
     },
     "blurb": "Here’s a 24-page comic I made for a 24-Hour Comic Marathon, as part of the Lakes International Comics Festival. (A whole comic book in 24 hours and no sleep!) You can buy it as part of comics anthology called 24 by 7.",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/hourlycomic/mcintyre_hc01.gif",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/hourlycomic/mcintyre_hc02.gif",
         "alt": "Comic panel"
@@ -703,12 +702,16 @@ export const comics: Comic[] =
     "slug": "lasky",
     "title": "Lasky",
     "thumbnail": {
-      "src": "/comics/lasky/letter2lasky1.gif",
+      "src": "/comics/lasky/deardavid_banner.gif",
       "alt": "Comic panel"
     },
     "blurb": "Seattle comics artist David Lasky sent me a beautifully letter in comics form, so I sent him back this one.",
     "ctaLabel": "Read comic",
     "panels": [
+      {
+        "src": "/comics/lasky/letter2lasky1.gif",
+        "alt": "Comic panel"
+      },
       {
         "src": "/comics/lasky/letter2lasky2.gif",
         "alt": "Comic panel"
@@ -739,6 +742,10 @@ export const comics: Comic[] =
     "ctaLabel": "Read comic",
     "panels": [
       {
+        "src": "/comics/mondaycomic/mondaycomic1.gif",
+        "alt": "Comic panel"
+      },
+      {
         "src": "/comics/mondaycomic/mondaycomic2.gif",
         "alt": "Comic panel"
       },
@@ -765,34 +772,26 @@ export const comics: Comic[] =
     "slug": "thamesreach",
     "title": "Thamesreach",
     "thumbnail": {
-      "src": "/comics/thamesreach/thamesreach_1_sm.jpg",
+      "src": "/comics/thamesreach/thamesreach_banner.jpg",
       "alt": "Comic panel"
     },
     "blurb": "",
     "ctaLabel": "Read comic",
     "panels": [
       {
-        "src": "/comics/thamesreach/thamesreach_2_sm.jpg",
+        "src": "/comics/thamesreach/birdsong1.jpg",
         "alt": "Comic panel"
       },
       {
-        "src": "/comics/thamesreach/thamesreach_3_sm.jpg",
+        "src": "/comics/thamesreach/birdsong2.jpg",
         "alt": "Comic panel"
       },
       {
-        "src": "/comics/thamesreach/thamesreach_4_sm.jpg",
+        "src": "/comics/thamesreach/birdsong3.jpg",
         "alt": "Comic panel"
       },
       {
-        "src": "/comics/thamesreach/thamesreach_5_sm.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/thamesreach/thamesreach_6_sm.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/thamesreach/thamesreach1_sm.jpg",
+        "src": "/comics/thamesreach/birdsong4.jpg",
         "alt": "Comic panel"
       },
       {
@@ -819,91 +818,10 @@ export const comics: Comic[] =
   },
   {
     "_type": "comic",
-    "slug": "vernlettuce",
-    "title": "Vernlettuce",
-    "thumbnail": {
-      "src": "/comics/vernlettuce/vernandlettuce-header.jpg",
-      "alt": "Comic panel"
-    },
-    "blurb": "",
-    "ctaLabel": "Read comic",
-    "panels": [
-      {
-        "src": "/comics/vernlettuce/vern01.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern02.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern07.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern10.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern11.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern13.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern14.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern15.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern16.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern17.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern18.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern19.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern20.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern21.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern22.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern24.jpg",
-        "alt": "Comic panel"
-      },
-      {
-        "src": "/comics/vernlettuce/vern27.jpg",
-        "alt": "Comic panel"
-      }
-    ]
-  },
-  {
-    "_type": "comic",
     "slug": "bitsnbobs",
     "title": "Bits n' Bobs",
     "thumbnail": {
-      "src": "/comics/africangoodness/african_goodness.gif",
+      "src": "/comics/bitsnbobs/bitsnbobs_banner.jpg",
       "alt": "Comic panel"
     },
     "blurb": "Bits ‘n’ Bobs: a collection of short comics",

@@ -6,8 +6,6 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "generate:books": "jiti scripts/generateBooks.ts",
-    "generate:comics": "jiti scripts/generateComics.ts",
     "preview": "nuxt preview"
   },
   "dependencies": {
