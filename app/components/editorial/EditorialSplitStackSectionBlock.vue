@@ -7,9 +7,9 @@ defineProps<{
 </script>
 
 <template>
-  <section class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-start">
-    <div>
-      <div class="overflow-hidden">
+  <section class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+    <div class="h-full">
+      <div class="h-full">
         <img
           class="h-full w-full object-cover"
           :src="section.primaryImage.src"
@@ -25,11 +25,8 @@ defineProps<{
       </p>
     </div>
 
-    <div class="grid gap-8">
-      <div>
-        <p v-if="section.eyebrow" class="text-sm uppercase">
-          {{ section.eyebrow }}
-        </p>
+    <div class="grid gap-8 h-full items-between">
+      <div class="self-start">
         <h2 class="mt-3 text-3xl">
           {{ section.title }}
         </h2>
@@ -40,7 +37,7 @@ defineProps<{
         </div>
       </div>
 
-      <div>
+      <div class="self-end">
         <div class="overflow-hidden">
           <img
             class="h-full w-full object-cover"

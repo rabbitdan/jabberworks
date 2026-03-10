@@ -13,7 +13,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
 <template>
   <section class="p-8 md:p-10">
     <div class="mt-4 grid gap-8 md:grid-cols-2 md:gap-10">
-      <div class="flex items-center">
+      <div class="flex flex-col justify-center">
         <h2 v-if="section.left.title" class="text-2xl">
           {{ section.left.title }}
         </h2>
@@ -22,7 +22,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
           :url="section.left.youtube.url"
           :title="section.left.youtube.title"
           :show-heading="false"
-          :class="section.left.title ? 'mt-4' : ''"
+          :class="section.left.title ? 'mt-4 w-full [&>div]:rounded-none' : 'w-full [&>div]:rounded-none'"
         />
         <div v-else :class="section.left.title ? 'mt-4 space-y-4 text-base' : 'space-y-4 text-base'">
           <p v-for="paragraph in section.left.paragraphs" :key="paragraph">
@@ -31,7 +31,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
         </div>
       </div>
 
-      <div class="flex items-center">
+      <div class="flex flex-col justify-center">
         <h2 v-if="section.right.title" class="text-2xl">
           {{ section.right.title }}
         </h2>
@@ -40,7 +40,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
           :url="section.right.youtube.url"
           :title="section.right.youtube.title"
           :show-heading="false"
-          :class="section.right.title ? 'mt-4' : ''"
+          :class="section.right.title ? 'mt-4 w-full [&>div]:rounded-none' : 'w-full [&>div]:rounded-none'"
         />
         <div v-else :class="section.right.title ? 'mt-4 space-y-4 text-base' : 'space-y-4 text-base'">
           <p v-for="paragraph in section.right.paragraphs" :key="paragraph">

@@ -13,19 +13,8 @@ const featurePositionClasses: Record<NonNullable<EditorialFeatureImageSection["t
   "bottom-right": "bottom-4 right-4 md:bottom-8 md:right-8",
 }
 
-const creditPositionClasses: Record<NonNullable<EditorialFeatureImageSection["creditPosition"]>, string> = {
-  "top-left": "left-4 top-4 md:left-8 md:top-8",
-  "top-right": "right-4 top-4 md:right-8 md:top-8",
-  "bottom-left": "bottom-4 left-4 md:bottom-8 md:left-8",
-  "bottom-right": "bottom-4 right-4 md:bottom-8 md:right-8",
-}
-
 function getFeatureTextPosition(section: EditorialFeatureImageSection) {
   return featurePositionClasses[section.textPosition || "bottom-left"]
-}
-
-function getFeatureCreditPosition(section: EditorialFeatureImageSection) {
-  return creditPositionClasses[section.creditPosition || "bottom-right"]
 }
 
 function getCreditText(section: EditorialFeatureImageSection) {
@@ -36,7 +25,7 @@ function getCreditText(section: EditorialFeatureImageSection) {
 <template>
   <section class="relative overflow-hidden">
     <img
-      class="h-[26rem] w-full object-cover md:h-[34rem]"
+      class="h-[26rem] w-full object-cover md:h-[34rem] lg:h-[48rem]"
       :src="props.section.image.src"
       :alt="props.section.image.alt"
       loading="lazy"
@@ -44,7 +33,7 @@ function getCreditText(section: EditorialFeatureImageSection) {
     <div class="absolute inset-0" />
 
     <div
-      class="absolute max-w-sm text-black backdrop-blur"
+      class="absolute max-w-sm bg-jw_red p-4 text-jw_blue md:p-6"
       :class="getFeatureTextPosition(props.section)"
     >
       <p v-if="props.section.overline" class="text-xs uppercase">
@@ -62,8 +51,7 @@ function getCreditText(section: EditorialFeatureImageSection) {
 
     <p
       v-if="getCreditText(props.section)"
-      class="absolute px-3 py-1 text-xs uppercase"
-      :class="getFeatureCreditPosition(props.section)"
+      class="absolute bottom-0 left-0 m-0 bg-jw_red px-3 py-1 font-sans text-xs uppercase text-jw_blue"
     >
       {{ getCreditText(props.section) }}
     </p>

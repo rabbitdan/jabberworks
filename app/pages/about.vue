@@ -46,8 +46,8 @@ const page: EditorialPage = {
       },
       title: "They so enjoyed working together that they created a second book, Cakes in Space, and surprised many festivals and schools with their shiny space suits:",
       credit: "Photo credit: Dannie Price for Blast Photo",
-      textPosition: "bottom-left",
-      creditPosition: "top-right",
+      textPosition: "bottom-right",
+      creditPosition: "bottom-left",
     },
     {
       _type: "textImage",

@@ -13,7 +13,7 @@ defineProps<{
         {{ hero.title }}
       </h1>
     </div>
-    <p v-if="hero.intro" class="col-span 12 md:col-span-8 items-center text-base">
+    <p v-if="hero.intro" class="col-span-12 md:col-span-8 items-center text-base">
       {{ hero.intro }}
     </p>
   </header>
