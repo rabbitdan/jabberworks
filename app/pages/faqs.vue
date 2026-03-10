@@ -1,7 +1,22 @@
 <script setup lang="ts">
 import type { FaqItem } from "~~/types/content"
 
-const journalImage = (path: string) => `https://images.jabberworks.co.uk/journal/wp-content/${path}`
+const sanitizeJournalImagePath = (path: string) =>
+  path
+    .split("/")
+    .map((segment) =>
+      segment
+        .trim()
+        .toLowerCase()
+        .replace(/[_\s]+/g, "-")
+        .replace(/[^a-z0-9.-]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, ""),
+    )
+    .join("/")
+
+const journalImage = (path: string) =>
+  `https://images.jabberworks.co.uk/uploads/${sanitizeJournalImagePath(path)}`
 
 const faqHtml = (html: string) => ({
   _type: "html" as const,
