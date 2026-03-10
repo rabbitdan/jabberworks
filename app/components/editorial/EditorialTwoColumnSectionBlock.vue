@@ -11,13 +11,9 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
 </script>
 
 <template>
-  <section class="border p-8 md:p-10">
-    <p v-if="section.eyebrow" class="text-sm uppercase">
-      {{ section.eyebrow }}
-    </p>
-
+  <section class="p-8 md:p-10">
     <div class="mt-4 grid gap-8 md:grid-cols-2 md:gap-10">
-      <div>
+      <div class="flex items-center">
         <h2 v-if="section.left.title" class="text-2xl">
           {{ section.left.title }}
         </h2>
@@ -28,14 +24,14 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
           :show-heading="false"
           :class="section.left.title ? 'mt-4' : ''"
         />
-        <div v-else :class="section.left.title ? 'mt-4 space-y-4 text-base leading-7' : 'space-y-4 text-base leading-7'">
+        <div v-else :class="section.left.title ? 'mt-4 space-y-4 text-base' : 'space-y-4 text-base'">
           <p v-for="paragraph in section.left.paragraphs" :key="paragraph">
             {{ paragraph }}
           </p>
         </div>
       </div>
 
-      <div>
+      <div class="flex items-center">
         <h2 v-if="section.right.title" class="text-2xl">
           {{ section.right.title }}
         </h2>
@@ -46,7 +42,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
           :show-heading="false"
           :class="section.right.title ? 'mt-4' : ''"
         />
-        <div v-else :class="section.right.title ? 'mt-4 space-y-4 text-base leading-7' : 'space-y-4 text-base leading-7'">
+        <div v-else :class="section.right.title ? 'mt-4 space-y-4 text-base' : 'space-y-4 text-base'">
           <p v-for="paragraph in section.right.paragraphs" :key="paragraph">
             {{ paragraph }}
           </p>

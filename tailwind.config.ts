@@ -6,6 +6,7 @@ export default <Partial<Config>>{
             colors: {
                 jw_red: "#da0000",
                 jw_blue: "#C7EAFF",
+                jw_grey: "#323232",
             },
             fontFamily: {
                 body: ["Georgia", "Cambria", "\"Times New Roman\"", "Times", "serif"],

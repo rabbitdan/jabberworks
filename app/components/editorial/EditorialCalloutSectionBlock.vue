@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { EditorialCalloutSection } from "~~/types/content"
+import type { EditorialCalloutSection, RichTextParagraph, RichTextSpan } from "~~/types/content"
 
 defineProps<{
   section: EditorialCalloutSection
 }>()
 
 function isLinkedParagraph(
-  paragraph: NonNullable<EditorialCalloutSection["paragraphs"]>[number],
-): paragraph is Extract<EditorialCalloutSection["paragraphs"][number], { spans: unknown[] }> {
+  paragraph: RichTextParagraph,
+): paragraph is Extract<RichTextParagraph, { spans: RichTextSpan[] }> {
   return typeof paragraph === "object" && paragraph !== null && Array.isArray(paragraph.spans)
 }
 
 function isTextObjectParagraph(
-  paragraph: NonNullable<EditorialCalloutSection["paragraphs"]>[number],
-): paragraph is Extract<EditorialCalloutSection["paragraphs"][number], { text: string }> {
+  paragraph: RichTextParagraph,
+): paragraph is Extract<RichTextParagraph, { text: string }> {
   return typeof paragraph === "object" && paragraph !== null && typeof paragraph.text === "string"
 }
 
@@ -23,17 +23,18 @@ function isExternalHref(href: string) {
 </script>
 
 <template>
-  <section class="border p-8 md:p-10">
-    <p v-if="section.eyebrow" class="text-sm uppercase">
+  <section class="flex items-center justify-center bg-jw_blue p-8 md:p-10">
+    <p v-if="section.eyebrow" class="max-auto text-sm uppercase">
       {{ section.eyebrow }}
     </p>
-    <h2 v-if="section.title" class="mt-3 max-w-2xl text-3xl">
+    <h2 v-if="section.title" class="mt-3 mx-auto max-w-2xl text-3xl">
       {{ section.title }}
     </h2>
-    <div v-if="section.paragraphs?.length" class="mt-4 max-w-3xl space-y-4 text-base leading-7">
+    <div v-if="section.paragraphs?.length" class="mt-4 max-w-3xl space-y-4 text-base text-center">
       <p
         v-for="(paragraph, paragraphIndex) in section.paragraphs"
         :key="paragraphIndex"
+        class="block mx-auto font-heading"
       >
         <template v-if="isLinkedParagraph(paragraph)">
           <template v-for="(span, spanIndex) in paragraph.spans" :key="spanIndex">
@@ -44,11 +45,11 @@ function isExternalHref(href: string) {
               :target="span.external || isExternalHref(span.href) ? '_blank' : undefined"
               :rel="span.external || isExternalHref(span.href) ? 'noreferrer' : undefined"
             >
-              {{ span.text }}
+              <strong v-if="span.strong">{{ span.text }}</strong>
+              <template v-else>{{ span.text }}</template>
             </a>
-            <template v-else>
-              {{ span.text }}
-            </template>
+            <strong v-else-if="span.strong">{{ span.text }}</strong>
+            <template v-else>{{ span.text }}</template>
           </template>
         </template>
         <template v-else-if="isTextObjectParagraph(paragraph)">

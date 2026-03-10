@@ -113,25 +113,53 @@ export type EditorialFeatureImageSection = {
     creditPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right"
 }
 
+export type RichTextSpan = {
+    text: string
+    href?: string
+    external?: boolean
+    strong?: boolean
+}
+
+export type RichTextParagraph =
+    | string
+    | {
+        spans: RichTextSpan[]
+    }
+    | {
+        text: string
+    }
+
+export type FaqImage = {
+    src: string
+    alt: string
+    href?: string
+    caption?: string
+}
+
+export type FaqAnswerBlock =
+    | {
+        _type: "richText"
+        paragraphs: RichTextParagraph[]
+    }
+    | {
+        _type: "html"
+        html: string
+    }
+    | {
+        _type: "image"
+        image: FaqImage
+    }
+    | {
+        _type: "youtube"
+        youtube: YouTube
+    }
+
 export type EditorialCalloutSection = {
     _type: "callout"
     id: string
     eyebrow?: string
     title?: string
-    paragraphs?: (
-        | string
-        | {
-            spans: {
-                text: string
-                href?: string
-                external?: boolean
-            }[]
-        }
-        | {
-            text: string
-        }
-        | Record<string, unknown>
-    )[]
+    paragraphs?: RichTextParagraph[]
 }
 
 export type EditorialTwoColumnSection = {
@@ -199,12 +227,45 @@ export type EventImage = {
     alt: string
 }
 
+export type EventLink = {
+    label: string
+    url: string
+}
+
+export type EventSession = {
+    title: string
+    date?: string
+    startTime?: string
+    endTime?: string
+    venue?: string
+    city?: string
+    description?: string
+    links?: EventLink[]
+}
+
 export type Event = {
     _type: "event"
-    slug: string
     title: string
     dateStart: string
-    blurb: string | string[]
-    tags?: string[]
+    dateEnd?: string
+    startTime?: string
+    endTime?: string
+    city?: string
+    venue?: string
+    country?: string
+    mode?: "in-person" | "online"
+    status?: "scheduled" | "past" | "publication"
+    series?: string
+    blurb: string
+    description?: string | string[]
+    url?: string
+    tags: string[]
+    links?: EventLink[]
     images?: EventImage[]
+    sessions?: EventSession[]
+}
+
+export type FaqItem = {
+    question: string
+    answer: FaqAnswerBlock[]
 }

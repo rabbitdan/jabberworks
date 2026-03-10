@@ -40,8 +40,8 @@ const filteredByTime = computed(() => {
 
   return sortedEvents.value.filter((event) =>
     timeFilter.value === "upcoming"
-      ? event.dateStart >= today.value
-      : event.dateStart < today.value
+      ? (event.dateEnd ?? event.dateStart) >= today.value
+      : (event.dateEnd ?? event.dateStart) < today.value
   )
 })
 
@@ -70,203 +70,110 @@ function setTimeFilter(value: TimeFilter) {
 function setTagFilter(value: string) {
   tagFilter.value = value
 }
+
+function eventCardClass(hasImages: boolean): string {
+  return hasImages ? "lg:col-span-2" : "lg:col-span-1"
+}
+
+function eventAccent(index: number): "blue" | "grey" | "red" | undefined {
+  const cyclePosition = index % 5
+
+  if (cyclePosition === 0) {
+    return "blue"
+  }
+
+  if (cyclePosition === 2) {
+    return "grey"
+  }
+
+  if (cyclePosition === 3) {
+    return "red"
+  }
+
+  return undefined
+}
 </script>
 
 <template>
-  <section class="events-page">
-    <div class="events-page__hero">
-      <p class="events-page__eyebrow">Event diary</p>
-      <h1 class="events-page__title">Events arranged like the comics shelf, but all out in the open.</h1>
-      <p class="events-page__intro">
-        Each event sits in its own card with the key details up front: name, date, link,
-        a short blurb, and a small gallery of event images.
-      </p>
-    </div>
+  <div class="container">
+  <section class="content">
+      <div class="flex items-center py-8 border-b border-black">
+        <h1 class="heading text-4xl mr-6">Events</h1>
+        <p class="text">
+          WHAT have I been up to? Keep checking here to see if I’m doing any events near you!
+        </p>
+      </div>
 
-    <div class="events-page__filters">
-      <label class="events-page__field">
-        <span>Time range</span>
-        <select v-model="timeFilter" class="events-page__select">
-          <option
-            v-for="option in timeFilterOptions"
-            :key="option.value"
-            :value="option.value"
+      <div class="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
+        <label class="grid gap-2">
+          <span class="text-black">Time range</span>
+          <select v-model="timeFilter" class="appearance-none rounded-2xl border border-slate-900/10 bg-white/90 px-4 py-3.5 text-gray-900">
+            <option
+                v-for="option in timeFilterOptions"
+                :key="option.value"
+                :value="option.value"
+            >
+              {{ option.label }}
+            </option>
+          </select>
+        </label>
+
+        <label class="grid gap-2">
+          <span class="text-black">Tag</span>
+          <select v-model="tagFilter" class="appearance-none rounded-2xl border border-slate-900/10 bg-white/90 px-4 py-3.5 text-gray-900">
+            <option value="all">All tags</option>
+            <option
+                v-for="tag in availableTags"
+                :key="tag"
+                :value="tag"
+            >
+              {{ tag }}
+            </option>
+          </select>
+        </label>
+      </div>
+
+      <div class="mt-4 grid gap-3">
+        <div class="flex flex-wrap gap-2.5">
+          <button
+              v-for="option in timeFilterOptions"
+              :key="option.value"
+              type="button"
+              class="cursor-pointer rounded-full border border-black px-3 py-2"
+              :class="timeFilter === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
+              @click="setTimeFilter(option.value)"
           >
             {{ option.label }}
-          </option>
-        </select>
-      </label>
+          </button>
+        </div>
 
-      <label class="events-page__field">
-        <span>Tag</span>
-        <select v-model="tagFilter" class="events-page__select">
-          <option value="all">All tags</option>
-          <option
-            v-for="tag in availableTags"
-            :key="tag"
-            :value="tag"
+        <div class="flex flex-wrap gap-2.5">
+          <button
+              v-for="tag in tagQuickFilters"
+              :key="tag"
+              type="button"
+              class="cursor-pointer rounded-full border border-black px-3 py-2"
+              :class="tagFilter === tag ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
+              @click="setTagFilter(tag)"
           >
-            {{ tag }}
-          </option>
-        </select>
-      </label>
-    </div>
-
-    <div class="events-page__quick-filters">
-      <div class="events-page__quick-group">
-        <button
-          v-for="option in timeFilterOptions"
-          :key="option.value"
-          type="button"
-          class="events-page__chip"
-          :class="{ 'events-page__chip--active': timeFilter === option.value }"
-          @click="setTimeFilter(option.value)"
-        >
-          {{ option.label }}
-        </button>
+            {{ tag === "all" ? "All tags" : tag }}
+          </button>
+        </div>
       </div>
 
-      <div class="events-page__quick-group">
-        <button
-          v-for="tag in tagQuickFilters"
-          :key="tag"
-          type="button"
-          class="events-page__chip"
-          :class="{ 'events-page__chip--active': tagFilter === tag }"
-          @click="setTagFilter(tag)"
+      <div v-if="finalEvents.length" class="mt-8 grid gap-6 lg:grid-cols-2">
+        <div
+            v-for="(event, index) in finalEvents"
+            :key="`${event.title}-${event.dateStart}`"
+            :class="eventCardClass(Boolean(event.images?.length))"
         >
-          {{ tag === "all" ? "All tags" : tag }}
-        </button>
+          <EventCard :event="event" :accent="eventAccent(index)" />
+        </div>
       </div>
-    </div>
 
-    <div v-if="finalEvents.length" class="events-page__column">
-      <EventCard
-        v-for="event in finalEvents"
-        :key="event.slug"
-        :event="event"
-      />
-    </div>
-
-    <p v-else class="events-page__empty">
-      No events match these filters.
-    </p>
+      <p v-else class="mt-8 rounded-[1.25rem] border border-dashed border-slate-900/15 bg-white/70 px-6 py-5 text-gray-800/80">
+        No events match these filters.
+      </p>
   </section>
+  </div>
 </template>
-
-<style scoped>
-.events-page {
-  width: min(1080px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 3rem 0 5rem;
-}
-
-.events-page__hero {
-  padding: 2rem;
-  border-radius: 2rem;
-  background:
-    radial-gradient(circle at top left, rgba(254, 240, 138, 0.8), transparent 36%),
-    radial-gradient(circle at right bottom, rgba(251, 191, 36, 0.22), transparent 28%),
-    linear-gradient(145deg, #fff7ed, #fffbeb 58%, #ffffff);
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-}
-
-.events-page__eyebrow {
-  margin: 0;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #b45309;
-}
-
-.events-page__title {
-  margin: 0.75rem 0 0;
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
-  line-height: 0.95;
-  max-width: 12ch;
-  color: #111827;
-}
-
-.events-page__intro {
-  margin: 1.25rem 0 0;
-  max-width: 42rem;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: rgba(31, 41, 55, 0.82);
-}
-
-.events-page__filters {
-  margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-}
-
-.events-page__field {
-  display: grid;
-  gap: 0.5rem;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.events-page__field span {
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: rgba(31, 41, 55, 0.72);
-}
-
-.events-page__select {
-  appearance: none;
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  color: #111827;
-  font: inherit;
-}
-
-.events-page__quick-filters {
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.events-page__quick-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.events-page__chip {
-  padding: 0.55rem 0.9rem;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  color: #1f2937;
-  font: inherit;
-  cursor: pointer;
-}
-
-.events-page__chip--active {
-  border-color: rgba(180, 83, 9, 0.3);
-  background: #b45309;
-  color: #fff;
-}
-
-.events-page__column {
-  margin-top: 2rem;
-  display: grid;
-  gap: 1.5rem;
-}
-
-.events-page__empty {
-  margin: 2rem 0 0;
-  padding: 1.25rem 1.4rem;
-  border: 1px dashed rgba(15, 23, 42, 0.16);
-  border-radius: 1.25rem;
-  background: rgba(255, 255, 255, 0.72);
-  color: rgba(31, 41, 55, 0.82);
-}
-</style>
