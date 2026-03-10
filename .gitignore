@@ -24,3 +24,8 @@ logs
 !.env.example
 
 pnpm-lock.yaml
+
+scratch.txt
+
+*.local
+scratch.*
