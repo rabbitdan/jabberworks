@@ -1,12 +1,15 @@
+// Shared primitives
+type TextContent = string | string[]
+type Thumbnail = { src: string; alt?: string }
+type Image = { src: string; alt: string }
+type Link = { url: string; external?: boolean }
+
 export type ActivitySheet = {
-    thumb: {
-        src: string
-        alt?: string
-    }
+    thumb: Thumbnail
     pdfUrl: string
     linkText?: string
     title?: string
-    text?: string | string[]
+    text?: TextContent
 }
 
 export type BuyLink = {
@@ -22,31 +25,23 @@ export type YouTube = {
 export type BookVideo = {
     url: string
     heading: string
-    text?: string | string[]
+    text?: TextContent
 }
 
 export type BookMiscPanel = {
     heading?: string
-    text: string | string[]
-}
-
-export type BookPageLink = {
-    url: string
-    external?: boolean
+    text: TextContent
 }
 
 export type Book = {
     _type: "book"
     slug: string
     title: string
-    pageLink?: BookPageLink
-    cover: {
-        src: string
-        alt?: string
-    }
+    pageLink?: Link
+    cover: Thumbnail
     backgroundTileUrl?: string
-    blurb: string | string[]
-    description?: string | string[]
+    blurb: TextContent
+    description?: TextContent
     activitySheets?: ActivitySheet[]
     activitySheetsLayout?: 2 | 4
     buyLinks?: BuyLink[]
@@ -60,28 +55,17 @@ export type BookSeriesSection = {
     _type: "bookSeriesSection"
     id: string // stable key for v-for
     title: string
-    blurb?: string | string[]
-    cover: {
-        src: string
-        alt?: string
-        url?: string
-    }
-    thumbnailCharacter: {
-        src: string
-        alt?: string
-    }
+    blurb?: TextContent
+    cover: Thumbnail & { url?: string }
+    thumbnailCharacter: Thumbnail
     cta?: {
         text: string
         url: string
     }
-    featuredBookSlugs?: string[] // “reference array” analogue
+    featuredBookSlugs?: string[] // "reference array" analogue
 }
 
-export type EditorialImage = {
-    src: string
-    alt: string
-    photographerCredit?: string
-}
+export type EditorialImage = Image & { photographerCredit?: string }
 
 export type EditorialHero = {
     eyebrow?: string
@@ -107,7 +91,7 @@ export type EditorialFeatureImageSection = {
     image: EditorialImage
     overline?: string
     title: string
-    text?: string | string[]
+    text?: TextContent
     credit?: string
     textPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right"
     creditPosition?: "top-left" | "top-right" | "bottom-left" | "bottom-right"
@@ -129,12 +113,7 @@ export type RichTextParagraph =
         text: string
     }
 
-export type FaqImage = {
-    src: string
-    alt: string
-    href?: string
-    caption?: string
-}
+export type FaqImage = Image & { href?: string; caption?: string }
 
 export type FaqAnswerBlock =
     | {
@@ -162,6 +141,10 @@ export type EditorialCalloutSection = {
     paragraphs?: RichTextParagraph[]
 }
 
+export type EditorialTwoColumnContent =
+    | { title?: string; paragraphs: string[] }
+    | { title?: string; youtube: YouTube }
+
 export type EditorialTwoColumnSection = {
     _type: "twoColumn"
     id: string
@@ -169,18 +152,6 @@ export type EditorialTwoColumnSection = {
     left: EditorialTwoColumnContent
     right: EditorialTwoColumnContent
 }
-
-export type EditorialTwoColumnContent =
-    | {
-        title?: string
-        paragraphs: string[]
-        youtube?: never
-    }
-    | {
-        title?: string
-        youtube: YouTube
-        paragraphs?: never
-    }
 
 export type EditorialSplitStackSection = {
     _type: "splitStack"
@@ -204,27 +175,14 @@ export type EditorialPage = {
     sections: EditorialPageSection[]
 }
 
-export type ComicPanel = {
-    src: string
-    alt: string
-}
-
 export type Comic = {
     _type: "comic"
     slug: string
     title: string
-    thumbnail: {
-        src: string
-        alt?: string
-    }
-    blurb: string | string[]
+    thumbnail: Thumbnail
+    blurb: TextContent
     ctaLabel?: string
-    panels: ComicPanel[]
-}
-
-export type EventImage = {
-    src: string
-    alt: string
+    panels: Image[]
 }
 
 export type EventLink = {
@@ -257,11 +215,11 @@ export type Event = {
     status?: "scheduled" | "past" | "publication"
     series?: string
     blurb: string
-    description?: string | string[]
+    description?: TextContent
     url?: string
     tags: string[]
     links?: EventLink[]
-    images?: EventImage[]
+    images?: Image[]
     sessions?: EventSession[]
 }
 
