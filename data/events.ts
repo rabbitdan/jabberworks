@@ -382,17 +382,6 @@ export const events: Event[] = [
   },
   {
     _type: "event",
-    title: "Newport Festival of Words",
-    dateStart: "2026-03-22",
-    city: "Newport",
-    status: "scheduled",
-    url: "https://www.newportwordfest.co.uk/",
-    blurb: "Festival appearance at Newport Festival of Words. Details to follow.",
-    description: "Retained as a forthcoming festival marker pending fuller programme details.",
-    tags: ["festival", "family", "literary-festival"]
-  },
-  {
-    _type: "event",
     title: "Stratford Lit Fest Schools Events",
     dateStart: "2026-03-25",
     city: "Stratford",

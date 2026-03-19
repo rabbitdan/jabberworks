@@ -27,14 +27,15 @@ export const seriesSections: BookSeriesSection[] = [
         cover: { src: "/books/reeve-mcintyre/legend-of-kevin/rm-cover-kevin.jpg", alt: "The legend of kevin", url: "/books/reeve-mcintyre-legend-of-kevin" },
         thumbnailCharacter: { src: "/books/reeve-mcintyre/legend-of-kevin/kevin-thumb.gif", alt: "Have any biscuits?" },
         featuredBookSlugs: [
-            "reeve-mcintyre-seawigs",
+            "reeve-mcintyre-oliver-seawigs",
             "reeve-mcintyre-cakes-space",
             "reeve-mcintyre-jinks-o-hare",
-            "reeve-mcintyre-pugs",
-            "reeve-mcintyre-pug-a-doodle-doo",
+            "reeve-mcintyre-pugs-frozen-north",
+            "reeve-mcintyre-pug-a-doodle-do",
             "reeve-mcintyre-kevin-biscuit-bandit",
             "reeve-mcintyre-kevin-great-escape",
-            "reeve-mcintyre-kevin-vs-unicorns"
+            "reeve-mcintyre-kevin-vs-unicorns",
+            "reeve-mcintyre-thatch-the-moon"
         ]
     },
     {

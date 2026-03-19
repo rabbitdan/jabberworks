@@ -26,7 +26,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header ref="header" class="flex items-center border-b border-gray-600">
+  <header ref="header" class="flex items-center border-b border-black bg-white bg-opacity-90 mt-2 mx-4">
     <div class="container flex items-center justify-between py-2">
       <a href="/" class="block">
         <img src="/mcintyre_heading.png" class="w-52" alt="Sarah McIntyre">

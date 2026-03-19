@@ -34,7 +34,7 @@ function isSplitStackSection(section: EditorialPage["sections"][number]): sectio
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-10 md:gap-16 md:py-14">
+  <div class="container mx-auto flex flex-col gap-12 px-6 py-10 md:gap-16 md:py-14">
     <EditorialHeroBlock :hero="page.hero" />
 
     <div class="flex flex-col gap-12 md:gap-16">

@@ -23,31 +23,21 @@ const videos = computed(() => {
 
 const miscParagraphs = computed(() => toParagraphs(props.book.miscPanel?.text))
 
-const pageBackgroundStyle = computed(() => {
-  if (!props.book.backgroundTileUrl) return undefined
-
+useHead(computed(() => {
+  if (!props.book.backgroundTileUrl) return {}
   return {
-    backgroundImage: `url(${props.book.backgroundTileUrl})`,
-    backgroundRepeat: "repeat",
-    backgroundPosition: "top left"
+    bodyAttrs: {
+      style: `background-image: url(${props.book.backgroundTileUrl}); background-repeat: repeat; background-position: top left; background-attachment: fixed;`
+    }
   }
-})
+}))
 </script>
 
 <template>
-  <div class="w-full" :style="pageBackgroundStyle">
+  <div class="w-full">
     <main class="mx-auto max-w-5xl px-6 py-8 md:py-12">
-    <NuxtLink
-      to="/"
-      class="inline-flex items-center gap-2 text-sm font-medium opacity-75 transition hover:opacity-100"
-    >
-      <span aria-hidden="true">←</span>
-      <span>Back to books</span>
-    </NuxtLink>
-
-
-    <header class="mt-6 grid gap-8 rounded-[2rem] border border-black/10 bg-stone-50 p-6 md:grid-cols-[minmax(0,320px)_1fr] md:p-8">
-      <div class="overflow-hidden rounded-[1.5rem] border border-black/10 bg-white shadow-sm">
+    <header class="mt-6 grid gap-8 bg-white bg-opacity-90 p-6 md:grid-cols-[minmax(0,320px)_1fr] md:p-8">
+      <div class="overflow-hidden">
         <img
           class="h-full w-full object-cover"
           :src="book.cover.src"
@@ -56,7 +46,13 @@ const pageBackgroundStyle = computed(() => {
       </div>
 
       <div class="flex flex-col justify-center">
-        <p class="text-sm uppercase tracking-[0.24em] opacity-55">Book</p>
+        <NuxtLink
+      to="/"
+      class="inline-flex gap-2 text-sm font-medium opacity-75 transition hover:opacity-100"
+    >
+      <span aria-hidden="true">←</span>
+      <span>Back to books</span>
+    </NuxtLink>
         <h1 class="mt-3 text-3xl font-semibold leading-tight md:text-5xl">{{ book.title }}</h1>
         <div class="mt-5 max-w-2xl space-y-4 text-base leading-7 opacity-90 md:text-lg">
           <p v-for="(paragraph, index) in descriptionParagraphs" :key="index">
@@ -70,7 +66,7 @@ const pageBackgroundStyle = computed(() => {
             :href="book.buyLinks[0]?.url"
             target="_blank"
             rel="noreferrer"
-            class="inline-flex items-center rounded-full bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-black/85"
+            class="inline-flex items-center bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-black/85"
           >
             {{ book.buyLinks[0]?.linkText || "Buy the book" }}
           </a>
@@ -78,7 +74,7 @@ const pageBackgroundStyle = computed(() => {
           <a
             v-if="book.activitySheets?.length"
             :href="`#activity-sheets`"
-            class="inline-flex items-center rounded-full border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/5"
+            class="inline-flex items-center border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/5"
           >
             View activity sheets
           </a>
@@ -86,7 +82,7 @@ const pageBackgroundStyle = computed(() => {
           <a
             v-if="videos.length"
             :href="`#videos`"
-            class="inline-flex items-center rounded-full border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/5"
+            class="inline-flex items-center border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/5"
           >
             Watch videos
           </a>
@@ -105,7 +101,7 @@ const pageBackgroundStyle = computed(() => {
       id="activity-sheets"
       :sheets="book.activitySheets"
       :columns="book.activitySheetsLayout || 2"
-      class="mt-8 rounded-[2rem] border border-black/10 bg-white p-6 md:p-8"
+      class="mt-8 border border-black/10 bg-white bg-opacity-90 p-6 md:p-8"
     />
 
     <BookVideosSection

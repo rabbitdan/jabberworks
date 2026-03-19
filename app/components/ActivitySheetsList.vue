@@ -17,9 +17,14 @@ defineProps<{
       class="mt-4 grid gap-4"
       :class="columns === 4 ? 'sm:grid-cols-2 xl:grid-cols-4' : 'sm:grid-cols-2'"
     >
-      <li v-for="(s, i) in sheets" :key="i" class="overflow-hidden rounded-2xl border">
-        <div class="flex gap-4 p-4">
-          <div class="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-black/5">
+      <li v-for="(s, i) in sheets" :key="i" class="overflow-hidden border">
+        <a
+          class="flex gap-4 p-4 hover:bg-black/5 transition"
+          :href="s.pdfUrl"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div class="h-20 w-20 shrink-0 overflow-hidden">
             <img
                 class="h-full w-full object-cover"
                 :src="s.thumb.src"
@@ -29,25 +34,20 @@ defineProps<{
           </div>
 
           <div class="min-w-0">
-            <a
-                class="font-medium underline"
-                :href="s.pdfUrl"
-                target="_blank"
-                rel="noreferrer"
-            >
+            <span class="font-medium underline">
               {{ s.title || s.linkText || "Download activity sheet" }}
-            </a>
+            </span>
             <div
               v-if="s.text && toParagraphs(s.text).length"
-              class="mt-1 space-y-2 text-sm opacity-80"
+              class="mt-1 space-y-2 text-sm"
             >
               <p v-for="(paragraph, paragraphIndex) in toParagraphs(s.text)" :key="paragraphIndex">
                 {{ paragraph }}
               </p>
             </div>
-            <p v-else class="mt-1 text-sm opacity-75">PDF download</p>
+            <p v-else class="mt-1 text-sm">PDF download</p>
           </div>
-        </div>
+        </a>
       </li>
     </ul>
   </section>

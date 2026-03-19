@@ -5,7 +5,6 @@ import { toParagraphs } from "~~/utils/paragraphs"
 
 const props = defineProps<{
   event: Event
-  accent?: "blue" | "grey" | "red"
 }>()
 
 const { event } = toRefs(props)
@@ -14,57 +13,6 @@ const eventUrl = computed(() => event.value.url ?? event.value.links?.[0]?.url ?
 const eventImages = computed(() => event.value.images ?? [])
 const hasEventImages = computed(() => eventImages.value.length > 0)
 const eventBlurbParagraphs = computed(() => toParagraphs(event.value.blurb))
-const cardBackgroundClass = computed(() => {
-  if (props.accent === "blue") {
-    return "bg-jw_blue"
-  }
-
-  if (props.accent === "grey") {
-    return "bg-jw_grey"
-  }
-
-  if (props.accent === "red") {
-    return "bg-jw_red"
-  }
-
-  return ""
-})
-
-const metaPanelClass = computed(() => {
-  if (props.accent === "blue" || props.accent === "grey") {
-    return "bg-jw_red"
-  }
-
-  if (props.accent === "red") {
-    return "bg-jw_blue"
-  }
-
-  return "bg-jw_blue"
-})
-
-const metaTextClass = computed(() =>
-  props.accent === "blue" || props.accent === "grey" ? "text-white" : "text-slate-800"
-)
-
-const metaLabelClass = computed(() =>
-  props.accent === "blue" || props.accent === "grey" ? "text-white/80" : "text-slate-800/70"
-)
-
-const bodyTitleClass = computed(() =>
-  props.accent === "grey" || props.accent === "red" ? "text-white" : "text-slate-800"
-)
-
-const bodyTextClass = computed(() =>
-  props.accent === "grey" || props.accent === "red" ? "text-white/90" : "text-slate-800/80"
-)
-
-const ctaClass = computed(() =>
-  props.accent === "blue"
-    ? "bg-jw_red text-white"
-    : props.accent
-      ? "bg-white text-jw_red"
-      : "bg-jw_red text-white"
-)
 
 function formatEventDate(isoDate: string, locale = "en-GB", timeZone = "Europe/London"): string {
   const date = new Date(`${isoDate}T00:00:00`)
@@ -125,48 +73,44 @@ const galleryColumnsClass = computed(() => {
 
 <template>
   <article
-    class="grid gap-6 p-6"
-    :class="[
-      cardBackgroundClass,
-      hasEventImages ? 'lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start' : 'grid-cols-1'
-    ]"
+    class="grid gap-6 py-6"
+    :class="hasEventImages ? 'lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start' : 'grid-cols-1'"
   >
     <div>
-      <h2 class="mt-2 text-[clamp(1.7rem,2vw,2.25rem)] leading-[1.05]" :class="bodyTitleClass">{{ event.title }}</h2>
+      <h2 class="text-[clamp(1.7rem,2vw,2.25rem)] leading-[1.05] text-black">{{ event.title }}</h2>
 
       <dl class="mt-4 grid grid-cols-12 gap-4">
-        <div class="grid col-span-3 p-2" :class="metaPanelClass">
-          <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em]" :class="metaLabelClass">Date</dt>
-          <dd class="m-0 break-words leading-[1.6]" :class="metaTextClass">
+        <div class="grid col-span-3 p-2 bg-jw_blue">
+          <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em] text-slate-800/70">Date</dt>
+          <dd class="m-0 break-words text-xl leading-[1.6] text-slate-800">
             {{ formatEventDateRange(event.dateStart, event.dateEnd) }}
           </dd>
         </div>
 
-        <div v-if="eventTime" class="grid col-span-3 p-2" :class="metaPanelClass">
-          <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em]" :class="metaLabelClass">Time</dt>
-          <dd class="m-0 break-words leading-[1.6]" :class="metaTextClass">{{ eventTime }}</dd>
+        <div v-if="eventTime" class="grid col-span-3 p-2 bg-jw_blue">
+          <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em] text-slate-800/70">Time</dt>
+          <dd class="m-0 break-words text-xl leading-[1.6] text-black">{{ eventTime }}</dd>
         </div>
 
-        <div v-if="eventLocation" class="grid col-span-3 p-2" :class="metaPanelClass">
-          <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em]" :class="metaLabelClass">Location</dt>
-          <dd class="m-0 break-words leading-[1.6]" :class="metaTextClass">{{ eventLocation }}</dd>
+        <div v-if="eventLocation" class="grid col-span-3 p-2 bg-jw_blue">
+          <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em] text-slate-800/70">Location</dt>
+          <dd class="m-0 break-words text-xl leading-[1.6] text-black">{{ eventLocation }}</dd>
         </div>
       </dl>
 
-      <div v-if="eventBlurbParagraphs.length" class="mt-4 space-y-3 text-base leading-[1.7]" :class="bodyTextClass">
+      <div v-if="eventBlurbParagraphs.length" class="mt-4 space-y-3 text-base leading-[1.7] text-slate-800/80">
         <p v-for="(paragraph, index) in eventBlurbParagraphs" :key="index">{{ paragraph }}</p>
       </div>
 
-      <div v-if="eventUrl" class="grid gap-1 justify-end mt-4">
+      <div v-if="eventUrl" class="grid gap-1 mt-6">
         <dd>
           <NuxtLink
               :to="eventUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center rounded-full px-4 py-2 text-sm font-medium no-underline"
-              :class="ctaClass"
+              class="inline-flex items-center rounded-full px-4 py-2 text-md font-medium no-underline bg-jw_red text-white border border-2 border-dashed border-jw_blue hover:bg-jw_blue hover:border-jw_red hover:text-jw_red"
           >
-            Go to the Event site!
+            Go to the Event page!
           </NuxtLink>
         </dd>
       </div>
@@ -188,4 +132,5 @@ const galleryColumnsClass = computed(() => {
       >
     </div>
   </article>
+  <hr class="relative mx-auto my-16 w-3/4 border-t border-black">
 </template>
