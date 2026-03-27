@@ -8,6 +8,7 @@ defineProps<{
 </script>
 
 <template>
+  <h2>Thing is also a thing</h2>
   <section v-if="links?.length" class="mt-8">
     <h2 class="text-xl font-semibold">{{ heading || "Buy the book" }}</h2>
     <ul class="mt-3 space-y-2">

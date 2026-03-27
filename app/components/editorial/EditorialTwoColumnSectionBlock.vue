@@ -11,7 +11,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
 </script>
 
 <template>
-  <section class="p-8 md:p-10">
+  <section class="py-8 md:py-10">
     <div class="mt-4 grid gap-8 md:grid-cols-2 md:gap-10">
       <div class="flex flex-col justify-center">
         <h2 v-if="section.left.title" class="text-2xl">

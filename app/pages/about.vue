@@ -81,7 +81,7 @@ const page: EditorialPage = {
     },
     {
       _type: "twoColumn",
-      id: "about-draw-sea-monkey",
+      id: "about-ted-talk",
       left: { youtube: { url: "https://youtu.be/KB_h2VpFFUI", title: "Optional title" } },
       right: {paragraphs: ["Here’s her TEDx talk, How to grow by embracing our mistakes:"] },
     },
@@ -99,13 +99,88 @@ const page: EditorialPage = {
       imageWidth: "lg",
       textWidth: "lg",
     },
+    {
+      _type: "textImage",
+      id: "about-librariians",
+      paragraphs: [
+        "Download free library posters to print in various sizes and formats, created originally for #SaveLibraries marches:"
+      ],
+      image: {
+        src: "/about/library_posters_wp.jpg",
+        alt: "Library posters",
+      },
+      imageSide: "right",
+      imageWidth: "sm",
+      textWidth: "lg",
+    },
+    {
+      _type: "textImage",
+      id: "about-read-for-good",
+      paragraphs: [
+        "Sarah’s an Ambassador for a charity called Read for Good, which helps schools to run fundraising Readathons. Most of the money the kids raise goes into buying clean, new books and book trolleys for children in hospital, and 20% of if it goes back into buying books for their school libraries. Find out more about it on their website."
+      ],
+      image: {
+        src: "/about/readforgood_banner.jpg",
+        alt: "Read for Good",
+      },
+      imageSide: "left",
+      imageWidth: "lg",
+      textWidth: "lg",
+    },
+    {
+      _type: "callout",
+      id: "about-callout",
+      paragraphs: [
+        "Sarah’s books have won several awards, including:",
+        "* Alligator’s Mouth Award 2024 – Best Illustrated Early Fiction for Adventuremice: Otter Chaos",
+        "* The Independent Bookshop Week children’s award 2016 – Pugs of the Frozen North, with Philip Reeve",
+        "* UKLA Book Award 2015 – Oliver and the Seawigs, with Philip Reeve",
+        "* Lancashire Fantastic Book Award – Oliver and the Seawigs, with Philip Reeve",
+        "* Prix Enfantasie 2015 (Switzerland) – Oliver and the Seawigs, translated into French by Raphaële Eschenbrenner",
+        "* The Leeds Graphic Novel Award 2011 (now called The Young People’s Comic Award) – Vern and Lettuce",
+        "* The Bishop’s Stortford Picture Book Award 2010 – Morris the Mankiest Monster, with Giles Andreae",
+        "* The Sheffield Children’s Book Award, Overall Winner 2010 – Morris the Mankiest Monster, with Giles Andreae"
+      ]
+    },
+    {
+      _type: "twoColumn",
+      id: "about-big-picture",
+      left: { youtube: { url: "https://youtu.be/Nfajq2FdmHA", title: "The Big Picture Episode 3 with Sarah McIntyre" } },
+      right: {paragraphs: ["Interview with Irish Children’s Book Laureate PJ Lynch (and learn how to draw a PUG):"] },
+    },
+    {
+      _type: "textImage",
+      id: "about-read-for-good",
+      paragraphs: [
+        "Sarah’s an Ambassador for a charity called Read for Good, which helps schools to run fundraising Readathons. Most of the money the kids raise goes into buying clean, new books and book trolleys for children in hospital, and 20% of if it goes back into buying books for their school libraries. Find out more about it on their website."
+      ],
+      image: {
+        src: "/about/readforgood_banner.jpg",
+        alt: "Read for Good",
+      },
+      imageSide: "left",
+      imageWidth: "lg",
+      textWidth: "lg",
+    },
+    {
+      _type: "twoColumn",
+      id: "about-big-picture",
+      left: { youtube: { url: "https://youtu.be/S7Z7iuVYypQ?si=5rFkcjL3Bvqmb6Ca", title: "Sarah Mcintyre & Gary Northfield on Elev8" } },
+      right: {paragraphs: ["Here’s a video of Sarah with her former studio mate, Gary Northfield, on Irish telly:"] },
+    },
+    {
+      _type: "twoColumn",
+      id: "about-big-picture",
+      right: { youtube: { url: "https://youtu.be/hOFMgJXnmFM?si=zIRgtgd-dcInEMAf", title: "At home with The Reeves" } },
+      left: {paragraphs: ["And another blast from the past! Here's Sarah's first visit with her husband Stuart to visit the Reeve family on Dartmoor. Many years later, she and Stuart moved to Devon!"] },
+    },
   ],
 }
 
 useSeoMeta({
   title: "About Sarah",
   description:
-    "Learn more about Sarah’s creative practice, illustrated books, and the editorial page structure behind this site.",
+    "Learn more about Sarah\&rsquo;s creative practice, illustrated books, and the editorial page structure behind this site.",
 })
 </script>
 

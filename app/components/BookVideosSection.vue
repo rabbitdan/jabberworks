@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <section v-if="videos?.length" id="videos" class="mt-8 rounded-[2rem] border border-black/10 bg-white p-6 md:p-8">
+  <section v-if="videos?.length" id="videos" class="mt-8 bg-white bg-opacity-90 p-6 md:p-8">
     <h2 class="text-2xl font-semibold">Videos</h2>
 
     <ul class="mt-6 grid gap-8 md:grid-cols-2">

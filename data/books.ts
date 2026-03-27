@@ -83,6 +83,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "adventuremice-mice-on-the-ice",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     pageLink: {
       url: "https://adventuremice.com/books/mice-on-the-ice"
     },
@@ -263,9 +264,10 @@ export const books: Book[] =
       }
     ]
   },
-{
+  {
     _type: "book",
     slug: "reeve-mcintyre-cakes-space",
+    backgroundTileUrl: "/books/reeve-mcintyre/cakes-in-space/cakes_space_tile.gif",
     title: "Cakes in Space",
     cover: {
       src: "/books/reeve-mcintyre/cakes-in-space/cakespace_cover.jpg",
@@ -342,6 +344,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "sarah-mcintyre-dinosaur-firefighters",
+    backgroundTileUrl: "/books/solo-work/dinosaur-firefighters/DinoFire_tile_bkgd.jpg",
     title: "Dinosaur Firefighters",
     cover: {
       src: "/books/solo-work/dinosaur-firefighters/DinoFire_cover.jpg",
@@ -408,6 +411,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "sarah-mcintyre-dinosaur-police",
+    backgroundTileUrl: "/books/solo-work/dinosaur-police/dinopolice_web_bkgd.gif",
     title: "Dinosaur Police",
     cover: {
       src: "/books/solo-work/dinosaur-police/sm-cover-dinosaur-police.jpg",
@@ -432,28 +436,28 @@ export const books: Book[] =
     activitySheets: [
       {
         thumb: {
-          src: "/books/reeve-mcintyre/dinosaur-police/dino_button1.gif",
+          src: "/books/solo-work/dinosaur-police/dino_button1.gif",
           alt: "T-Rex",
         },
-        pdfUrl: "/books/reeve-mcintyre/dinosaur-police/dinopolice_colour_trex.pdf",
+        pdfUrl: "/books/solo-work/dinosaur-police/dinopolice_colour_trex.pdf",
         linkText: "Download PDF",
         title: "Hungry T-Rex colouring sheet! Add toppings to his pizzas!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/dinosaur-police/dino_button2.gif",
+          src: "/books/solo-work/dinosaur-police/dino_button2.gif",
           alt: "Sarah Tops",
         },
-        pdfUrl: "/books/reeve-mcintyre/dinosaur-police/dinopolice_draw_sarah_topps.pdf",
+        pdfUrl: "/books/solo-work/dinosaur-police/dinopolice_draw_sarah_topps.pdf",
         linkText: "Download PDF",
         title: "Learn how to draw Inspector Sarah Tops!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/dinosaur-police/dino_button3.gif",
+          src: "/books/solo-work/dinosaur-police/dino_button3.gif",
           alt: "Trevor the T-Rex",
         },
-        pdfUrl: "/books/reeve-mcintyre/dinosaur-police/dinopolice_draw_trevor.pdf",
+        pdfUrl: "/books/solo-work/dinosaur-police/dinopolice_draw_trevor.pdf",
         linkText: "Download PDF",
         title: "Draw Trevor the T-Rex on the Rampage!",
       },
@@ -469,6 +473,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "sarah-mcintyre-grumpycorn",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "Grumpycorn",
     cover: {
       src: "/books/solo-work/grumpycorn/Grumpycorn_cover_wp.jpg",
@@ -495,56 +500,56 @@ export const books: Book[] =
     activitySheets: [
       {
         thumb: {
-          src: "/books/reeve-mcintyre/grumpycorn/Grumpycorn_Horn_button.gif",
+          src: "/books/solo-work/grumpycorn/Grumpycorn_Horn_button.gif",
           alt: "Grumpycorn horn",
         },
-        pdfUrl: "/books/reeve-mcintyre/grumpycorn/Grumpycorn_UnicornHorn_clr_A4_2.pdf",
+        pdfUrl: "/books//grumpycorn/Grumpycorn_UnicornHorn_clr_A4_2.pdf",
         linkText: "Download PDF (colour version)",
         title: "Make your own Unicorn horn!",
         text: "Also available to colour your own: Grumpycorn_UnicornHorn_A4_1.pdf",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/grumpycorn/Grumpycorn_Colouring_button.gif",
+          src: "/books/solo-work/grumpycorn/Grumpycorn_Colouring_button.gif",
           alt: "Grumpycorn colouring",
         },
-        pdfUrl: "/books/reeve-mcintyre/grumpycorn/Grumpycorn_A4_storysheet.pdf",
+        pdfUrl: "/books/solo-work/grumpycorn/Grumpycorn_A4_storysheet.pdf",
         linkText: "Download PDF (also in A3)",
         title: "What will Unicorn, Narwhal, Mermaid and Jellyfish put into their stories? Colour them inspired!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/grumpycorn/Grumpycorn_Unicorn_button.gif",
+          src: "/books/solo-work/grumpycorn/Grumpycorn_Unicorn_button.gif",
           alt: "Draw Unicorn",
         },
-        pdfUrl: "/books/reeve-mcintyre/grumpycorn/Grumpycorn_DrawUnicorn_A4.pdf",
+        pdfUrl: "/books/solo-work/grumpycorn/Grumpycorn_DrawUnicorn_A4.pdf",
         linkText: "Download PDF",
         title: "Draw Unicorn step by step!",
       },
       {
         thumb: {
-          src: "/books/sarah-mcintyre/grumpycorn/Grumpycorn_Jellyfish_button.gif",
+          src: "/books/solo-work/grumpycorn/Grumpycorn_Jellyfish_button.gif",
           alt: "Draw Jellyfish",
         },
-        pdfUrl: "/books/sarah-mcintyre/grumpycorn/Grumpycorn_DrawJellyfish_A4.pdf",
+        pdfUrl: "/books/solo-work/grumpycorn/Grumpycorn_DrawJellyfish_A4.pdf",
         linkText: "Download PDF",
         title: "Draw Jellyfish step by step!",
       },
       {
         thumb: {
-          src: "/books/sarah-mcintyre/grumpycorn/Grumpycorn_Narwhal_button.gif",
+          src: "/books/solo-work/grumpycorn/Grumpycorn_Narwhal_button.gif",
           alt: "Draw Narwhal",
         },
-        pdfUrl: "/books/sarah-mcintyre/grumpycorn/Grumpycorn_DrawNarwhal_A4.pdf",
+        pdfUrl: "/books/solo-work/grumpycorn/Grumpycorn_DrawNarwhal_A4.pdf",
         linkText: "Download PDF",
         title: "Draw Narwhal step by step!",
       },
       {
         thumb: {
-          src: "/books/sarah-mcintyre/grumpycorn/Grumpycorn_Mermaid_button.gif",
+          src: "/books/solo-work/grumpycorn/Grumpycorn_Mermaid_button.gif",
           alt: "Draw Mermaid",
         },
-        pdfUrl: "/books/sarah-mcintyre/grumpycorn/Grumpycorn_DrawMermaid_A4.pdf",
+        pdfUrl: "/books/solo-work/grumpycorn/Grumpycorn_DrawMermaid_A4.pdf",
         linkText: "Download PDF",
         title: "Draw Mermaid step by step!",
       },
@@ -567,6 +572,7 @@ export const books: Book[] =
   { 
     _type: "book",
     slug: "sarah-mcintyre-dont-call-me-grumpycorn",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "Don't Call Me Grumpycorn",
     cover: {
       src: "/books/solo-work/dont-call-me-grumpycorn/sm-cover-dont-call-me-grumpycorn.jpg",
@@ -675,6 +681,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-jinks-o-hare",
+    backgroundTileUrl: "/books/reeve-mcintyre/jinks-ohare/jinks_wallpaper.jpg",
     title: "Jinks & O'Hare Funfair Repair",
     cover: {
       src: "/books/reeve-mcintyre/jinks-ohare/jinks_cover_lg.jpg",
@@ -712,6 +719,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-legend-of-kevin",
+    backgroundTileUrl: "books/reeve-mcintyre/legend-of-kevin/kevin1_tile_sm.jpg",
     title: "The Legend of Kevin",
     cover: {
       src: "/books/reeve-mcintyre/legend-of-kevin/kevin1_cover_lg.jpg",
@@ -767,6 +775,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-kevin-biscuit-bandit",
+    backgroundTileUrl: "/books/reeve-mcintyre/kevin-biscuit-bandit/Kevin3_tile1.gif",
     title: "Kevin and the Biscuit Bandit",
     cover: {
       src: "/books/reeve-mcintyre/kevin-biscuit-bandit/Kevin3_cover_300w.gif",
@@ -869,6 +878,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-kevin-great-escape",
+    backgroundTileUrl: "/books/reeve-mcintyre/kevin-great-escape/kevin2_tile.gif",
     title: "Kevin's Great Escape",
     cover: {
       src: "/books/reeve-mcintyre/kevin-great-escape/Kevin2_cover_lg.jpg",
@@ -894,28 +904,28 @@ export const books: Book[] =
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/kevins-great-escape/DrawMax_button.gif",
+          src: "/books/reeve-mcintyre/kevin-great-escape/DrawMax_button.gif",
           alt: "Draw Max",
         },
-        pdfUrl: "/books/reeve-mcintyre/kevins-great-escape/HowtoDrawMax_activity_sheet.pdf",
+        pdfUrl: "/books/reeve-mcintyre/kevin-great-escape/HowtoDrawMax_activity_sheet.pdf",
         linkText: "Download PDF",
         title: "Draw Max!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/kevins-great-escape/DrawDaisy_button.gif",
+          src: "/books/reeve-mcintyre/kevin-great-escape/DrawDaisy_button.gif",
           alt: "Draw Daisy",
         },
-        pdfUrl: "/books/reeve-mcintyre/kevins-great-escape/HowToDrawDaisy_activity_sheet.pdf",
+        pdfUrl: "/books/reeve-mcintyre/kevin-great-escape/HowToDrawDaisy_activity_sheet.pdf",
         linkText: "Download PDF",
         title: "Draw Daisy/Elvira!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/kevins-great-escape/CardianFaun_button.gif",
+          src: "/books/reeve-mcintyre/kevin-great-escape/CardianFaun_button.gif",
           alt: "Cardigan Faun",
         },
-        pdfUrl: "/books/reeve-mcintyre/kevins-great-escape/DesignCardiganFaun_activity_sheet.pdf",
+        pdfUrl: "/books/reeve-mcintyre/kevin-great-escape/DesignCardiganFaun_activity_sheet.pdf",
         linkText: "Download PDF",
         title: "Design a cardigan for Cardigan Faun!",
       },
@@ -925,6 +935,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-kevin-vs-unicorns",
+    backgroundTileUrl: "/books/reeve-mcintyre/kevin-vs-unicorns/Kev4_tile.gif",
     title: "Kevin vs The Unicorns",
     cover: {
       src: "/books/reeve-mcintyre/kevin-vs-unicorns/Kevin4_cover_hires.jpg",
@@ -982,6 +993,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "mcintyre-morris-mankiest-monster",
+    backgroundTileUrl: "/books/mcintyre/morris/morris_tile.gif",
     title: "Morris the Mankiest Monster",
     cover: {
       src: "/books/mcintyre/morris/morriscover300.jpg",
@@ -1067,6 +1079,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "sarah-mcintyre-new-neighbours",
+    backgroundTileUrl: "/books/solo-work/new-neighbours/nn_website_tile.gif",
     title: "The New Neighbours",
     cover: {
       src: "/books/solo-work/new-neighbours/newneighbours_cover2.jpg",
@@ -1120,10 +1133,10 @@ export const books: Book[] =
       ],
     },
   },
-
   {
     _type: "book",
     slug: "reeve-mcintyre-pug-a-doodle-do",
+    backgroundTileUrl: "/books/reeve-mcintyre/pug-a-doodle-do/pugadoodle_wallpaper.gif",
     title: "Pug-a-Doodle-Do!",
     cover: {
       src: "/books/reeve-mcintyre/pug-a-doodle-do/pugadoodle_cover_sm.jpg",
@@ -1152,6 +1165,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "mcintyre-macdonald-prince-of-pants",
+    backgroundTileUrl: "/books/mcintyre/prince-of-pants/princeofpants_tile.gif",
     title: "Prince of Pants",
     cover: {
       src: "/books/mcintyre/prince-of-pants/princeofpants_cover.jpg",
@@ -1220,6 +1234,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "mcintyre-rogerson-you-cant-eat-a-princess",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "You Can't Eat a Princess!",
     cover: {
       src: "/books/mcintyre/you-cant-eat-a-princess/princess_cover.jpg",
@@ -1293,6 +1308,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "mcintyre-rogerson-you-cant-scare-a-princess",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "You Can't Scare a Princess!",
     cover: {
       src: "/books/mcintyre/you-cant-scare-a-princess/princess2_cover.jpg",
@@ -1338,6 +1354,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-pugs-frozen-north",
+    backgroundTileUrl: "/books/reeve-mcintyre/pugs/snowflake_tile.jpg",
     title: "Pugs of the Frozen North",
     cover: {
       src: "/books/reeve-mcintyre/pugs/pugs_cover_lg.jpg",
@@ -1388,6 +1405,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-oliver-seawigs",
+    backgroundTileUrl: "/books/reeve-mcintyre/oliver-seawigs/seawigs_wallpaper_sm.gif",
     title: "Oliver and the Seawigs",
     cover: {
       src: "/books/reeve-mcintyre/oliver-seawigs/seawigs_cover.jpg",
@@ -1421,37 +1439,37 @@ export const books: Book[] =
     activitySheets: [
       {
         thumb: {
-          src: "/books/reeve-mcintyre/oliver-and-the-seawigs/seawig_button1.gif",
+          src: "/books/reeve-mcintyre/oliver-seawigs/seawig_button1.gif",
           alt: "Build a seawig",
         },
-        pdfUrl: "/books/reeve-mcintyre/oliver-and-the-seawigs/seawigs_styleaseawig1_A3.pdf",
+        pdfUrl: "/books/reeve-mcintyre/oliver-seawigs/seawigs_styleaseawig1_A3.pdf",
         linkText: "Download PDF",
         title: "Fancy dress! Build your own Seawig",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/oliver-and-the-seawigs/seawig_button2.gif",
+          src: "/books/reeve-mcintyre/oliver-seawigs/seawig_button2.gif",
           alt: "Seawig accessories",
         },
-        pdfUrl: "/books/reeve-mcintyre/oliver-and-the-seawigs/seawigs_styleaseawig2_A3.pdf",
+        pdfUrl: "/books/reeve-mcintyre/oliver-seawigs/seawigs_styleaseawig2_A3.pdf",
         linkText: "Download PDF",
         title: "Some seaside accessories for your Seawig!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/oliver-and-the-seawigs/knitted_seamonkey_button.jpg",
+          src: "/books/reeve-mcintyre/oliver-seawigs/knitted_seamonkey_button.jpg",
           alt: "Knit a sea monkey",
         },
-        pdfUrl: "/books/reeve-mcintyre/oliver-and-the-seawigs/stitchedseamonkey.pdf",
+        pdfUrl: "/books/reeve-mcintyre/oliver-seawigs/stitchedseamonkey.pdf",
         linkText: "Download PDF",
         title: "Knit your own Sea Monkey!",
       },
       {
         thumb: {
-          src: "/books/reeve-mcintyre/oliver-and-the-seawigs/drawseamonkey_button.gif",
+          src: "/books/reeve-mcintyre/oliver-seawigs/drawseamonkey_button.gif",
           alt: "Draw a sea monkey",
         },
-        pdfUrl: "/books/reeve-mcintyre/oliver-and-the-seawigs/seawigs_draw_seamonkey_A4.pdf",
+        pdfUrl: "/books/reeve-mcintyre/oliver-seawigs/seawigs_draw_seamonkey_A4.pdf",
         linkText: "Download PDF",
         title: "Draw your own sea monkey!",
       },
@@ -1461,6 +1479,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "sarah-mcintyre-shark-in-the-bath",
+    backgroundTileUrl: "/books/solo-work/shark-bath/shark_tile2.jpg",
     title: "There's a Shark in the Bath",
     cover: {
       src: "/books/solo-work/shark-bath/shark_cover.jpg",
@@ -1526,6 +1545,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "mcintyre-freedman-superkid",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "Superkid",
     cover: {
       src: "/books/mcintyre/superkid/superkid_cover.jpg",
@@ -1587,6 +1607,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "reeve-mcintyre-thatch-the-moon",
+    backgroundTileUrl: "/books/reeve-mcintyre/thatch-the-moon/thatch_tile.png",
     title: "Thatch the Moon",
     cover: {
       src: "/books/reeve-mcintyre/thatch-the-moon/thatchthemoon_poster.gif",
@@ -1615,23 +1636,24 @@ export const books: Book[] =
         heading: "Thatch the Moon — Part 5",
       },
     ],
-    activitySheets: [
-      {
-        thumb: {
-          src: "/books/reeve-mcintyre/thatch-the-moon/thatch_button.gif",
-          alt: "Thatch the Moon colouring poster",
-        },
-        pdfUrl: "/books/reeve-mcintyre/thatch-the-moon/ThatchTheMoon_ColouringSheet_2xA4.pdf",
-        linkText: "Download PDF (A4)",
-        title: "Thatch the Moon colouring poster — print on two pieces of paper and stick together!",
-        text: "Also available in US letter size: ThatchTheMoon_ColoringSheet_USsize.pdf",
-      },
-    ],
+    // activitySheets: [
+    //   {
+    //     thumb: {
+    //       src: "/books/reeve-mcintyre/thatch-the-moon/thatch_button.gif",
+    //       alt: "Thatch the Moon colouring poster",
+    //     },
+    //     pdfUrl: "/books/reeve-mcintyre/thatch-the-moon/ThatchTheMoon_ColouringSheet_2xA4.pdf",
+    //     linkText: "Download PDF (A4)",
+    //     title: "Thatch the Moon colouring poster — print on two pieces of paper and stick together!",
+    //     text: "Also available in US letter size: ThatchTheMoon_ColoringSheet_USsize.pdf",
+    //   },
+    // ],
     activitySheetsLayout: 2,
   },
   {
     _type: "book",
     slug: "mcintyre-when-titus-took-the-train",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "When Titus Took the Train",
     cover: {
       src: "/books/mcintyre/when-titus-took-the-train/titus_cover.jpg",
@@ -1682,6 +1704,7 @@ export const books: Book[] =
   {
     _type: "book",
     slug: "sarah-mcintyre-vern-lettuce",
+    backgroundTileUrl: "/books/solo-work/grumpycorn/Grumpycorn_background_tile.jpg",
     title: "Vern and Lettuce",
     cover: {
       src: "/books/solo-work/vern-lettuce/vernlettuce_coverBEB_lg.jpg",

@@ -27,14 +27,14 @@ function isExternalHref(href: string) {
     <p v-if="section.eyebrow" class="max-auto text-sm uppercase">
       {{ section.eyebrow }}
     </p>
-    <h2 v-if="section.title" class="mt-3 mx-auto max-w-2xl text-3xl">
+    <h2 v-if="section.title" class="mt-3 mx-auto text-3xl">
       {{ section.title }}
     </h2>
-    <div v-if="section.paragraphs?.length" class="mt-4 max-w-3xl space-y-4 text-base text-center">
+    <div v-if="section.paragraphs?.length" class="mt-4 space-y-4 text-base text-center">
       <p
         v-for="(paragraph, paragraphIndex) in section.paragraphs"
         :key="paragraphIndex"
-        class="block mx-auto font-heading"
+        class="block mx-auto font-heading text-lg leading-7"
       >
         <template v-if="isLinkedParagraph(paragraph)">
           <template v-for="(span, spanIndex) in paragraph.spans" :key="spanIndex">

@@ -57,7 +57,7 @@ export type BookSeriesSection = {
     title: string
     blurb?: TextContent
     cover: Thumbnail & { url?: string }
-    thumbnailCharacter: Thumbnail
+    thumbnailCharacter: Thumbnail & { height?: string }
     cta?: {
         text: string
         url: string

@@ -13,9 +13,10 @@ const blurbParagraphs = computed(() => toParagraphs(props.series.blurb))
 <template>
   <main class="mx-auto max-w-5xl p-6">
     <header class="flex flex-col gap-6 md:flex-row md:items-start">
-      <div class="h-32 w-32 overflow-hidden rounded-2xl bg-black/5">
+      <div class="h-32 w-32 overflow-hidden bg-black/5">
         <img
             class="h-full w-full object-cover"
+            :class="series.thumbnailCharacter.height ?? 'h-36'"
             :src="series.thumbnailCharacter.src"
             :alt="series.thumbnailCharacter.alt || series.title"
             loading="lazy"

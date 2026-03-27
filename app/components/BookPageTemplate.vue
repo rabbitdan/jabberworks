@@ -35,7 +35,7 @@ useHead(computed(() => {
 
 <template>
   <div class="w-full">
-    <main class="mx-auto max-w-5xl px-6 py-8 md:py-12">
+    <main class="mx-auto container px-6 py-8 md:py-12">
     <header class="mt-6 grid gap-8 bg-white bg-opacity-90 p-6 md:grid-cols-[minmax(0,320px)_1fr] md:p-8">
       <div class="overflow-hidden">
         <img
@@ -70,38 +70,21 @@ useHead(computed(() => {
           >
             {{ book.buyLinks[0]?.linkText || "Buy the book" }}
           </a>
-
-          <a
-            v-if="book.activitySheets?.length"
-            :href="`#activity-sheets`"
-            class="inline-flex items-center border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/5"
-          >
-            View activity sheets
-          </a>
-
-          <a
-            v-if="videos.length"
-            :href="`#videos`"
-            class="inline-flex items-center border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/5"
-          >
-            Watch videos
-          </a>
         </div>
       </div>
     </header>
 
-    <BuyLinksList
+    <!-- <BuyLinksList
       v-if="book.buyLinks?.length"
       :links="book.buyLinks"
-      class="mt-8 rounded-[2rem] border border-black/10 bg-white p-6 md:p-8"
-    />
+      class="mt-8 border border-black/10 bg-white p-6 md:p-8"
+    /> -->
 
     <ActivitySheetsList
       v-if="book.activitySheets?.length"
       id="activity-sheets"
       :sheets="book.activitySheets"
-      :columns="book.activitySheetsLayout || 2"
-      class="mt-8 border border-black/10 bg-white bg-opacity-90 p-6 md:p-8"
+      class="mt-8 bg-white bg-opacity-90 p-6 md:p-8"
     />
 
     <BookVideosSection
@@ -111,7 +94,7 @@ useHead(computed(() => {
 
     <section
       v-if="miscParagraphs.length"
-      class="mt-8 rounded-[2rem] border border-black/10 bg-stone-50 p-6 md:p-8"
+      class="mt-8 bg-stone-50 p-6 md:p-8"
     >
       <h2 class="text-2xl font-semibold">{{ book.miscPanel?.heading || "More" }}</h2>
       <div class="mt-4 space-y-4 text-base leading-7 opacity-90">

@@ -45,7 +45,8 @@ const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
 
         <div class="flex flex-col sm:flex-row items-end justify-between pt-4">
           <img
-              class="h-36 w-auto object-cover"
+              class="w-auto object-cover"
+              :class="section.thumbnailCharacter.height ?? 'h-36'"
               :src="section.thumbnailCharacter.src"
               :alt="section.thumbnailCharacter.alt || section.title"
               loading="lazy"
@@ -53,7 +54,7 @@ const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
 
           <div v-if="section.cta">
             <NuxtLink
-                class="inline-flex items-center mt-6 sm:mt-0 px-6 pt-4 pb-3 font-heading text-xl rounded-full border-4 text-jw_blue bg-jw_red border-jw_blue border-dashed color-jw_blue hover:bg-jw_blue hover:border-jw_red hover:text-jw_red"
+                class="inline-flex items-center mt-6 sm:mt-0 px-6 pt-4 pb-3 font-heading text-xl rounded-full border-4 text-jw_red bg-jw_blue border-jw_red border-dashed color-jw_blue hover:bg-jw_red hover:border-jw_blue hover:text-jw_blue"
                 :to="section.cta.url"
             >
               {{ section.cta.text }}

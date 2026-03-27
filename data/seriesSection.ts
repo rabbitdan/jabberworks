@@ -25,7 +25,7 @@ export const seriesSections: BookSeriesSection[] = [
         title: "Reeve & Mcintyre books",
         blurb: "My first eight books with Philip Reeve combine wild flights of fancy with gripping plots, humour and warmth. Our first four books are stand-alone stories, and our second four make up the series about Kevin, a loveable roly-poly flying pony with a passion for custard cream biscuits. They're published by Oxford University Press.",
         cover: { src: "/books/reeve-mcintyre/legend-of-kevin/rm-cover-kevin.jpg", alt: "The legend of kevin", url: "/books/reeve-mcintyre-legend-of-kevin" },
-        thumbnailCharacter: { src: "/books/reeve-mcintyre/legend-of-kevin/kevin-thumb.gif", alt: "Have any biscuits?" },
+        thumbnailCharacter: { src: "/books/reeve-mcintyre/legend-of-kevin/kevin1_sidepic.jpg", alt: "Kevin in his nest", height: "h-72" },
         featuredBookSlugs: [
             "reeve-mcintyre-oliver-seawigs",
             "reeve-mcintyre-cakes-space",
@@ -44,9 +44,8 @@ export const seriesSections: BookSeriesSection[] = [
         title: "Solo work",
         blurb: "Meet Grumpycorn! He's a unicorn with ambition who wants to write the most fabulous story in the world, and then visit the most fabulous planet in the world. His friends admire his courage and dedication, but he has to learn how to be a better friend to them and stop throwing such wild diva strops. And meet the inhabitants of Dinoville! What happens when a clumsy T-Rex goes on the rampage in a pizza factory? Or a massive diplodocus decides she wants to be an agile firefighter? Click on each cover to explore each book and discover book-related free activities.",
         cover: { src: "/books/solo-work/grumpycorn/sm-cover-grumpycorn.jpg", alt: "Grumpycorn", url: "/books/sarah-mcintyre-grumpycorn" },
-        thumbnailCharacter: { src: "/books/solo-work/grumpycorn/Grumpycorn_Mermaid_button.gif", alt: "Have any biscuits?" },
+        thumbnailCharacter: { src: "/books/solo-work/grumpycorn/Grumpycorn_pic2.jpg", alt: "Mermaid, jellyfish and narwhal are all delighted to be here", height: "h-64" },
         featuredBookSlugs: [
-            "sarah-mcintyre-vern-lettuce",
             "sarah-mcintyre-dont-call-me-grumpycorn",
             "sarah-mcintyre-dinosaur-police",
             "sarah-mcintyre-dinosaur-firefighters",

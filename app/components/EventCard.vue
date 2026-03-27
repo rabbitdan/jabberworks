@@ -80,19 +80,19 @@ const galleryColumnsClass = computed(() => {
       <h2 class="text-[clamp(1.7rem,2vw,2.25rem)] leading-[1.05] text-black">{{ event.title }}</h2>
 
       <dl class="mt-4 grid grid-cols-12 gap-4">
-        <div class="grid col-span-3 p-2 bg-jw_blue">
+        <div class="grid col-span-3 p-2 border-b-4 border-dashed border-jw_red">
           <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em] text-slate-800/70">Date</dt>
           <dd class="m-0 break-words text-xl leading-[1.6] text-slate-800">
             {{ formatEventDateRange(event.dateStart, event.dateEnd) }}
           </dd>
         </div>
 
-        <div v-if="eventTime" class="grid col-span-3 p-2 bg-jw_blue">
+        <div v-if="eventTime" class="grid col-span-3 p-2 border-b-4 border-dashed border-jw_red">
           <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em] text-slate-800/70">Time</dt>
           <dd class="m-0 break-words text-xl leading-[1.6] text-black">{{ eventTime }}</dd>
         </div>
 
-        <div v-if="eventLocation" class="grid col-span-3 p-2 bg-jw_blue">
+        <div v-if="eventLocation" class="grid col-span-3 p-2 border-b-4 border-dashed border-jw_red">
           <dt class="text-[0.78rem] font-sans uppercase tracking-[0.12em] text-slate-800/70">Location</dt>
           <dd class="m-0 break-words text-xl leading-[1.6] text-black">{{ eventLocation }}</dd>
         </div>
@@ -108,7 +108,7 @@ const galleryColumnsClass = computed(() => {
               :to="eventUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center rounded-full px-4 py-2 text-md font-medium no-underline bg-jw_red text-white border border-2 border-dashed border-jw_blue hover:bg-jw_blue hover:border-jw_red hover:text-jw_red"
+              class="inline-flex items-center rounded-full px-4 py-2 text-md font-heading no-underline bg-jw_red text-jw_blue border border-4 border-dashed border-jw_blue hover:bg-jw_blue hover:border-jw_red hover:text-jw_red"
           >
             Go to the Event page!
           </NuxtLink>

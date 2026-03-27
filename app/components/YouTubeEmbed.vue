@@ -35,7 +35,7 @@ const embedSrc = computed(() => {
 <template>
   <section v-if="embedSrc" :class="props.showHeading === false ? '' : 'mt-8'">
     <h2 v-if="props.showHeading !== false" class="text-xl font-semibold">Video</h2>
-    <div :class="props.showHeading === false ? 'aspect-video w-full overflow-hidden rounded-2xl bg-black/5' : 'mt-3 aspect-video w-full overflow-hidden rounded-2xl bg-black/5'">
+    <div :class="props.showHeading === false ? 'aspect-video w-full overflow-hidden bg-black/5' : 'mt-3 aspect-video w-full overflow-hidden rounded-2xl bg-black/5'">
       <iframe
           class="h-full w-full"
           :src="embedSrc"

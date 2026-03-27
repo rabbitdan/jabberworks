@@ -75,30 +75,40 @@ const finalEvents = computed(() =>
 
       <div class="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
         <label class="grid gap-2">
-          <span class="text-black">Time range</span>
-          <select v-model="timeFilter" class="appearance-none border border-slate-900/10 bg-white/90 px-4 py-3.5">
-            <option
-                v-for="option in timeFilterOptions"
-                :key="option.value"
-                :value="option.value"
-            >
-              {{ option.label }}
-            </option>
-          </select>
+          <span class="text-black font-heading">Time range</span>
+          <div class="relative">
+            <select v-model="tagFilter" class="appearance-none w-full bg-white/90 border-b-4 border-b-dashed border-jw_red px-4 py-3.5 pr-10">
+              <option
+                  v-for="option in timeFilterOptions"
+                  :key="option.value"
+                  :value="option.value"
+              >
+                {{ option.label }}
+              </option>
+            </select>
+            <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-5" viewBox="0 0 32 32" fill="none" stroke="#b80000" stroke-width="3">
+              <path d="M4 12l12 10 12-10"/>
+            </svg>
+          </div>
         </label>
 
         <label class="grid gap-2">
-          <span class="text-black">Tag</span>
-          <select v-model="tagFilter" class="appearance-none border border-slate-900/10 bg-white/90 px-4 py-3.5">
-            <option value="all">All tags</option>
-            <option
-                v-for="tag in availableTags"
-                :key="tag"
-                :value="tag"
-            >
-              {{ tag }}
-            </option>
-          </select>
+          <span class="text-black font-heading">Tag</span>
+          <div class="relative">
+            <select v-model="tagFilter" class="appearance-none w-full bg-white/90 border-b-4 border-b-dashed border-jw_red px-4 py-3.5 pr-10">
+              <option value="all">All tags</option>
+              <option
+                  v-for="tag in availableTags"
+                  :key="tag"
+                  :value="tag"
+              >
+                {{ tag }}
+              </option>
+            </select>
+            <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-5" viewBox="0 0 32 32" fill="none" stroke="#b80000" stroke-width="3">
+              <path d="M4 12l12 10 12-10"/>
+            </svg>
+          </div>
         </label>
       </div>
 

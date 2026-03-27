@@ -5,7 +5,6 @@ import { toParagraphs } from "~~/utils/paragraphs"
 defineProps<{
   sheets: ActivitySheet[]
   heading?: string
-  columns?: 2 | 4
 }>()
 </script>
 
@@ -14,12 +13,11 @@ defineProps<{
     <h2 class="text-xl font-semibold">{{ heading || "Activity sheets" }}</h2>
 
     <ul
-      class="mt-4 grid gap-4"
-      :class="columns === 4 ? 'sm:grid-cols-2 xl:grid-cols-4' : 'sm:grid-cols-2'"
+      class="mt-4 grid gap-4 sm:grid-cols-2"
     >
-      <li v-for="(s, i) in sheets" :key="i" class="overflow-hidden border">
+      <li v-for="(s, i) in sheets" :key="i" class="">
         <a
-          class="flex gap-4 p-4 hover:bg-black/5 transition"
+          class="flex items-center gap-4 p-4 h-full border border-1 border hover:bg-jw_blue hover:border-jw_red hover:border-dashed hover:m-0 transition"
           :href="s.pdfUrl"
           target="_blank"
           rel="noreferrer"
@@ -34,7 +32,7 @@ defineProps<{
           </div>
 
           <div class="min-w-0">
-            <span class="font-medium underline">
+            <span class="font-heading underline">
               {{ s.title || s.linkText || "Download activity sheet" }}
             </span>
             <div

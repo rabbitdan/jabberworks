@@ -25,13 +25,13 @@ defineEmits<{
     </div>
 
     <div class="comic-card__body col-span-4">
-      <p class="comic-card__eyebrow text-gray-500 uppercase text-sm">Comic {{ comic.panels.length }} pages</p>
+      <p class="comic-card__eyebrow text-gray-500 uppercase text-sm">Comic - {{ comic.panels.length }} pages</p>
       <h2 class="comic-card__title text-3xl my-2">{{ comic.title }}</h2>
       <div v-if="blurbParagraphs.length" class="comic-card__blurb space-y-3">
         <p v-for="(paragraph, index) in blurbParagraphs" :key="index">{{ paragraph }}</p>
       </div>
 
-      <button type="button" class="comic-card__link border p-3 mt-3" @click="$emit('open', comic)">
+      <button type="button" class="comic-card__link border p-3 mt-3 rounded-full font-heading border-dashed border-4 bg-jw_blue text-jw_red border-jw_red hover:bg-jw_red hover:border-jw_blue hover:text-jw_blue" @click="$emit('open', comic)">
         {{ comic.ctaLabel || "Lorem ipsum" }}
       </button>
     </div>
