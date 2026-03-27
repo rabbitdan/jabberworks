@@ -2,10 +2,10 @@
 import type { EditorialPage } from "~~/types/content"
 
 const page: EditorialPage = {
-  hero: {
-    title: "About",
-    intro: "Cras fringilla id arcu vel iaculis. Nunc nisl lacus, gravida vitae massa sed, viverra facilisis libero. Maecenas porta imperdiet ligula vitae imperdiet. Ut lacinia ultricies commodo. Donec felis nibh, fringilla vitae neque eu, tincidunt malesuada dui.",
-  },
+  // hero: {
+  //   title: "About",
+  //   intro: "Cras fringilla id arcu vel iaculis. Nunc nisl lacus, gravida vitae massa sed, viverra facilisis libero. Maecenas porta imperdiet ligula vitae imperdiet. Ut lacinia ultricies commodo. Donec felis nibh, fringilla vitae neque eu, tincidunt malesuada dui.",
+  // },
   sections: [
     {
       _type: "splitStack",

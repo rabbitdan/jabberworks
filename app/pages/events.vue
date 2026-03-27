@@ -95,7 +95,7 @@ const finalEvents = computed(() =>
         <label class="grid gap-2">
           <span class="text-black font-heading">Tag</span>
           <div class="relative">
-            <select v-model="tagFilter" class="appearance-none w-full bg-white/90 border-b-4 border-b-dashed border-jw_red px-4 py-3.5 pr-10">
+            <select v-model="tagFilter" class="appearance-none w-full bg-white/90 border-b-4 border-jw_red px-4 py-3.5 pr-10">
               <option value="all">All tags</option>
               <option
                   v-for="tag in availableTags"

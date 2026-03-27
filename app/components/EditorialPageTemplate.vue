@@ -35,7 +35,7 @@ function isSplitStackSection(section: EditorialPage["sections"][number]): sectio
 
 <template>
   <div class="container mx-auto flex flex-col gap-12 px-6 py-10 md:gap-16 md:py-14">
-    <EditorialHeroBlock :hero="page.hero" />
+    <EditorialHeroBlock v-if="page.hero" :hero="page.hero" />
 
     <div class="flex flex-col gap-12 md:gap-16">
       <template v-for="section in page.sections" :key="section.id">

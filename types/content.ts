@@ -171,7 +171,7 @@ export type EditorialPageSection =
     | EditorialSplitStackSection
 
 export type EditorialPage = {
-    hero: EditorialHero
+    hero?: EditorialHero
     sections: EditorialPageSection[]
 }
 
