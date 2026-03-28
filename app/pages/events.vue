@@ -79,7 +79,7 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
       </div>
 
       <div class="relative mt-4 grid grid-cols-2 gap-3">
-        <details class="relative bg-jw_blue">
+        <details class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Time range
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
@@ -100,7 +100,7 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
           </div>
         </details>
 
-        <details class="relative bg-jw_blue">
+        <details class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Tags
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
