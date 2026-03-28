@@ -61,6 +61,11 @@ const finalEvents = computed(() =>
   )
 )
 
+const tagQuickFilters = computed(() => ["all", ...availableTags.value])
+
+function setTimeFilter(value: TimeFilter) { timeFilter.value = value }
+function setTagFilter(tag: string) { tagFilter.value = tag }
+
 </script>
 
 <template>
@@ -73,72 +78,49 @@ const finalEvents = computed(() =>
         </p>
       </div>
 
-      <div class="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
-        <label class="grid gap-2">
-          <span class="text-black font-heading">Time range</span>
-          <div class="relative">
-            <select v-model="tagFilter" class="appearance-none w-full bg-white/90 border-b-4 border-b-dashed border-jw_red px-4 py-3.5 pr-10">
-              <option
-                  v-for="option in timeFilterOptions"
-                  :key="option.value"
-                  :value="option.value"
-              >
-                {{ option.label }}
-              </option>
-            </select>
-            <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-5" viewBox="0 0 32 32" fill="none" stroke="#b80000" stroke-width="3">
+      <div class="relative mt-4 grid grid-cols-2 gap-3">
+        <details class="relative bg-jw_blue">
+          <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
+            Time range
+            <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
               <path d="M4 12l12 10 12-10"/>
             </svg>
+          </summary>
+          <div class="absolute left-0 right-0 top-full z-10 flex flex-wrap gap-2.5 border border-t-0 bg-jw_blue p-3">
+            <button
+                v-for="option in timeFilterOptions"
+                :key="option.value"
+                type="button"
+                class="cursor-pointer rounded-full border border-black px-3 py-2"
+                :class="timeFilter === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
+                @click="setTimeFilter(option.value)"
+            >
+              {{ option.label }}
+            </button>
           </div>
-        </label>
+        </details>
 
-        <label class="grid gap-2">
-          <span class="text-black font-heading">Tag</span>
-          <div class="relative">
-            <select v-model="tagFilter" class="appearance-none w-full bg-white/90 border-b-4 border-jw_red px-4 py-3.5 pr-10">
-              <option value="all">All tags</option>
-              <option
-                  v-for="tag in availableTags"
-                  :key="tag"
-                  :value="tag"
-              >
-                {{ tag }}
-              </option>
-            </select>
-            <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 size-5" viewBox="0 0 32 32" fill="none" stroke="#b80000" stroke-width="3">
+        <details class="relative bg-jw_blue">
+          <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
+            Tags
+            <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
               <path d="M4 12l12 10 12-10"/>
             </svg>
+          </summary>
+          <div class="absolute left-0 right-0 top-full z-10 flex flex-wrap gap-2.5 border-t-0  bg-jw_blue p-3">
+            <button
+                v-for="tag in tagQuickFilters"
+                :key="tag"
+                type="button"
+                class="cursor-pointer rounded-full px-3 py-2"
+                :class="tagFilter === tag ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
+                @click="setTagFilter(tag)"
+            >
+              {{ tag === "all" ? "All tags" : tag }}
+            </button>
           </div>
-        </label>
+        </details>
       </div>
-
-<!--      <div class="mt-4 grid gap-3">-->
-<!--        <div class="flex flex-wrap gap-2.5">-->
-<!--          <button-->
-<!--              v-for="option in timeFilterOptions"-->
-<!--              :key="option.value"-->
-<!--              type="button"-->
-<!--              class="cursor-pointer rounded-full border border-black px-3 py-2"-->
-<!--              :class="timeFilter === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"-->
-<!--              @click="setTimeFilter(option.value)"-->
-<!--          >-->
-<!--            {{ option.label }}-->
-<!--          </button>-->
-<!--        </div>-->
-
-<!--        <div class="flex flex-wrap gap-2.5">-->
-<!--          <button-->
-<!--              v-for="tag in tagQuickFilters"-->
-<!--              :key="tag"-->
-<!--              type="button"-->
-<!--              class="cursor-pointer rounded-full border border-black px-3 py-2"-->
-<!--              :class="tagFilter === tag ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"-->
-<!--              @click="setTagFilter(tag)"-->
-<!--          >-->
-<!--            {{ tag === "all" ? "All tags" : tag }}-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
 
       <div v-if="finalEvents.length" class="mt-8 grid gap-6">
         <div
