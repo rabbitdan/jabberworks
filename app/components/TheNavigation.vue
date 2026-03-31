@@ -6,7 +6,6 @@ const links = [
   { label: "About", to: "/about" },
   { label: "Shop", to: "https://shop.jabberworks.co.uk" },
   { label: "Comics", to: "/comics" },
-  { label: "Contact", to: "/contact" },
   { label: "FAQs", to: "/faqs" },
   { label: "Events", to: "/events" },
 ]
