@@ -57,7 +57,7 @@ function isExternalHref(href: string) {
         v-for="(item, index) in items"
         :key="`${item.question}-${index}`"
         :ref="(el) => { if (el) detailsRefs[index] = el as HTMLDetailsElement }"
-        class="group overflow-hidden border border-gray-200 bg-white transition-colors hover:border-gray-300"
+        class="group overflow-hidden border border-gray-200 bg-white transition-colors open:border-dashed open:border-2 open:border-jw_red"
         @toggle="onToggle(index)"
     >
       <summary

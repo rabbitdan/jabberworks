@@ -47,38 +47,20 @@ useHead(computed(() => {
 
       <div class="flex flex-col justify-center">
         <NuxtLink
-      to="/"
-      class="inline-flex gap-2 text-sm font-medium opacity-75 transition hover:opacity-100"
-    >
-      <span aria-hidden="true">←</span>
-      <span>Back to books</span>
-    </NuxtLink>
+          to="/"
+          class="inline-flex gap-2 text-sm font-medium opacity-75 transition hover:opacity-100"
+        >
+          <span aria-hidden="true">←</span>
+          <span>Back to books</span>
+        </NuxtLink>
         <h1 class="mt-3 text-3xl font-semibold leading-tight md:text-5xl">{{ book.title }}</h1>
         <div class="mt-5 max-w-2xl space-y-4 text-base leading-7 opacity-90 md:text-lg">
           <p v-for="(paragraph, index) in descriptionParagraphs" :key="index">
             {{ paragraph }}
           </p>
         </div>
-
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a
-            v-if="book.buyLinks?.length"
-            :href="book.buyLinks[0]?.url"
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center bg-black px-5 py-3 text-sm font-medium text-white transition hover:bg-black/85"
-          >
-            {{ book.buyLinks[0]?.linkText || "Buy the book" }}
-          </a>
-        </div>
       </div>
     </header>
-
-    <!-- <BuyLinksList
-      v-if="book.buyLinks?.length"
-      :links="book.buyLinks"
-      class="mt-8 border border-black/10 bg-white p-6 md:p-8"
-    /> -->
 
     <ActivitySheetsList
       v-if="book.activitySheets?.length"

@@ -1,18 +1,42 @@
 <script setup lang="ts">
-import { getSeriesSections, resolveFeaturedBooks } from "~~/lib/content"
+import type { BookSeriesSection } from "~~/types/content"
+const { $sanity } = useNuxtApp()
 
-const sections = computed(() => getSeriesSections())
-
-const sectionBooks = computed(() =>
-    sections.value.map(section => ({
-      section,
-      books: resolveFeaturedBooks(section)
-    }))
+const { data: sections } = await useAsyncData<BookSeriesSection[]>('bookSeriesSections', () =>
+  $sanity.fetch(`
+  *[_type == "bookSeriesSection"] | order(_createdAt asc) {
+    _type,
+    "id": _id,
+    title,
+    blurb,
+    "cover": {
+      "src": cover.asset->url,
+      "alt": cover.alt,
+      "url": cover.linkUrl
+    },
+    "thumbnailCharacter": {
+      "src": thumbnailCharacter.asset->url,
+      "alt": thumbnailCharacter.alt,
+      "height": thumbnailCharacter.height
+    },
+    cta,
+    "featuredBooks": featuredBooks[]-> {
+      _type,
+      "slug": slug.current,
+      title,
+      "cover": {
+        "src": cover.asset->url,
+        "alt": cover.alt
+      },
+      pageLink
+    }
+  }
+`)
 )
 
 useSeoMeta({
   title: "Sarah McIntyre - Artist and Illustrator",
-  description: "Explore Sarah’s illustrated books and download activity-sheets sheets."
+  description: "Explore Sarah's illustrated books and download activity-sheets sheets."
 })
 </script>
 
@@ -41,10 +65,10 @@ useSeoMeta({
     <!-- Series blocks -->
     <div class="container">
       <SeriesSectionBlock
-          v-for="(item, index) in sectionBooks"
-          :key="item.section.id"
-          :section="item.section"
-          :featured-books="item.books"
+          v-for="(section, index) in (sections ?? [])"
+          :key="section.id"
+          :section="section"
+          :featured-books="section.featuredBooks"
           :loop-index="index"
       />
     </div>

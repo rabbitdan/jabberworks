@@ -17,7 +17,7 @@ defineProps<{
     >
       <li v-for="(s, i) in sheets" :key="i" class="">
         <a
-          class="flex items-center gap-4 p-4 h-full border border-1 border hover:bg-jw_blue hover:border-jw_red hover:border-dashed hover:m-0 transition"
+          class="flex items-center gap-4 p-4 h-full border border-1 cursor-pointer hover:bg-jw_blue hover:border-jw_red hover:border-dashed hover:m-0 transition"
           :href="s.pdfUrl"
           target="_blank"
           rel="noreferrer"

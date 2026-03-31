@@ -2,6 +2,7 @@
 import { ref, watch } from "vue"
 
 const links = [
+  { label: "Books", to: "/" },
   { label: "About", to: "/about" },
   { label: "Shop", to: "https://shop.jabberworks.co.uk" },
   { label: "Comics", to: "/comics" },

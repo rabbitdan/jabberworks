@@ -71,7 +71,7 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
 <template>
   <div class="container">
   <section class="content">
-      <div class="flex items-center py-8 border-b border-black">
+      <div class="flex flex-direction-col md:flex-direction-row items-center py-8 border-b border-black">
         <h1 class="heading text-4xl mr-6">Events</h1>
         <p class="text">
           WHAT have I been up to? Keep checking here to see if I’m doing any events near you!
@@ -86,12 +86,12 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
               <path d="M4 12l12 10 12-10"/>
             </svg>
           </summary>
-          <div class="absolute left-0 right-0 top-full z-10 flex flex-wrap gap-2.5 border border-t-0 bg-jw_blue p-3">
+          <div class="flex flex-wrap gap-2.5 border border-t-0 bg-jw_blue p-3 shadow-md sm:absolute sm:left-0 sm:right-0 sm:top-full sm:z-10">
             <button
                 v-for="option in timeFilterOptions"
                 :key="option.value"
                 type="button"
-                class="cursor-pointer rounded-full border border-black px-3 py-2"
+                class="cursor-pointer rounded-full px-3 py-2"
                 :class="timeFilter === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
                 @click="setTimeFilter(option.value)"
             >
@@ -107,7 +107,7 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
               <path d="M4 12l12 10 12-10"/>
             </svg>
           </summary>
-          <div class="absolute left-0 right-0 top-full z-10 flex flex-wrap gap-2.5 border-t-0  bg-jw_blue p-3">
+          <div class="flex flex-wrap gap-2.5 border border-t-0 bg-jw_blue p-3 shadow-md sm:absolute sm:left-0 sm:right-0 sm:top-full sm:z-10">
             <button
                 v-for="tag in tagQuickFilters"
                 :key="tag"
