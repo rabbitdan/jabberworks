@@ -19,6 +19,8 @@ watch(
     isOpen.value = false
   },
 )
+
+console.log('test comment');
 </script>
 
 <template>
