@@ -72,7 +72,7 @@ export type EditorialImage = Image & { photographerCredit?: string }
 export type EditorialHero = {
     eyebrow?: string
     title: string
-    intro?: string
+    paragraphs?: RichTextParagraph[]
 }
 
 export type EditorialTextImageSection = {
@@ -183,6 +183,7 @@ export type EditorialPageSection =
 export type EditorialPage = {
     hero?: EditorialHero
     sections: EditorialPageSection[]
+    comics?: Comic[]
 }
 
 export type HomePage = {

@@ -4,6 +4,7 @@ import { toParagraphs } from "~~/utils/paragraphs"
 
 const props = defineProps<{
   comic: Comic
+  last?: boolean
 }>()
 
 const blurbParagraphs = computed(() => toParagraphs(props.comic.blurb))
@@ -36,7 +37,7 @@ defineEmits<{
       </button>
     </div>
   </article>
-  <hr class="flex m-auto border border-b border-black w-10/12">
+  <hr v-if="!last" class="flex m-auto border-b-1 border-black w-10/12">
 </template>
 
 <style scoped>

@@ -16,7 +16,16 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
       "hero": hero {
         eyebrow,
         title,
-        intro
+        intro,
+        paragraphs[_type == "block"] {
+          "_type": _type,
+          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
+          "spans": children[] {
+            "text": text,
+            "strong": "strong" in marks,
+            "marks": marks
+          }
+        }
       },
       "sections": sections[] {
         "id": _key,
@@ -37,6 +46,7 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
         imageWidth,
         textWidth,
         "paragraphs": paragraphs[_type == "block"] {
+          "_type": _type,
           "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
           "spans": children[] {
             "text": text,
@@ -63,6 +73,7 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
         "left": left {
           title,
           "paragraphs": paragraphs[_type == "block"] {
+            "_type": _type,
             "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
             "spans": children[] {
               "text": text,
@@ -75,6 +86,7 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
         "right": right {
           title,
           "paragraphs": paragraphs[_type == "block"] {
+            "_type": _type,
             "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
             "spans": children[] {
               "text": text,
@@ -83,6 +95,21 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
             }
           },
           youtube
+        }
+      },
+      "comics": comics[]-> {
+        "_type": "comic",
+        "slug": slug.current,
+        title,
+        "thumbnail": thumbnail[0] {
+          "src": coalesce(asset->url, url),
+          "alt": alt
+        },
+        "blurb": pt::text(blurb),
+        ctaLabel,
+        "panels": panels[] {
+          "src": coalesce(asset->url, url),
+          "alt": alt
         }
       },
       seoTitle,

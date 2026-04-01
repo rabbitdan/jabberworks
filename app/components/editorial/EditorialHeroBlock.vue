@@ -13,8 +13,8 @@ defineProps<{
         {{ hero.title }}
       </h1>
     </div>
-    <p v-if="hero.intro" class="flex h-full col-span-12 md:col-span-8 items-center text-base">
-      {{ hero.intro }}
-    </p>
+    <div v-if="hero.paragraphs?.length" class="flex h-full col-span-12 md:col-span-8 items-center text-base">
+      <RichParagraphs :paragraphs="hero.paragraphs" />
+    </div>
   </header>
 </template>

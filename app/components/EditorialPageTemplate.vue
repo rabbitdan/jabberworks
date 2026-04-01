@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type {
+  Comic,
   EditorialCalloutSection,
   EditorialFeatureImageSection,
   EditorialPage,
@@ -11,6 +12,8 @@ import type {
 defineProps<{
   page: EditorialPage
 }>()
+
+const activeComic = ref<Comic | null>(null)
 
 function isTextImageSection(section: EditorialPage["sections"][number]): section is EditorialTextImageSection {
   return section._type === "textImage"
@@ -66,4 +69,25 @@ function isSplitStackSection(section: EditorialPage["sections"][number]): sectio
       </template>
     </div>
   </div>
+
+  <template v-if="page.comics?.length">
+    <div class="container">
+      <div class="comics-page__grid">
+        <ComicCard
+          v-for="(comic, index) in page.comics"
+          :key="comic.slug"
+          :comic="comic"
+          :last="index === page.comics!.length - 1"
+          @open="activeComic = $event"
+        />
+      </div>
+    </div>
+
+    <LazyComicReaderModal
+      v-if="activeComic"
+      :key="activeComic.slug"
+      :comic="activeComic"
+      @close="activeComic = null"
+    />
+  </template>
 </template>

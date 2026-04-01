@@ -11,6 +11,7 @@ const { data: page } = await useAsyncData<HomePage>('homepage', () =>
         eyebrow,
         title,
         "paragraphs": paragraphs[_type == "block"] {
+          "_type": _type,
           "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
           "spans": children[] {
             "text": text,
