@@ -185,6 +185,11 @@ export type EditorialPage = {
     sections: EditorialPageSection[]
 }
 
+export type HomePage = {
+    hero?: EditorialTextImageSection
+    seriesSections: BookSeriesSection[]
+}
+
 export type Comic = {
     _type: "comic"
     slug: string
