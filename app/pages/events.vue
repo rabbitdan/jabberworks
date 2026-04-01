@@ -1,6 +1,46 @@
 <script setup lang="ts">
 import { computed, ref } from "vue"
-import { events } from "~~/data/events"
+import type { Event } from "~~/types/content"
+
+const { $sanity } = useNuxtApp()
+
+const { data: events } = await useAsyncData<Event[]>('events', () =>
+  $sanity.fetch<Event[]>(`
+    *[_type == "event"] {
+      "_type": "event",
+      title,
+      dateStart,
+      dateEnd,
+      startTime,
+      endTime,
+      city,
+      venue,
+      country,
+      mode,
+      status,
+      series,
+      blurb,
+      "description": pt::text(description),
+      url,
+      tags,
+      links[] { label, url },
+      "images": images[] {
+        "src": coalesce(asset->url, url),
+        alt
+      },
+      "sessions": sessions[] {
+        title,
+        date,
+        startTime,
+        endTime,
+        venue,
+        city,
+        description,
+        links[] { label, url }
+      }
+    }
+  `)
+)
 
 type TimeFilter = "upcoming" | "past" | "all"
 
@@ -25,11 +65,11 @@ const timeFilterOptions: Array<{ label: string; value: TimeFilter }> = [
 ]
 
 const sortedEvents = computed(() =>
-  [...events].sort((left, right) => left.dateStart.localeCompare(right.dateStart))
+  [...(events.value ?? [])].sort((left, right) => left.dateStart.localeCompare(right.dateStart))
 )
 
 const availableTags = computed(() =>
-  [...new Set(events.flatMap((event) => event.tags ?? []))]
+  [...new Set((events.value ?? []).flatMap((event) => event.tags ?? []))]
     .sort((left, right) => left.localeCompare(right))
 )
 
