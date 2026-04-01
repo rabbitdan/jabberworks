@@ -9,11 +9,11 @@ defineProps<{
 <template>
   <header class="grid grid-cols-12 border-b border-black items-center pb-10 md:items-end">
     <div class="flex col-span-12 md:col-span-4 items-center">
-      <h1 class="max-w-4xl text-4xl md:text-6xl">
+      <h1 class="flex items-center max-w-4xl h-full text-4xl md:text-6xl">
         {{ hero.title }}
       </h1>
     </div>
-    <p v-if="hero.intro" class="col-span-12 md:col-span-8 items-center text-base">
+    <p v-if="hero.intro" class="flex h-full col-span-12 md:col-span-8 items-center text-base">
       {{ hero.intro }}
     </p>
   </header>

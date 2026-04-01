@@ -34,13 +34,7 @@ useSeoMeta({
 <template>
   <section class="comics-page">
     <div class="container">
-      <div class="comics-page__hero flex my-16">
-        <h1 class="comics-page__title text-5xl">Comics</h1>
-        <p class="comics-page__intro ml-6">
-          Learn how to make comics with Sarah McIntyre in this series of Booktrust videos! Great for home or the classroom.
-        </p>
-      </div>
-      <hr class="flex m-auto border border-b border-black w-10/12">
+      <EditorialHeroBlock class="my-16" :hero="{ title: 'Comics', intro: 'Learn how to make comics with Sarah McIntyre in this series of Booktrust videos! Great for home or the classroom.' }" />
 
       <div class="comics-page__grid border-b border-black">
         <ComicCard
