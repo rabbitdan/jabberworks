@@ -25,9 +25,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
           :class="section.left.title ? 'mt-4 w-full [&>div]:rounded-none' : 'w-full [&>div]:rounded-none'"
         />
         <div v-else :class="section.left.title ? 'mt-4 space-y-4 text-base' : 'space-y-4 text-base'">
-          <p v-for="paragraph in section.left.paragraphs" :key="paragraph">
-            {{ paragraph }}
-          </p>
+          <RichParagraphs :paragraphs="section.left.paragraphs" />
         </div>
       </div>
 
@@ -43,9 +41,7 @@ function hasYoutube(column: EditorialTwoColumnSection["left"]): column is Extrac
           :class="section.right.title ? 'mt-4 w-full [&>div]:rounded-none' : 'w-full [&>div]:rounded-none'"
         />
         <div v-else :class="section.right.title ? 'mt-4 space-y-4 text-base' : 'space-y-4 text-base'">
-          <p v-for="paragraph in section.right.paragraphs" :key="paragraph">
-            {{ paragraph }}
-          </p>
+          <RichParagraphs :paragraphs="section.right.paragraphs" />
         </div>
       </div>
     </div>

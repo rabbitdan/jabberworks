@@ -1,4 +1,4 @@
-import type { PortableTextBlock } from "@portabletext/vue"
+import type { PortableTextBlock } from "@portabletext/types"
 
 // Shared primitives
 type TextContent = string | string[]
@@ -80,7 +80,7 @@ export type EditorialTextImageSection = {
     id: string
     eyebrow?: string
     title?: string
-    paragraphs: string[]
+    paragraphs: RichTextParagraph[]
     image: EditorialImage
     imageSide?: "left" | "right"
     imageWidth?: "sm" | "md" | "lg"
@@ -101,14 +101,22 @@ export type EditorialFeatureImageSection = {
 
 export type RichTextSpan = {
     text: string
+    marks?: string[]
+    strong?: boolean
     href?: string
     external?: boolean
-    strong?: boolean
+}
+
+export type RichTextMarkDef = {
+    _key: string
+    href: string
+    blank?: boolean
 }
 
 export type RichTextParagraph =
     | string
     | {
+        markDefs?: RichTextMarkDef[]
         spans: RichTextSpan[]
     }
     | {
@@ -144,7 +152,7 @@ export type EditorialCalloutSection = {
 }
 
 export type EditorialTwoColumnContent =
-    | { title?: string; paragraphs: string[] }
+    | { title?: string; paragraphs: RichTextParagraph[] }
     | { title?: string; youtube: YouTube }
 
 export type EditorialTwoColumnSection = {
@@ -160,7 +168,7 @@ export type EditorialSplitStackSection = {
     id: string
     eyebrow?: string
     title: string
-    paragraphs: string[]
+    paragraphs: RichTextParagraph[]
     primaryImage: EditorialImage
     secondaryImage: EditorialImage
 }

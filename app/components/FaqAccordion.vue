@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FaqAnswerBlock, FaqItem, RichTextParagraph, RichTextSpan } from "~~/types/content"
+import type { FaqAnswerBlock, FaqItem } from "~~/types/content"
 
 const props = defineProps<{
   items: FaqItem[]
@@ -34,21 +34,7 @@ function isYoutubeBlock(block: FaqAnswerBlock): block is Extract<FaqAnswerBlock,
   return block._type === "youtube"
 }
 
-function isLinkedParagraph(
-  paragraph: RichTextParagraph,
-): paragraph is Extract<RichTextParagraph, { spans: RichTextSpan[] }> {
-  return typeof paragraph === "object" && paragraph !== null && Array.isArray(paragraph.spans)
-}
 
-function isTextObjectParagraph(
-  paragraph: RichTextParagraph,
-): paragraph is Extract<RichTextParagraph, { text: string }> {
-  return typeof paragraph === "object" && paragraph !== null && typeof paragraph.text === "string"
-}
-
-function isExternalHref(href: string) {
-  return href.startsWith("http://") || href.startsWith("https://")
-}
 </script>
 
 <template>
@@ -84,35 +70,7 @@ function isExternalHref(href: string) {
       <div class="space-y-4 px-4 pb-4 pt-0">
         <template v-for="(block, blockIndex) in item.answer" :key="blockIndex">
           <div v-if="isRichTextBlock(block)" class="space-y-4">
-            <p
-              v-for="(paragraph, paragraphIndex) in block.paragraphs"
-              :key="paragraphIndex"
-            >
-              <template v-if="isLinkedParagraph(paragraph)">
-                <template v-for="(span, spanIndex) in paragraph.spans" :key="spanIndex">
-                  <a
-                    v-if="span.href"
-                    :href="span.href"
-                    class="underline underline-offset-4"
-                    :target="span.external || isExternalHref(span.href) ? '_blank' : undefined"
-                    :rel="span.external || isExternalHref(span.href) ? 'noreferrer' : undefined"
-                  >
-                    <strong v-if="span.strong">{{ span.text }}</strong>
-                    <template v-else>{{ span.text }}</template>
-                  </a>
-                  <strong v-else-if="span.strong">{{ span.text }}</strong>
-                  <template v-else>
-                    {{ span.text }}
-                  </template>
-                </template>
-              </template>
-              <template v-else-if="isTextObjectParagraph(paragraph)">
-                {{ paragraph.text }}
-              </template>
-              <template v-else>
-                {{ paragraph }}
-              </template>
-            </p>
+            <RichParagraphs :paragraphs="block.paragraphs" />
           </div>
 
           <div

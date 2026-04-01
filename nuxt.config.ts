@@ -5,40 +5,36 @@ const isPreview = !!context && context !== "production"
 // Replace the fallback with your real domain when you have it.
 const siteUrl = process.env.NUXT_SITE_URL || "http://localhost:3000"
 
-// TODO: replace with routes derived from Sanity query at build time
-const internalBookPageRoutes = [
-    "/books/reeve-mcintyre-cakes-space",
-    "/books/sarah-mcintyre-dinosaur-firefighters",
-    "/books/sarah-mcintyre-dinosaur-police",
-    "/books/sarah-mcintyre-grumpycorn",
-    "/books/sarah-mcintyre-dont-call-me-grumpycorn",
-    "/books/reeve-mcintyre-jinks-o-hare",
-    "/books/reeve-mcintyre-legend-of-kevin",
-    "/books/reeve-mcintyre-kevin-biscuit-bandit",
-    "/books/reeve-mcintyre-kevin-great-escape",
-    "/books/reeve-mcintyre-kevin-vs-unicorns",
-    "/books/mcintyre-morris-mankiest-monster",
-    "/books/sarah-mcintyre-new-neighbours",
-    "/books/reeve-mcintyre-pug-a-doodle-do",
-    "/books/mcintyre-macdonald-prince-of-pants",
-    "/books/mcintyre-rogerson-you-cant-eat-a-princess",
-    "/books/mcintyre-rogerson-you-cant-scare-a-princess",
-    "/books/reeve-mcintyre-pugs-frozen-north",
-    "/books/reeve-mcintyre-oliver-seawigs",
-    "/books/sarah-mcintyre-shark-in-the-bath",
-    "/books/mcintyre-freedman-superkid",
-    "/books/reeve-mcintyre-thatch-the-moon",
-    "/books/mcintyre-when-titus-took-the-train",
-    "/books/sarah-mcintyre-vern-lettuce",
-]
+const sanityProjectId = process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || "es2dovdw"
+const sanityApiBase = `https://${sanityProjectId}.api.sanity.io/v2024-01-01/data/query/production`
+
+async function fetchSanityRoutes() {
+    const bookQuery = encodeURIComponent(`*[_type == "book" && defined(slug) && !defined(pageLink)].slug.current`)
+    const editorialQuery = encodeURIComponent(`*[_type == "editorialPage" && defined(slug)].slug.current`)
+
+    const [booksRes, editorialRes] = await Promise.all([
+        fetch(`${sanityApiBase}?query=${bookQuery}`),
+        fetch(`${sanityApiBase}?query=${editorialQuery}`),
+    ])
+
+    const { result: bookSlugs } = await booksRes.json() as { result: string[] }
+    const { result: editorialSlugs } = await editorialRes.json() as { result: string[] }
+
+    return {
+        bookRoutes: bookSlugs.map(slug => `/books/${slug}`),
+        editorialRoutes: editorialSlugs.map(slug => `/${slug}`),
+    }
+}
+
+const { bookRoutes, editorialRoutes } = await fetchSanityRoutes()
 
 export default defineNuxtConfig({
     compatibilityDate: "2024-04-03",
     devtools: { enabled: true },
-    runtimeConfig: { 
-        public: { 
-            sanityProjectId: process.NUXT_PUBLIC_SANITY_PROJECT_ID
-        } 
+    runtimeConfig: {
+        public: {
+            sanityProjectId,
+        }
     },
 
     modules: [
@@ -53,27 +49,25 @@ export default defineNuxtConfig({
         "@splidejs/splide/dist/css/splide.min.css"
     ],
 
-
     site: {
         url: siteUrl,
     },
 
-
     nitro: {
         prerender: {
-            routes: ["/", "/comics", ...internalBookPageRoutes],
+            routes: ["/", "/comics", ...editorialRoutes, ...bookRoutes],
         },
     },
 
     robots: isPreview
         ? {
             rules: [{ userAgent: "*", disallow: "/" }],
-        }
+          }
         : {
             rules: [{ userAgent: "*", allow: "/" }],
-        },
+          },
 
     sitemap: {
-        urls: ["/comics", ...internalBookPageRoutes],
+        urls: ["/comics", ...editorialRoutes, ...bookRoutes],
     },
 })

@@ -37,20 +37,15 @@ function getTextClasses(section: EditorialTextImageSection) {
     ]"
   >
     <div>
-      <div class="overflow-hidden">
+      <div class="relative overflow-hidden">
         <img
           class="h-full w-full object-cover"
           :src="props.section.image.src"
           :alt="props.section.image.alt"
           loading="lazy"
         />
+        <ImageCredit :credit="props.section.image.photographerCredit" />
       </div>
-      <p
-        v-if="props.section.image.photographerCredit"
-        class="mt-2 text-xs uppercase"
-      >
-        {{ props.section.image.photographerCredit }}
-      </p>
     </div>
 
     <div :class="getTextClasses(props.section)">
@@ -61,9 +56,7 @@ function getTextClasses(section: EditorialTextImageSection) {
         {{ props.section.title }}
       </h2>
       <div class="mt-4 space-y-4 text-base leading-7">
-        <p v-for="paragraph in props.section.paragraphs" :key="paragraph">
-          {{ paragraph }}
-        </p>
+        <RichParagraphs :paragraphs="props.section.paragraphs" />
       </div>
     </div>
   </section>

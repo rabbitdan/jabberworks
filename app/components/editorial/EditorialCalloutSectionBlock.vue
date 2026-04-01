@@ -1,25 +1,9 @@
 <script setup lang="ts">
-import type { EditorialCalloutSection, RichTextParagraph, RichTextSpan } from "~~/types/content"
+import type { EditorialCalloutSection } from "~~/types/content"
 
 defineProps<{
   section: EditorialCalloutSection
 }>()
-
-function isLinkedParagraph(
-  paragraph: RichTextParagraph,
-): paragraph is Extract<RichTextParagraph, { spans: RichTextSpan[] }> {
-  return typeof paragraph === "object" && paragraph !== null && Array.isArray(paragraph.spans)
-}
-
-function isTextObjectParagraph(
-  paragraph: RichTextParagraph,
-): paragraph is Extract<RichTextParagraph, { text: string }> {
-  return typeof paragraph === "object" && paragraph !== null && typeof paragraph.text === "string"
-}
-
-function isExternalHref(href: string) {
-  return href.startsWith("http://") || href.startsWith("https://")
-}
 </script>
 
 <template>
@@ -31,34 +15,10 @@ function isExternalHref(href: string) {
       {{ section.title }}
     </h2>
     <div v-if="section.paragraphs?.length" class="mt-4 space-y-4 text-base text-center">
-      <p
-        v-for="(paragraph, paragraphIndex) in section.paragraphs"
-        :key="paragraphIndex"
-        class="block mx-auto font-heading text-lg leading-7"
-      >
-        <template v-if="isLinkedParagraph(paragraph)">
-          <template v-for="(span, spanIndex) in paragraph.spans" :key="spanIndex">
-            <a
-              v-if="span.href"
-              :href="span.href"
-              class="underline underline-offset-4"
-              :target="span.external || isExternalHref(span.href) ? '_blank' : undefined"
-              :rel="span.external || isExternalHref(span.href) ? 'noreferrer' : undefined"
-            >
-              <strong v-if="span.strong">{{ span.text }}</strong>
-              <template v-else>{{ span.text }}</template>
-            </a>
-            <strong v-else-if="span.strong">{{ span.text }}</strong>
-            <template v-else>{{ span.text }}</template>
-          </template>
-        </template>
-        <template v-else-if="isTextObjectParagraph(paragraph)">
-          {{ paragraph.text }}
-        </template>
-        <template v-else>
-          {{ paragraph }}
-        </template>
-      </p>
+      <RichParagraphs
+        :paragraphs="section.paragraphs"
+        paragraph-class="block mx-auto font-heading text-lg leading-7"
+      />
     </div>
   </section>
 </template>
