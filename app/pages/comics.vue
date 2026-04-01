@@ -1,6 +1,27 @@
 <script setup lang="ts">
-import { comics } from "~~/data/comics"
 import type { Comic } from "~~/types/content"
+
+const { $sanity } = useNuxtApp()
+
+const { data: comics } = await useAsyncData<Comic[]>('comics', () =>
+  $sanity.fetch<Comic[]>(`
+    *[_type == "comic"] | order(_createdAt asc) {
+      "_type": "comic",
+      "slug": slug.current,
+      title,
+      "thumbnail": thumbnail[0] {
+        "src": coalesce(asset->url, url),
+        "alt": alt
+      },
+      "blurb": pt::text(blurb),
+      ctaLabel,
+      "panels": panels[] {
+        "src": coalesce(asset->url, url),
+        "alt": alt
+      }
+    }
+  `)
+)
 
 const activeComic = ref<Comic | null>(null)
 
