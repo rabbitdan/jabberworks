@@ -17,7 +17,7 @@ defineProps<{
     <div v-if="section.paragraphs?.length" class="mt-4 space-y-4 text-base text-center">
       <RichParagraphs
         :paragraphs="section.paragraphs"
-        paragraph-class="block mx-auto font-heading text-lg leading-7"
+        paragraph-class="block mx-auto xl:max-w-5xl font-heading text-lg leading-7"
       />
     </div>
   </section>

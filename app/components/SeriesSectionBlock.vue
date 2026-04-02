@@ -23,7 +23,7 @@ const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
       >
         <NuxtLink class="cover flex justify-center" :to="section.cover.url">
           <img
-              class="object-cover w-full max-w-80 lg:max-w-96 xl:max-w-full"
+              class="object-contain w-full max-w-80 lg:max-w-96 xl:max-w-full"
               :src="section.cover.src"
               :alt="section.cover.alt || section.title"
               loading="lazy"
