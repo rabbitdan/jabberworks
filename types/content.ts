@@ -103,6 +103,7 @@ export type RichTextSpan = {
     text: string
     marks?: string[]
     strong?: boolean
+    em?: boolean
     href?: string
     external?: boolean
 }
@@ -116,6 +117,8 @@ export type RichTextMarkDef = {
 export type RichTextParagraph =
     | string
     | {
+        style?: string
+        listItem?: 'bullet' | 'number'
         markDefs?: RichTextMarkDef[]
         spans: RichTextSpan[]
     }

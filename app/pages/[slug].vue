@@ -19,10 +19,13 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
         intro,
         paragraphs[_type == "block"] {
           "_type": _type,
-          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
+          "style": style,
+          "listItem": listItem,
+          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": external },
           "spans": children[] {
             "text": text,
             "strong": "strong" in marks,
+            "em": "em" in marks,
             "marks": marks
           }
         }
@@ -47,10 +50,13 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
         textWidth,
         "paragraphs": paragraphs[_type == "block"] {
           "_type": _type,
-          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
+          "style": style,
+          "listItem": listItem,
+          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": external },
           "spans": children[] {
             "text": text,
             "strong": "strong" in marks,
+            "em": "em" in marks,
             "marks": marks
           }
         },
@@ -74,7 +80,7 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
           title,
           "paragraphs": paragraphs[_type == "block"] {
             "_type": _type,
-            "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
+            "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": external },
             "spans": children[] {
               "text": text,
               "strong": "strong" in marks,
@@ -87,7 +93,7 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
           title,
           "paragraphs": paragraphs[_type == "block"] {
             "_type": _type,
-            "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": blank },
+            "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": external },
             "spans": children[] {
               "text": text,
               "strong": "strong" in marks,
@@ -126,6 +132,8 @@ useSeoMeta({
   title: () => page.value?.seoTitle,
   description: () => page.value?.seoDescription,
 })
+
+console.log('Editorial Page Value is ', page.value);
 </script>
 
 <template>
