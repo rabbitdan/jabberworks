@@ -32,7 +32,18 @@ const { data: page } = await useAsyncData<HomePage>('homepage', () =>
         _type,
         "id": _id,
         title,
-        blurb,
+        "blurb": blurb[_type == "block"] {
+          "_type": _type,
+          "style": style,
+          "listItem": listItem,
+          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": external },
+          "spans": children[] {
+            "text": text,
+            "strong": "strong" in marks,
+            "em": "em" in marks,
+            "marks": marks
+          }
+        },
         "cover": {
           "src": cover.asset->url,
           "alt": cover.alt,

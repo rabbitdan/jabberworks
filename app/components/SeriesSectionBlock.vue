@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { PortableText } from "@portabletext/vue"
 import type { BookSeriesSection, Book } from "~~/types/content"
 
 const props = defineProps<{
@@ -38,7 +37,7 @@ const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
         <div class="text">
           <h2 class="block mb-2 pb-2 border-b border-black text-3xl">{{ section.title }}</h2>
           <div v-if="section.blurb?.length" class="mt-2 space-y-3 opacity-85">
-            <PortableText :value="section.blurb" />
+            <RichParagraphs :paragraphs="section.blurb" />
           </div>
         </div>
 

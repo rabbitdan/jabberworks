@@ -1,5 +1,3 @@
-import type { PortableTextBlock } from "@portabletext/types"
-
 // Shared primitives
 type TextContent = string | string[]
 type Thumbnail = { src: string; alt?: string }
@@ -57,7 +55,7 @@ export type BookSeriesSection = {
     _type: "bookSeriesSection"
     id: string // stable key for v-for
     title: string
-    blurb?: PortableTextBlock[]
+    blurb?: RichTextParagraph[]
     cover: Thumbnail & { url?: string }
     thumbnailCharacter: Thumbnail & { height?: string }
     cta?: {
