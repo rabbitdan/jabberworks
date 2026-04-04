@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "tsx scripts/validateSanityContent.ts && nuxt generate",
     "preview": "nuxt preview"
   },
   "dependencies": {

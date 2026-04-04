@@ -132,8 +132,6 @@ useSeoMeta({
   title: () => page.value?.seoTitle,
   description: () => page.value?.seoDescription,
 })
-
-console.log('Editorial Page Value is ', page.value);
 </script>
 
 <template>
