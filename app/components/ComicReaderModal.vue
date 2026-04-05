@@ -96,7 +96,7 @@ onBeforeUnmount(() => {
       @click.self="emit('close')"
     >
       <div
-        class="max-h-[94vh] w-full max-w-[1100px] overflow-auto p-4 shadow-[0_30px_80px_rgba(15,23,42,0.28)] md:max-h-[90vh] md:p-5 bg-white"
+        class="max-h-[97vh] w-full max-w-[1100px] overflow-auto p-4 shadow-[0_30px_80px_rgba(15,23,42,0.28)] md:max-h-[90vh] md:p-5 bg-white"
       >
         <div class="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-start">
           <div>
@@ -119,7 +119,7 @@ onBeforeUnmount(() => {
             <ul class="splide__list">
               <li v-for="panel in comic.panels" :key="panel.src" class="splide__slide">
                 <figure class="m-0 overflow-hidden flex justify-center items-center">
-                  <img :src="panel.src" :alt="panel.alt" class="block h-full w-auto">
+                  <img :src="panel.src" :alt="panel.alt" class="block h-full max-h-[75vh] w-auto">
                 </figure>
               </li>
             </ul>

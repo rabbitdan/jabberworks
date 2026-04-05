@@ -12,6 +12,7 @@
     "@nuxt/image": "^2.0.0",
     "@portabletext/vue": "^1.0.14",
     "@sanity/client": "^7.20.0",
+    "@sanity/image-url": "^2.1.1",
     "@splidejs/splide": "^4.1.4",
     "better-sqlite3": "^12.6.2",
     "nuxt": "^4.3.1"
