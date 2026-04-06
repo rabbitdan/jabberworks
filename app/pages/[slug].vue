@@ -64,7 +64,8 @@ const { data: page } = await useAsyncData<SanityEditorialPage | null>(`editorial
         "image": image {
           "src": asset->url,
           alt,
-          photographerCredit
+          photographerCredit,
+          "sanityImage": @
         },
         "primaryImage": primaryImage {
           "src": asset->url,

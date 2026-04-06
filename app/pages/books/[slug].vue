@@ -15,7 +15,8 @@ const { data: book } = await useAsyncData<Book | null>(
       title,
       "cover": {
         "src": cover.asset->url,
-        "alt": cover.alt
+        "alt": cover.alt,
+        "sanityImage": cover
       },
       "backgroundTileUrl": backgroundTile.asset->url,
       "blurb": pt::text(blurb),

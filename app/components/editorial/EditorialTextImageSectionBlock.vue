@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import type { EditorialTextImageSection } from "~~/types/content"
+import type { SanityImageSource } from '@sanity/image-url'
 
 const props = defineProps<{
   section: EditorialTextImageSection
 }>()
+
+const { urlFor } = useSanityImage()
+const imageSrc = computed(() =>
+  props.section.image.sanityImage
+    ? urlFor(props.section.image.sanityImage as SanityImageSource).auto('format').url()
+    : props.section.image.src
+)
 
 const splitWidthClasses: Record<NonNullable<EditorialTextImageSection["imageWidth"]>, string> = {
   sm: "md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]",
@@ -40,7 +48,7 @@ function getTextClasses(section: EditorialTextImageSection) {
       <div class="relative overflow-hidden">
         <img
           class="h-full w-full object-cover"
-          :src="props.section.image.src"
+          :src="imageSrc"
           :alt="props.section.image.alt"
           loading="lazy"
         />

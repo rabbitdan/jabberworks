@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 
     css: [
         "~~/assets/css/main.css",
-        "@splidejs/splide/dist/css/splide.min.css"
+        "~~/assets/css/splide.min.css"
     ],
 
     site: {

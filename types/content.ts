@@ -38,7 +38,7 @@ export type Book = {
     slug: string
     title: string
     pageLink?: Link
-    cover: Thumbnail
+    cover: Thumbnail & { sanityImage?: unknown }
     backgroundTileUrl?: string
     blurb: TextContent
     description?: TextContent
@@ -56,8 +56,8 @@ export type BookSeriesSection = {
     id: string // stable key for v-for
     title: string
     blurb?: RichTextParagraph[]
-    cover: Thumbnail & { url?: string }
-    thumbnailCharacter: Thumbnail & { height?: string }
+    cover: Thumbnail & { url?: string; sanityImage?: unknown }
+    thumbnailCharacter: Thumbnail & { height?: string; sanityImage?: unknown }
     cta?: {
         text: string
         url: string
@@ -65,7 +65,7 @@ export type BookSeriesSection = {
     featuredBooks: Book[]
 }
 
-export type EditorialImage = Image & { photographerCredit?: string }
+export type EditorialImage = Image & { photographerCredit?: string; sanityImage?: unknown }
 
 export type EditorialHero = {
     eyebrow?: string

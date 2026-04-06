@@ -22,7 +22,8 @@ const { data: page } = await useAsyncData<HomePage>('homepage', () =>
         "image": image {
           "src": asset->url,
           alt,
-          photographerCredit
+          photographerCredit,
+          "sanityImage": @
         },
         imageSide,
         imageWidth,
@@ -47,12 +48,14 @@ const { data: page } = await useAsyncData<HomePage>('homepage', () =>
         "cover": {
           "src": cover.asset->url,
           "alt": cover.alt,
-          "url": cover.linkUrl
+          "url": cover.linkUrl,
+          "sanityImage": cover
         },
         "thumbnailCharacter": {
           "src": thumbnailCharacter.asset->url,
           "alt": thumbnailCharacter.alt,
-          "height": thumbnailCharacter.height
+          "height": thumbnailCharacter.height,
+          "sanityImage": thumbnailCharacter
         },
         cta,
         "featuredBooks": featuredBooks[]-> {
@@ -61,7 +64,8 @@ const { data: page } = await useAsyncData<HomePage>('homepage', () =>
           title,
           "cover": {
             "src": cover.asset->url,
-            "alt": cover.alt
+            "alt": cover.alt,
+            "sanityImage": cover
           },
           pageLink
         }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { BookSeriesSection, Book } from "~~/types/content"
+import type { SanityImageSource } from '@sanity/image-url'
 const props = defineProps<{
   section: BookSeriesSection
   featuredBooks: Book[]
@@ -7,6 +8,19 @@ const props = defineProps<{
 }>()
 
 const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
+
+const { urlFor } = useSanityImage()
+const coverSrc = computed(() =>
+  props.section.cover.sanityImage
+    ? urlFor(props.section.cover.sanityImage as SanityImageSource).width(800).auto('format').url()
+    : props.section.cover.src
+)
+
+const thumbnailCharacterSrc = computed(() =>
+  props.section.thumbnailCharacter.sanityImage
+    ? urlFor(props.section.thumbnailCharacter.sanityImage as SanityImageSource).auto('format').url()
+    : props.section.thumbnailCharacter.src
+)
 </script>
 
 <template>
@@ -22,7 +36,7 @@ const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
         <NuxtLink class="cover flex justify-center" :to="section.cover.url">
           <img
               class="object-contain w-full max-w-80 lg:max-w-96 xl:max-w-full"
-              :src="section.cover.src"
+              :src="coverSrc"
               :alt="section.cover.alt || section.title"
               loading="lazy"
           />
@@ -44,7 +58,7 @@ const shouldReverseLayout = computed(() => props.loopIndex % 2 === 1)
           <img
               class="w-auto object-cover"
               :class="section.thumbnailCharacter.height ?? 'h-36'"
-              :src="section.thumbnailCharacter.src"
+              :src="thumbnailCharacterSrc"
               :alt="section.thumbnailCharacter.alt || section.title"
               loading="lazy"
           />
