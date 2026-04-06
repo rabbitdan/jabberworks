@@ -11,7 +11,7 @@ const external = computed(() => isExternalUrl(pageUrl.value) || props.book.pageL
 
 <template>
   <NuxtLink
-      class="block"
+      class="block hover:transition-transform hover:-translate-y-2"
       :to="pageUrl"
       :external="external"
       :target="external ? '_blank' : undefined"
