@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { getBookPageUrl, isExternalUrl } from "~~/lib/content"
 import type { Book } from "~~/types/content"
-
 const props = defineProps<{
   book: Book
 }>()

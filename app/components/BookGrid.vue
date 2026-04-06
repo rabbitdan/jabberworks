@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Book } from "~~/types/content"
-
 defineProps<{
   books: Book[]
   heading?: string

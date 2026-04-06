@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { BookSeriesSection, Book } from "~~/types/content"
-
 const props = defineProps<{
   section: BookSeriesSection
   featuredBooks: Book[]
