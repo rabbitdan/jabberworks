@@ -29,7 +29,7 @@ const { data: book } = await useAsyncData<Book | null>(
           "src": thumb.asset->url,
           "alt": thumb.alt
         },
-        pdfUrl,
+        "pdfUrl": pdfUrl.asset->url,
         title,
         linkText
       },
