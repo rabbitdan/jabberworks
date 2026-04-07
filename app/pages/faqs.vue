@@ -1,12 +1,47 @@
 <script setup lang="ts">
-import type { FaqItem } from "~~/types/content"
+import type { EditorialTextImageSection, FaqItem } from "~~/types/content"
 
 const { $sanity } = useNuxtApp()
 
+type FaqPageData = {
+  title: string
+  editorialTextImageSection?: EditorialTextImageSection
+  items: FaqItem[]
+  seoTitle?: string
+  seoDescription?: string
+}
+
 const { data: faqPage } = await useAsyncData('faqPage', () =>
-  $sanity.fetch<{ title: string; items: FaqItem[]; seoTitle?: string; seoDescription?: string }>(`
+  $sanity.fetch<FaqPageData>(`
     *[_type == "faqPage"][0] {
       title,
+      "editorialTextImageSection": editorialTextImageSection {
+        "_type": "textImage",
+        "_key": _key,
+        eyebrow,
+        title,
+        imageSide,
+        imageWidth,
+        textWidth,
+        "paragraphs": paragraphs[_type == "block"] {
+          "_type": _type,
+          "style": style,
+          "listItem": listItem,
+          "markDefs": markDefs[_type == "link"] { "_key": _key, "href": href, "blank": external },
+          "spans": children[] {
+            "text": text,
+            "strong": "strong" in marks,
+            "em": "em" in marks,
+            "marks": marks
+          }
+        },
+        "image": image {
+          "src": asset->url,
+          alt,
+          photographerCredit,
+          "sanityImage": @
+        }
+      },
       "items": items[] {
         question,
         "answer": answer[] {
@@ -41,16 +76,16 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="mx-auto max-w-4xl px-6 py-16 sm:py-20">
+  <main class="container mx-auto px-6 py-16 sm:py-20">
     <header class="max-w-2xl">
       <h1 class="mt-3 text-4xl tracking-tight text-gray-950 sm:text-5xl">
-        Frequently asked questions
+        {{ faqPage?.title ?? "FAQs" }}
       </h1>
-      <p class="mt-4 text-base leading-7 text-gray-600 sm:text-lg">
-        Quick answers about the books, classroom resources, events, and how the site is
-        organised.
-      </p>
     </header>
+
+    <div v-if="faqPage?.editorialTextImageSection" class="mt-12">
+      <EditorialTextImageSectionBlock :section="faqPage.editorialTextImageSection" />
+    </div>
 
     <section class="mt-10 sm:mt-12" aria-label="Frequently asked questions">
       <FaqAccordion :items="faqItems" :single="true" />
