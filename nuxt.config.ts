@@ -11,22 +11,26 @@ const sanityApiBase = `https://${sanityProjectId}.api.sanity.io/v2024-01-01/data
 async function fetchSanityRoutes() {
     const bookQuery = encodeURIComponent(`*[_type == "book" && defined(slug) && !defined(pageLink)].slug.current`)
     const editorialQuery = encodeURIComponent(`*[_type == "editorialPage" && defined(slug)].slug.current`)
+    const blogPostQuery = encodeURIComponent(`*[_type == "blogPost" && defined(slug)].slug.current`)
 
-    const [booksRes, editorialRes] = await Promise.all([
+    const [booksRes, editorialRes, blogPostsRes] = await Promise.all([
         fetch(`${sanityApiBase}?query=${bookQuery}`),
         fetch(`${sanityApiBase}?query=${editorialQuery}`),
+        fetch(`${sanityApiBase}?query=${blogPostQuery}`),
     ])
 
     const { result: bookSlugs } = await booksRes.json() as { result: string[] }
     const { result: editorialSlugs } = await editorialRes.json() as { result: string[] }
+    const { result: blogPostSlugs } = await blogPostsRes.json() as { result: string[] }
 
     return {
         bookRoutes: bookSlugs.map(slug => `/books/${slug}`),
         editorialRoutes: editorialSlugs.map(slug => `/${slug}`),
+        blogPostRoutes: blogPostSlugs.map(slug => `/blog/${slug}`),
     }
 }
 
-const { bookRoutes, editorialRoutes } = await fetchSanityRoutes()
+const { bookRoutes, editorialRoutes, blogPostRoutes } = await fetchSanityRoutes()
 
 export default defineNuxtConfig({
     compatibilityDate: "2024-04-03",
@@ -55,7 +59,7 @@ export default defineNuxtConfig({
 
     nitro: {
         prerender: {
-            routes: ["/", "/comics", ...editorialRoutes, ...bookRoutes],
+            routes: ["/", "/comics", ...editorialRoutes, ...bookRoutes, ...blogPostRoutes],
         },
     },
 
@@ -68,6 +72,6 @@ export default defineNuxtConfig({
           },
 
     sitemap: {
-        urls: ["/comics", ...editorialRoutes, ...bookRoutes],
+        urls: ["/comics", ...editorialRoutes, ...bookRoutes, ...blogPostRoutes],
     },
 })

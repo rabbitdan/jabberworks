@@ -244,3 +244,15 @@ export type FaqItem = {
     question: string
     answer: FaqAnswerBlock[]
 }
+
+export type BlogPost = {
+    _type: "blogPost"
+    slug: string
+    title: string
+    publishedAt: string
+    excerpt?: string
+    featuredImage?: { url: string; alt?: string }
+    tags?: string[]
+    bodyHtml?: string
+    body?: unknown[]
+}

@@ -25,7 +25,7 @@ const thumbnailCharacterSrc = computed(() =>
 
 <template>
   <section :id="section.id">
-    <hr class="my-32 border-t border-black" />
+    <hr class="my-20 lg:my-32 border-t border-black" />
 
     <div class="grid grid-cols-12 gap-8 md:items-stretch">
       <div

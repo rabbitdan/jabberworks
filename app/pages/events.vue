@@ -114,7 +114,7 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
       <div class="flex flex-direction-col md:flex-direction-row items-center py-8 border-b border-black">
         <h1 class="heading text-4xl mr-6">Events</h1>
         <p class="text">
-          WHAT have I been up to? Keep checking here to see if I’m doing any events near you!
+          Keep checking here to see if I'm doing any future events near you! And look up 'Past Events' in the Time range to see what I've been up to!
         </p>
       </div>
 
