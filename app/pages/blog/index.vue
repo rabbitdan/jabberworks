@@ -137,7 +137,12 @@ useSeoMeta({
   <div class="container">
     <section class="content">
       <div class="flex items-center gap-6 border-b border-black py-8">
-        <h1 class="font-heading text-4xl">Blog</h1>
+        <h1 class="font-heading text-4xl">
+          Blog<span v-if="selectedYear || tagFilter !== 'all'" class="text-gray-400">
+            <span v-if="selectedYear"> - {{ selectedYear }}</span>
+            <span v-if="tagFilter !== 'all'"> - {{ tagFilter }}</span>
+          </span>
+        </h1>
       </div>
 
       <div class="relative mt-4 grid grid-cols-2 gap-3">
