@@ -23,14 +23,15 @@ interface BlogPostSummary {
   title: string
   publishedAt: string
   excerpt?: string
+  bodyText?: string
   tags?: string[]
   featuredImage?: SanityImageRef | R2ImageRef
 }
 
-function featuredImageUrl(image: BlogPostSummary['featuredImage']): string | null {
+function featuredImageUrl(image: BlogPostSummary['featuredImage'], width = 800): string | null {
   if (!image) return null
   if (image._type === 'r2Image') return image.url
-  if (image._type === 'image' && image.asset) return urlFor(image).width(800).auto('format').url()
+  if (image._type === 'image' && image.asset) return urlFor(image).width(width).auto('format').url()
   return null
 }
 
@@ -45,6 +46,7 @@ const { data: posts } = await useAsyncData<BlogPostSummary[]>('blog-index', () =
       title,
       publishedAt,
       excerpt,
+      "bodyText": pt::text(body),
       tags,
       "featuredImage": select(
         defined(featuredImage._type) => featuredImage { _type, alt, url, asset, hotspot, crop },
@@ -82,8 +84,17 @@ function setTagFilter(tag: string) {
   currentPage.value = 1
 }
 
+const heroPost = computed(() => posts.value?.[0] ?? null)
+
+const heroExcerpt = computed(() => {
+  const text = (heroPost.value?.excerpt || heroPost.value?.bodyText || '').trim()
+  const words = text.split(/\s+/).filter(Boolean)
+  if (words.length <= 50) return text
+  return words.slice(0, 50).join(' ') + '…'
+})
+
 const filteredByTime = computed(() => {
-  const all = posts.value ?? []
+  const all = (posts.value ?? []).slice(1)
   if (selectedYear.value === null) return all
   return all.filter(p => new Date(p.publishedAt).getFullYear() === selectedYear.value)
 })
@@ -174,6 +185,32 @@ useSeoMeta({
           </div>
         </details>
       </div>
+
+      <NuxtLink
+        v-if="heroPost"
+        :to="`/blog/${heroPost.slug}`"
+        class="group mt-8 block"
+      >
+        <div class="relative flex w-full justify-end overflow-hidden" style="height: 28rem;">
+          <img
+            v-if="featuredImageUrl(heroPost.featuredImage, 1200)"
+            :src="featuredImageUrl(heroPost.featuredImage, 1200)!"
+            :alt="featuredImageAlt(heroPost.featuredImage, heroPost.title)"
+            class="h-full w-auto transition-transform duration-300 group-hover:-translate-y-4"
+          />
+          <div class="absolute bottom-3 left-3 right-3 bg-jw_red px-8 py-5 group-hover:bg-jw_blue">
+            <h2 class="font-heading text-3xl leading-snug text-jw_blue group-hover:text-jw_red">
+              {{ heroPost.title }}
+            </h2>
+            <p class="mt-0.5 font-body text-sm uppercase tracking-wide text-white group-hover:text-jw_red">
+              {{ formatDate(heroPost.publishedAt) }}
+            </p>
+            <p v-if="heroExcerpt" class="mt-2 font-body text-white group-hover:text-jw_red">
+              {{ heroExcerpt }}
+            </p>
+          </div>
+        </div>
+      </NuxtLink>
 
       <div
         v-if="pagedPosts.length"
