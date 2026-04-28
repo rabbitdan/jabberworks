@@ -8,6 +8,7 @@ const links = [
   { label: "Comics", to: "/comics" },
   { label: "FAQs", to: "/faqs" },
   { label: "Events", to: "/events" },
+  { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ]
 
