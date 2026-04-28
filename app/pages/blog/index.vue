@@ -214,7 +214,7 @@ useSeoMeta({
 
       <div
         v-if="pagedPosts.length"
-        class="grid grid-cols-2 gap-6 lg:grid-cols-3 mt-8"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3 mt-8"
       >
         <NuxtLink
           v-for="post in pagedPosts"
