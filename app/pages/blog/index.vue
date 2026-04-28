@@ -61,6 +61,8 @@ const currentPage = ref(1)
 
 const selectedYear = ref<number | null>(null)
 const tagFilter = ref('all')
+const yearDetails = ref<HTMLDetailsElement | null>(null)
+const tagDetails = ref<HTMLDetailsElement | null>(null)
 
 const availableYears = computed(() =>
   [...new Set((posts.value ?? []).map(p => new Date(p.publishedAt).getFullYear()))]
@@ -77,11 +79,13 @@ const tagQuickFilters = computed(() => ['all', ...availableTags.value])
 function setYear(year: number | null) {
   selectedYear.value = year
   currentPage.value = 1
+  if (yearDetails.value) yearDetails.value.open = false
 }
 
 function setTagFilter(tag: string) {
   tagFilter.value = tag
   currentPage.value = 1
+  if (tagDetails.value) tagDetails.value.open = false
 }
 
 const isFiltered = computed(() => tagFilter.value !== 'all' || selectedYear.value !== null)
@@ -137,7 +141,7 @@ useSeoMeta({
       </div>
 
       <div class="relative mt-4 grid grid-cols-2 gap-3">
-        <details class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details ref="yearDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Year
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
@@ -166,7 +170,7 @@ useSeoMeta({
           </div>
         </details>
 
-        <details v-if="availableTags.length" class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details v-if="availableTags.length" ref="tagDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Tags
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
