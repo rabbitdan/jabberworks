@@ -84,7 +84,9 @@ function setTagFilter(tag: string) {
   currentPage.value = 1
 }
 
-const heroPost = computed(() => posts.value?.[0] ?? null)
+const isFiltered = computed(() => tagFilter.value !== 'all' || selectedYear.value !== null)
+
+const heroPost = computed(() => isFiltered.value ? null : (posts.value?.[0] ?? null))
 
 const heroExcerpt = computed(() => {
   const text = (heroPost.value?.excerpt || heroPost.value?.bodyText || '').trim()
@@ -94,7 +96,7 @@ const heroExcerpt = computed(() => {
 })
 
 const filteredByTime = computed(() => {
-  const all = (posts.value ?? []).slice(1)
+  const all = isFiltered.value ? (posts.value ?? []) : (posts.value ?? []).slice(1)
   if (selectedYear.value === null) return all
   return all.filter(p => new Date(p.publishedAt).getFullYear() === selectedYear.value)
 })
