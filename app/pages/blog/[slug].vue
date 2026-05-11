@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { PortableText } from '@portabletext/vue'
 import type { BlogPost } from '~~/types/content'
+import PortableTextImage from '~/components/PortableTextImage.vue'
+
+const portableTextComponents = {
+  types: {
+    image: PortableTextImage,
+  },
+}
 
 const { $sanity } = useNuxtApp()
 
@@ -73,7 +80,7 @@ useSeoMeta({
           v-html="post!.bodyHtml.replace(/\\r\\n/g, '\n').replace(/\\r/g, '')"
         />
         <div v-else-if="post!.body" class="blog-body font-body text-xl leading-relaxed">
-          <PortableText :value="(post!.body as any)" />
+          <PortableText :value="(post!.body as any)" :components="portableTextComponents" />
         </div>
       </article>
 
