@@ -66,7 +66,7 @@ useSeoMeta({
 
       <article>
         <header class="mb-6">
-          <p class="font-body text-sm uppercase tracking-wide text-jw_grey">
+          <p class="font-body text-sm uppercase tracking-wide text-jw_light_grey">
             {{ formatPostDate(post!.publishedAt) }}
           </p>
           <h1 class="mt-2 font-heading text-4xl font-normal">{{ post!.title }}</h1>
