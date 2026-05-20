@@ -11,6 +11,7 @@ export default <Partial<Config>>{
                 jw_red: "#da0000",
                 jw_blue: "#C7EAFF",
                 jw_grey: "#323232",
+                jw_light_grey: "#898989",
             },
             fontFamily: {
                 body: ["Georgia", "Cambria", "\"Times New Roman\"", "Times", "serif"],

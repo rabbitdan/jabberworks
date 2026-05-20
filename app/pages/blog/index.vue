@@ -62,7 +62,6 @@ const currentPage = ref(1)
 const selectedYear = ref<number | null>(null)
 const tagFilter = ref('all')
 const yearDetails = ref<HTMLDetailsElement | null>(null)
-const tagDetails = ref<HTMLDetailsElement | null>(null)
 
 const availableYears = computed(() =>
   [...new Set((posts.value ?? []).map(p => new Date(p.publishedAt).getFullYear()))]
@@ -74,19 +73,12 @@ const availableTags = computed(() =>
     .sort((a, b) => a.localeCompare(b))
 )
 
-const tagQuickFilters = computed(() => ['all', ...availableTags.value])
-
 function setYear(year: number | null) {
   selectedYear.value = year
   currentPage.value = 1
   if (yearDetails.value) yearDetails.value.open = false
 }
 
-function setTagFilter(tag: string) {
-  tagFilter.value = tag
-  currentPage.value = 1
-  if (tagDetails.value) tagDetails.value.open = false
-}
 
 const isFiltered = computed(() => tagFilter.value !== 'all' || selectedYear.value !== null)
 
@@ -175,7 +167,7 @@ useSeoMeta({
           </div>
         </details>
 
-        <details v-if="availableTags.length" ref="tagDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details v-if="availableTags.length" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Tags
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
@@ -183,16 +175,20 @@ useSeoMeta({
             </svg>
           </summary>
           <div class="flex flex-wrap gap-2.5 border border-t-0 bg-jw_blue p-3 shadow-md sm:absolute sm:left-0 sm:right-0 sm:top-full sm:z-10">
-            <button
-              v-for="tag in tagQuickFilters"
-              :key="tag"
-              type="button"
-              class="cursor-pointer rounded-full px-3 py-2"
-              :class="tagFilter === tag ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
-              @click="setTagFilter(tag)"
+            <NuxtLink
+              to="/blog"
+              class="cursor-pointer rounded-full px-3 py-2 bg-white text-black hover:bg-jw_red hover:text-white transition-colors"
             >
-              {{ tag === 'all' ? 'All tags' : tag }}
-            </button>
+              All tags
+            </NuxtLink>
+            <NuxtLink
+              v-for="tag in availableTags"
+              :key="tag"
+              :to="`/blog/tags/${tag}`"
+              class="cursor-pointer rounded-full px-3 py-2 bg-white text-black hover:bg-jw_red hover:text-white transition-colors"
+            >
+              {{ tag }}
+            </NuxtLink>
           </div>
         </details>
       </div>

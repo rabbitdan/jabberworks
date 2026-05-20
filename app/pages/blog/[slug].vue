@@ -87,13 +87,14 @@ useSeoMeta({
       <div v-if="post!.tags?.length" class="mt-12 -mx-6 bg-jw_blue px-6 py-5">
         <div class="flex flex-wrap items-center gap-3">
           <span class="font-heading text-xl font-bold">Tags:</span>
-          <span
+          <NuxtLink
             v-for="tag in post!.tags"
             :key="tag"
-            class="rounded-full bg-white px-5 py-2 font-body text-xl"
+            :to="`/blog/tags/${tag}`"
+            class="rounded-full bg-white px-5 py-2 font-body text-xl hover:bg-jw_red hover:text-white transition-colors"
           >
             {{ tag }}
-          </span>
+          </NuxtLink>
         </div>
       </div>
 
