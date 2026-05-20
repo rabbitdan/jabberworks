@@ -16,5 +16,5 @@ const src = computed(() => urlFor(props.value).width(900).url())
 </script>
 
 <template>
-  <img :src="src" :alt="value.alt ?? ''" class="my-8 max-w-full" />
+  <img :src="src" :alt="value.alt ?? ''" class="my-8 max-w-full" loading="lazy" />
 </template>
