@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { computed, onMounted, onUnmounted, ref, watch } from "vue"
 import type { Event } from "~~/types/content"
 
 const { $sanity } = useNuxtApp()
@@ -53,8 +53,11 @@ useSeoMeta({
   description: "Browse Sarah's upcoming events, appearances, and workshops."
 })
 
+type SortOrder = "asc" | "desc"
+
 const timeFilter = ref<TimeFilter>("upcoming")
 const tagFilter = ref("all")
+const sortOrder = ref<SortOrder>("asc")
 
 const today = computed(() => todayIso())
 
@@ -63,6 +66,15 @@ const timeFilterOptions: Array<{ label: string; value: TimeFilter }> = [
   { label: "Past", value: "past" },
   { label: "All", value: "all" }
 ]
+
+const sortOrderOptions: Array<{ label: string; value: SortOrder }> = [
+  { label: "Oldest first", value: "asc" },
+  { label: "Newest first", value: "desc" }
+]
+
+watch(timeFilter, (value) => {
+  sortOrder.value = value === "past" ? "desc" : "asc"
+})
 
 const sortedEvents = computed(() =>
   [...(events.value ?? [])].sort((left, right) => left.dateStart.localeCompare(right.dateStart))
@@ -95,7 +107,7 @@ const filteredByTag = computed(() => {
 
 const finalEvents = computed(() =>
   [...filteredByTag.value].sort((left, right) =>
-    timeFilter.value === "past"
+    sortOrder.value === "desc"
       ? right.dateStart.localeCompare(left.dateStart)
       : left.dateStart.localeCompare(right.dateStart)
   )
@@ -105,6 +117,23 @@ const tagQuickFilters = computed(() => ["all", ...availableTags.value])
 
 function setTimeFilter(value: TimeFilter) { timeFilter.value = value }
 function setTagFilter(tag: string) { tagFilter.value = tag }
+function setSortOrder(value: SortOrder) { sortOrder.value = value }
+
+const timeRangeDetails = ref<HTMLDetailsElement | null>(null)
+const tagsDetails = ref<HTMLDetailsElement | null>(null)
+
+function handleClickOutside(event: MouseEvent) {
+  const target = event.target as Node
+  if (timeRangeDetails.value && !timeRangeDetails.value.contains(target)) {
+    timeRangeDetails.value.open = false
+  }
+  if (tagsDetails.value && !tagsDetails.value.contains(target)) {
+    tagsDetails.value.open = false
+  }
+}
+
+onMounted(() => document.addEventListener("click", handleClickOutside))
+onUnmounted(() => document.removeEventListener("click", handleClickOutside))
 
 </script>
 
@@ -119,28 +148,44 @@ function setTagFilter(tag: string) { tagFilter.value = tag }
       </div>
 
       <div class="relative mt-4 grid grid-cols-2 gap-3">
-        <details class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details ref="timeRangeDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Time range
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
               <path d="M4 12l12 10 12-10"/>
             </svg>
           </summary>
-          <div class="flex flex-wrap gap-2.5 border border-t-0 bg-jw_blue p-3 shadow-md sm:absolute sm:left-0 sm:right-0 sm:top-full sm:z-10">
-            <button
-                v-for="option in timeFilterOptions"
-                :key="option.value"
-                type="button"
-                class="cursor-pointer rounded-full px-3 py-2"
-                :class="timeFilter === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
-                @click="setTimeFilter(option.value)"
-            >
-              {{ option.label }}
-            </button>
+          <div class="border border-t-0 bg-jw_blue p-3 shadow-md sm:absolute sm:left-0 sm:right-0 sm:top-full sm:z-10">
+            <div class="flex justify-between gap-2.5">
+              <div class="flex gap-2.5">
+                <button
+                    v-for="option in timeFilterOptions"
+                    :key="option.value"
+                    type="button"
+                    class="cursor-pointer rounded-full px-3 py-2"
+                    :class="timeFilter === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
+                    @click="setTimeFilter(option.value)"
+                >
+                  {{ option.label }}
+                </button>
+              </div>
+              <div class="flex gap-2.5">
+                <button
+                    v-for="option in sortOrderOptions"
+                    :key="option.value"
+                    type="button"
+                    class="cursor-pointer rounded-full px-3 py-2"
+                    :class="sortOrder === option.value ? 'bg-jw_red border-jw_red text-white' : 'bg-white text-black'"
+                    @click="setSortOrder(option.value)"
+                >
+                  {{ option.label }}
+                </button>
+              </div>
+            </div>
           </div>
         </details>
 
-        <details class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details ref="tagsDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Tags
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">

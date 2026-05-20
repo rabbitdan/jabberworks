@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from "vue"
 import type { BlogPostSummary } from '~/composables/useBlogPosts'
 import { FEATURED_IMAGE_PROJECTION } from '~/composables/useBlogPosts'
 
@@ -53,6 +54,22 @@ useSeoMeta({
   title: 'Blog',
   description: 'Read the latest posts from the Jabberworks blog.',
 })
+
+const yearDetails = ref<HTMLDetailsElement | null>(null)
+const tagsDetails = ref<HTMLDetailsElement | null>(null)
+
+function handleClickOutside(event: MouseEvent) {
+  const target = event.target as Node
+  if (yearDetails.value && !yearDetails.value.contains(target)) {
+    yearDetails.value.open = false
+  }
+  if (tagsDetails.value && !tagsDetails.value.contains(target)) {
+    tagsDetails.value.open = false
+  }
+}
+
+onMounted(() => document.addEventListener("click", handleClickOutside))
+onUnmounted(() => document.removeEventListener("click", handleClickOutside))
 </script>
 
 <template>
@@ -63,7 +80,7 @@ useSeoMeta({
       </div>
 
       <div class="relative mt-4 grid grid-cols-2 gap-3">
-        <details class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details ref="yearDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Year
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
@@ -88,7 +105,7 @@ useSeoMeta({
           </div>
         </details>
 
-        <details v-if="availableTags.length" class="relative bg-jw_blue col-span-2 sm:col-span-1">
+        <details v-if="availableTags.length" ref="tagsDetails" class="relative bg-jw_blue col-span-2 sm:col-span-1">
           <summary class="flex cursor-pointer select-none list-none items-center justify-between px-3 py-2 font-heading [&::-webkit-details-marker]:hidden">
             Tags
             <svg class="size-5 shrink-0 text-jw_red transition-transform [[open]_&]:rotate-180" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3">
