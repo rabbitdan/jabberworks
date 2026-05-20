@@ -5,11 +5,13 @@ import { FEATURED_IMAGE_PROJECTION } from '~/composables/useBlogPosts'
 const { $sanity } = useNuxtApp()
 
 const route = useRoute()
-const tag = String(route.params.tag)
+const year = String(route.params.year)
+const yearStart = `${year}-01-01`
+const yearEnd = `${Number(year) + 1}-01-01`
 
-const { data: posts } = await useAsyncData<BlogPostSummary[]>(`blog-tag-${tag}`, () =>
+const { data: posts } = await useAsyncData<BlogPostSummary[]>(`blog-year-${year}`, () =>
   $sanity.fetch<BlogPostSummary[]>(`
-    *[_type == "blogPost" && $tag in tags] | order(publishedAt desc) {
+    *[_type == "blogPost" && publishedAt >= $yearStart && publishedAt < $yearEnd] | order(publishedAt desc) {
       "slug": slug.current,
       title,
       publishedAt,
@@ -17,12 +19,12 @@ const { data: posts } = await useAsyncData<BlogPostSummary[]>(`blog-tag-${tag}`,
       tags,
       ${FEATURED_IMAGE_PROJECTION}
     }
-  `, { tag })
+  `, { yearStart, yearEnd })
 )
 
 useSeoMeta({
-  title: () => `Posts tagged "${tag}"`,
-  description: () => `Blog posts tagged with "${tag}" on the Jabberworks blog.`,
+  title: () => `Blog - ${year}`,
+  description: () => `Blog posts from ${year} on the Jabberworks blog.`,
 })
 </script>
 
@@ -33,12 +35,12 @@ useSeoMeta({
         <div>
           <NuxtLink to="/blog" class="font-heading text-lg hover:underline">← Back to Blog Index</NuxtLink>
           <h1 class="mt-2 font-heading text-4xl">
-            Tag: <span class="text-jw_grey">{{ tag }}</span>
+            Year: <span class="text-jw_grey">{{ year }}</span>
           </h1>
         </div>
       </div>
 
-      <BlogPostGrid :posts="posts ?? []" empty-message="No posts found for this tag." />
+      <BlogPostGrid :posts="posts ?? []" empty-message="No posts found for this year." />
     </section>
   </div>
 </template>
