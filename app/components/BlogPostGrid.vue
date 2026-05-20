@@ -22,7 +22,7 @@ const { featuredImageUrl, featuredImageAlt, formatDate } = useBlogPosts()
       :to="`/blog/${post.slug}`"
       class="group block"
     >
-      <div class="relative flex justify-end w-full h-72">
+      <div class="relative flex justify-start w-full h-72">
         <img
           v-if="featuredImageUrl(post.featuredImage)"
           :src="featuredImageUrl(post.featuredImage)!"

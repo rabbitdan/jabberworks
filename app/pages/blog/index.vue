@@ -136,14 +136,14 @@ onUnmounted(() => document.removeEventListener("click", handleClickOutside))
         :to="`/blog/${heroPost.slug}`"
         class="group mt-8 block"
       >
-        <div class="relative flex w-full justify-end overflow-hidden" style="height: 28rem;">
+        <div class="relative flex w-full justify-start overflow-hidden" style="height: 28rem;">
           <img
             v-if="featuredImageUrl(heroPost.featuredImage, 1200)"
             :src="featuredImageUrl(heroPost.featuredImage, 1200)!"
             :alt="featuredImageAlt(heroPost.featuredImage, heroPost.title)"
             class="h-full w-auto transition-transform duration-300 group-hover:-translate-y-4"
           />
-          <div class="absolute bottom-3 left-3 right-3 bg-jw_red px-8 py-5 group-hover:bg-jw_blue">
+          <div class="absolute bottom-12 left-64 right-3 bg-jw_red px-8 py-5 group-hover:bg-jw_blue">
             <h2 class="font-heading text-3xl leading-snug text-jw_blue group-hover:text-jw_red">
               {{ heroPost.title }}
             </h2>
