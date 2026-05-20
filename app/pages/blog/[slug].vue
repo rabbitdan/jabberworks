@@ -58,7 +58,8 @@ useSeoMeta({
   <main class="container px-6 py-8 md:py-12">
     <div class="mx-auto max-w-3xl">
 
-      <NuxtLink to="/blog" class="font-heading text-lg hover:underline">
+      <NuxtLink to="/blog"
+                class="px-3 pt-2 pb-1 font-heading text-lg rounded-full disabled:opacity-30 hover:bg-jw_red hover:text-jw_blue transition-colors hover:no-underline">
         ← Back to Blog Index
       </NuxtLink>
 

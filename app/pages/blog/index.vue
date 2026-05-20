@@ -166,7 +166,7 @@ onUnmounted(() => document.removeEventListener("click", handleClickOutside))
         <button
           type="button"
           :disabled="currentPage === 1"
-          class="font-heading text-lg disabled:opacity-30"
+          class="px-2 py-1 font-heading text-lg rounded-2xl disabled:opacity-30 hover:bg-jw_red hover:text-jw_blue transition-colors hover:decoration-none"
           :class="currentPage > 1 ? 'hover:underline' : ''"
           @click="currentPage--"
         >
@@ -180,7 +180,7 @@ onUnmounted(() => document.removeEventListener("click", handleClickOutside))
         <button
           type="button"
           :disabled="currentPage === totalPages"
-          class="font-heading text-lg disabled:opacity-30"
+          class="px-3 pt-2 pb-1 font-heading text-lg rounded-full disabled:opacity-30 hover:bg-jw_red hover:text-jw_blue transition-colors hover:no-underline"
           :class="currentPage < totalPages ? 'hover:underline' : ''"
           @click="currentPage++"
         >

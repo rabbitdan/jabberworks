@@ -33,7 +33,10 @@ useSeoMeta({
     <section class="content">
       <div class="flex items-center gap-6 border-b border-black py-8">
         <div>
-          <NuxtLink to="/blog" class="font-heading text-lg hover:underline">← Back to Blog Index</NuxtLink>
+          <NuxtLink to="/blog" 
+                    class="px-3 pt-2 pb-1 font-heading text-lg rounded-full disabled:opacity-30 hover:bg-jw_red hover:text-jw_blue transition-colors hover:no-underline">
+            ← Back to Blog Index
+          </NuxtLink>
           <h1 class="mt-2 font-heading text-4xl">
             Year: <span class="text-jw_grey">{{ year }}</span>
           </h1>
